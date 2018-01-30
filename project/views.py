@@ -33,6 +33,7 @@ class BaseSheetFormSet(BaseModelFormSet):
                 raise forms.ValidationError("Articles in a set must have distinct titles.")
             titles.append(title)
 
+
 def loginfromdrupal(request, email,signature,time):
     from django.contrib.auth import login
     import getpass
