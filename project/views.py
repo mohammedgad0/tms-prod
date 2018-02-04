@@ -210,7 +210,7 @@ def MySheet(request):
 
     EmpID = 0
     if request.user.is_authenticated():
-        EmpID = request.session['EmpID']
+        EmpID = request.session.get('EmpID',1)
     sheets = Sheet.objects.filter(empid = EmpID).order_by('ifsubmitted','status')
     count = len(list(sheets))
     if count == 0:
@@ -286,6 +286,7 @@ def EmpSheet(request,empid):
     'have_permission':have_permission,'EmpData':EmpData,"his_manager":his_manager}
     return render(request, 'project/emp_sheet.html', context)
 
+@login_required
 def AllSheets(request):
     AllEmp = VSheetsdata.objects.filter()
     query = request.GET.get("q")
@@ -303,6 +304,7 @@ def AllSheets(request):
     context = {'allemp':AllEmp,"count":count}
     return render(request, 'project/all_emp_sheets.html',context)
 
+@login_required
 def AllDept(request):
     '''
     All departments as tree based on user logged in
@@ -503,6 +505,74 @@ def DeptSheet(request,deptcode):
 
     return render(request, 'project/all_sheets.html',context)
 
+def export_users_xls(request):
+    import xlwt
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Employees.xls"'
+    emp_have_task = Sheet.objects.all()
+    emp_list = []
+    for data in emp_have_task:
+        emp_list.append(data.empid)
+    emp_list = set(emp_list)
+    all_emp = Employee.objects.exclude(Q(empid__in = emp_list)|
+        Q(ismanager = 1)
+        )   
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Users')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = [_('Name'), _('Job title'), _('Department'), _('Email address'), _('Ext')]
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = all_emp.values_list('empname', 'jobtitle', 'deptname', 'email','ext')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+@login_required
+def EmployeeNoSheet(request):
+    emp_have_task = Sheet.objects.all()
+    emp_list = []
+    for data in emp_have_task:
+        
+        emp_list.append(data.empid)
+    emp_list = set(emp_list)
+    all_emp = Employee.objects.exclude(Q(empid__in = emp_list)|
+        Q(ismanager = 1)
+        )
+    count = all_emp.count()
+    # all_emp = all_emp.filter(sexcode=1)
+
+    print ("this is employee number" , all_emp.count())
+    
+    paginator = Paginator(all_emp, 20) # Show 5 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        _plist = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        _plist = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        _plist = paginator.page(paginator.num_pages)
+
+    context = {'count':count, 'All_Emp':_plist , 'emp_list':emp_list}
+    return render(request, 'project/emp_no_sheet.html',context)
 # Add sheet form
 @login_required
 def AddSheet(request):

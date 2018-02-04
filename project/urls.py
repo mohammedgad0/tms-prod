@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^all_dept_sheet/$', views.AllDept, name='dept-sheets'),
     #url(r'^all_emp/$', views.IsManager, name='all-emp'),
     url(r'^sheet/(?P<deptcode>\d+)/dept/$', views.DeptSheet, name='dept-sheet'),
+    # Employees does'nt have task
+    url(r'^emp_notsheet/$', views.EmployeeNoSheet, name='emp-no-sheets'),
     # url(r'^sheet/(?P<empid>\d+)/update/$', views.EditSheet, name='edit-sheet'),
     url(r'^sheet/(?P<empid>\d+)/update/$', views.UpdateSheet, name='update-sheet'),
     url(r'^sheet/(?P<empid>\d+)/details/$', views.DetailseSheet, name='detials-sheet'),
@@ -47,5 +49,7 @@ urlpatterns = [
     url(r'^delegation/$',views.delegation, name='delegation'),
     url(r'^my_delegation/$',views.mydelegation, name='my-delegation'),
     # End Delegations
+
+    url(r'^export/xls/$', views.export_users_xls, name='export_users_xls'),
 
 ]
