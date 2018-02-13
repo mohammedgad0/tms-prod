@@ -205,8 +205,8 @@ class ProjectStatus(models.Model):
 
 class Sheet(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-    empid = models.BigIntegerField(db_column='EmpId', blank=True, null=True)  # Field name made lowercase.
-    deptcode = models.IntegerField(db_column='DeptCode', blank=True, null=True)  # Field name made lowercase.
+    empid = models.ForeignKey('Employee', to_field='empid',db_column='EmpId', blank=True, null=True)  # Field name made lowercase.
+    deptcode = models.ForeignKey('Department', to_field='deptcode', db_column='DeptCode', blank=True, null=True)  # Field name made lowercase.
     managercode = models.BigIntegerField(db_column='ManagerCode', blank=True, null=True)  # Field name made lowercase.
     managerlevel2 = models.BigIntegerField(db_column='ManagerLevel2', blank=True, null=True)  # Field name made lowercase.
     managerlevel3 = models.BigIntegerField(db_column='ManagerLevel3', blank=True, null=True)  # Field name made lowercase.

@@ -20,7 +20,7 @@ from django.template.loader import  render_to_string
 from django.http import JsonResponse
 from django.views.generic.list import ListView
 from django.core.urlresolvers import resolve
-
+from django.core.cache import cache
 
 class BaseSheetFormSet(BaseModelFormSet):
     def clean(self):
@@ -223,7 +223,6 @@ def EmpSheet(request,empid):
     '''
     Page For Manager to See Employees Sheets
     '''
-
     """
     Get current week range start week is sunday end day is saturday
     """
@@ -505,7 +504,7 @@ def DeptSheet(request,deptcode):
 
     return render(request, 'project/all_sheets.html',context)
 
-def export_users_xls(request):
+def _ecport_toexcel(all_emp):
     import xlwt
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Employees.xls"'
@@ -543,22 +542,82 @@ def export_users_xls(request):
     wb.save(response)
     return response
 
+def export_users_xls(request):
+    import xlwt
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Employees.xls"'
+    all_emp =  cache.get('all_emp')
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Users')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = [_('Name'), _('Job title'), _('Department'), _('Email address'), _('Ext')]
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = all_emp.values_list('empname', 'jobtitle', 'deptname', 'email','ext')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
 @login_required
 def EmployeeNoSheet(request):
-    emp_have_task = Sheet.objects.all()
+    """
+    Get current week range start week is sunday end day is saturday
+    """
+    date = datetime.now()
+    year, week, dow = date.isocalendar()
+    if dow == 7:
+        start_date = date
+    else:
+        start_date = date - timedelta(dow)
+    end_date = start_date + timedelta(6)
+    """ End current week """
+    emp_have_task = Sheet.objects.filter(
+        Q(taskdate__gte=end_date , createddate__lte=start_date)|
+        Q(taskdate__lte=end_date , taskdate__gte=start_date)|
+        Q(createddate__lte=end_date , createddate__gte=start_date)
+        )
+    start = request.GET.get("q_start", start_date)
+    end = request.GET.get("q_end", end_date)
+    if start and end:
+        """ Get only sheet for date filter """
+        emp_have_task = Sheet.objects.filter(
+            Q(taskdate__gte=end, createddate__lte=start)|
+            Q(taskdate__lte=end , taskdate__gte=start)|
+            Q(createddate__lte=end , createddate__gte=start)
+            )
     emp_list = []
     for data in emp_have_task:
-        
         emp_list.append(data.empid)
+    #Fix date format
+    start_date = start_date.strftime('%Y-%m-%d')
+    end_date = end_date.strftime('%Y-%m-%d')
+
     emp_list = set(emp_list)
     all_emp = Employee.objects.exclude(Q(empid__in = emp_list)|
         Q(ismanager = 1)
         )
     count = all_emp.count()
     # all_emp = all_emp.filter(sexcode=1)
+    all_emp_1 = all_emp
+    export = request.GET.get("export")
+    print (all_emp.count())
+    cache.set('all_emp',all_emp)
 
-    print ("this is employee number" , all_emp.count())
-    
     paginator = Paginator(all_emp, 20) # Show 5 contacts per page
 
     page = request.GET.get('page')
@@ -571,9 +630,37 @@ def EmployeeNoSheet(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         _plist = paginator.page(paginator.num_pages)
 
-    context = {'count':count, 'All_Emp':_plist , 'emp_list':emp_list}
+    context = {'count':count, 'All_Emp':_plist , 'emp_list':emp_list,"start_date":start_date,"end_date":end_date,}
     return render(request, 'project/emp_no_sheet.html',context)
 # Add sheet form
+
+@login_required
+def EmpnotFinished(request):
+    from django.db.models import Count
+    """
+    Get current week range start week is sunday end day is saturday
+    """
+    date = datetime.now()
+    year, week, dow = date.isocalendar()
+    if dow == 7:
+        start_date = date
+    else:
+        start_date = date - timedelta(dow)
+    end_date = start_date + timedelta(6)
+    """ End current week """
+    sheets = Sheet.objects.filter(
+        Q(status=3)&Q(ifsubmitted=1))
+        # Q(taskdate__gte=end_date , createddate__lte=start_date)|
+        # Q(taskdate__lte=end_date , taskdate__gte=start_date)|
+        # Q(createddate__lte=end_date , createddate__gte=start_date)
+        # )
+
+    # sheets = sheets.values("empid").annotate(Count("id")).order_by()
+    sheets = sheets.values('empid__empname','deptcode__managername','deptcode__deptname').annotate(total=Count('empid'))
+    print (len(sheets))
+    context ={"sheets":sheets,}
+    return render(request, 'project/sheet_not_finished.html', context) 
+
 @login_required
 def AddSheet(request):
     AddSheet = modelformset_factory(Sheet, fields=('taskdesc', 'tasktype', 'duration','durationhoure','taskdate','taskcount'),can_delete=True, extra=7,

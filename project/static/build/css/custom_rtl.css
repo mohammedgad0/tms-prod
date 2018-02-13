@@ -2816,7 +2816,7 @@ a.btn-danger {
     .btn-success:active,
     .btn-success.active,
     .open .dropdown-toggle.btn-success {
-        background: #169F85
+        background: #169F85 !important;
     }
 
 .btn-dark {

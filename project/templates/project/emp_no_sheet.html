@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 {{ block.super }}
+<link href="/static/vendors/jquery/dist/jquery-ui.css" rel="stylesheet">
     <link href="/static/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
   <link href="/static/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
   <link href="/static/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
@@ -47,9 +48,35 @@ ul.stats-overview li{width:19% !important}
      
                </ul>
 
-               
+       
+          </li>
+      <form class="form-inline" id="search" method="GET" action="">
+      <div class="col-md-2">
+  <label>{{_('satrt date')}}</label>
+      <div class="input-group date" data-provide="datepicker">
 
+      <input class="datepicker form-control" name="q_start" type="text"+ {% if request.GET.q_start %} + value='{{ request.GET.q_start}}' +{% else %}+  value='{{ start_date}}' + {% endif %}+ placeholder="{{_('form')}}">
+      <div class="input-group-addon">
+      <span class="glyphicon glyphicon-th"></span>
+      </div>
+      </div>
+      </div>
+      <div class="col-md-2">
+  <label>{{_('end date')}}</label>
+      <div class="input-group date" data-provide="datepicker">
 
+      <input class="datepicker form-control" name="q_end" type="text"+ {% if request.GET.q_end %} + value='{{ request.GET.q_end}}' +{% else %}+  value='{{ end_date}}' + {% endif %}+ placeholder="{{_('to')}}">
+      <div class="input-group-addon">
+      <span class="glyphicon glyphicon-th"></span>
+      </div>
+      </div>
+
+      </div>
+            <label style="color:#fff;">{{_('search')}}</label>
+      <span class="input-group-btn">
+      <button id="submit" class="btn btn-primary " type="submit">{% trans "Go"  %}!</button>
+      </span>
+    </form>
             <div class="x_content">
 <div>  <i class="fa  fa-eye"></i> {% trans "Result Number :" %} <span>{{count}} </span> </div>
               {% for message in messages %}
