@@ -648,17 +648,46 @@ def EmpnotFinished(request):
         start_date = date - timedelta(dow)
     end_date = start_date + timedelta(6)
     """ End current week """
-    sheets = Sheet.objects.filter(
-        Q(status=3)&Q(ifsubmitted=1))
+    sheets = Sheet.objects.filter(Q(status=3)&Q(ifsubmitted=1))
         # Q(taskdate__gte=end_date , createddate__lte=start_date)|
         # Q(taskdate__lte=end_date , taskdate__gte=start_date)|
         # Q(createddate__lte=end_date , createddate__gte=start_date)
         # )
+    sheets = sheets.filter(
+        Q(taskdate__gte=end_date , createddate__lte=start_date)|
+        Q(taskdate__lte=end_date , taskdate__gte=start_date)|
+        Q(createddate__lte=end_date , createddate__gte=start_date)
+        )
 
+    start = request.GET.get("q_start", start_date)
+    end = request.GET.get("q_end", end_date)
+    if start and end:
+        sheets = Sheet.objects.filter(Q(status=3)&Q(ifsubmitted=1))
+        """ Get only sheet for date filter """
+        sheets = sheets.filter(
+            Q(taskdate__gte=end, createddate__lte=start)|
+            Q(taskdate__lte=end , taskdate__gte=start)|
+            Q(createddate__lte=end , createddate__gte=start)
+            )        
+
+    #Fix date format
+    start_date = start_date.strftime('%Y-%m-%d')
+    end_date = end_date.strftime('%Y-%m-%d')
     # sheets = sheets.values("empid").annotate(Count("id")).order_by()
-    sheets = sheets.values('empid__empname','deptcode__managername','deptcode__deptname').annotate(total=Count('empid'))
-    print (len(sheets))
-    context ={"sheets":sheets,}
+    sheets = sheets.values('empid__empname','empid__empid','deptcode__managername','deptcode__deptname').annotate(total=Count('empid'))
+    paginator = Paginator(sheets, 20) # Show 5 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        _plist = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        _plist = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        _plist = paginator.page(paginator.num_pages)
+    count =  (len(sheets))
+    context ={"sheets":_plist,'count':count,"start_date":start_date,"end_date":end_date,}
     return render(request, 'project/sheet_not_finished.html', context) 
 
 @login_required
