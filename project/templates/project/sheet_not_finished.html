@@ -31,7 +31,7 @@
             <div class="x_panel">
                                    <ul class="nav nav-pills navbar-left">
                    <li>
-<a href="{% url 'ns-project:export_users_xls' %}" class="btn btn-success"> <i class="fa fa-file-excel-o"></i>&nbsp{{_("Export to excel")}}</a>
+<a href="{% url 'ns-project:export_empnosheet_xls' %}" class="btn btn-success"> <i class="fa fa-file-excel-o"></i>&nbsp{{_("Export to excel")}}</a>
                </li>
      
                </ul>
@@ -79,6 +79,7 @@
                         <tr>
                            <th style="width: 1%">#</th>
                            <th>{{ _('Name') }}</th>
+                           <th>{{ _('Job title') }}</th>
                            <th>{% trans "Department" %}</th>              
                            <th>{% trans "Manager Name" %}</th>
                            <th>{% trans "Task not complete" %}</th>
@@ -89,6 +90,7 @@
                         <tr>
                            <td>#</td>
                            <td><a href="{{data.empid}}">{{ data.empid__empname}}</a></td>
+                           <td><a href="{{data.empid}}">{{ data.empid__jobtitle}}</a></td>
                            <td>{{ data.deptcode__deptname}} </td>
                            <td>{{data.deptcode__managername }}</td>
                            <td style="color:red;">{{ data.total}} </td>

@@ -21,6 +21,7 @@ urlpatterns = [
     # url(r'^all_sheets/$', views.ManagerPage, name='all-sheets'),
     url(r'^all_employees_sheets/$', views.AllSheets, name='emps-sheets'),
     url(r'^all_dept_sheet/$', views.AllDept, name='dept-sheets'),
+    url(r'^all_dept_sheets/$', views.AllDepts, name='department-sheets'),
     #url(r'^all_emp/$', views.IsManager, name='all-emp'),
     url(r'^sheet/(?P<deptcode>\d+)/dept/$', views.DeptSheet, name='dept-sheet'),
     # Employees does'nt have task
@@ -52,5 +53,6 @@ urlpatterns = [
     # End Delegations
 
     url(r'^export/xls/$', views.export_users_xls, name='export_users_xls'),
+    url(r'^export/xls/empnosheet$', views.export_empnosheet_xls, name='export_empnosheet_xls'),
 
 ]

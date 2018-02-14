@@ -303,6 +303,71 @@ def AllSheets(request):
     context = {'allemp':AllEmp,"count":count}
     return render(request, 'project/all_emp_sheets.html',context)
 
+
+@login_required
+def AllDepts(request):
+    from django.db.models import Count, Case, When, IntegerField ,F
+    dept_code = request.session.get('DeptCode', 2322)
+    """
+    Get current week range start week is sunday end day is saturday
+    """
+    date = datetime.now()
+    year, week, dow = date.isocalendar()
+    if dow == 7:
+        start_date = date
+    else:
+        start_date = date - timedelta(dow)
+    end_date = start_date + timedelta(6)
+    """ End current week """
+    sheets = Sheet.objects.all()
+        # Q(taskdate__gte=end_date , createddate__lte=start_date)|
+        # Q(taskdate__lte=end_date , taskdate__gte=start_date)|
+        # Q(createddate__lte=end_date , createddate__gte=start_date)
+        # )
+    cache.set('sheets',sheets)
+    sheets = cache.get('sheets')
+    # sheets = sheets.values('empid__empname','empid__jobtitle','empid__empid','deptcode__managername','deptcode__deptname')   
+    total_count = sheets.values('deptcode__deptname','deptcode__deptcode').annotate(total=Count('deptcode'),
+     new_task = Count(Case(When(status=0 , ifsubmitted =0 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+     submitted_task = Count(Case(When(ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+     finished_task = Count(Case(When(status=2 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+     inprogress_task = Count(Case(When(status=1 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+     notfinished_task = Count(Case(When(status=3 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+     ignore_task = Count(Case(When(ifsubmitted =2 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+
+     ).all()
+
+        
+    print (total_count)
+    context = {"total_count":total_count}
+    return render(request, 'project/sheet_all_departments.html',context)
+
+
+def _get_tree_dept(deptcode):
+    dept_level_1 = ApfDeptView.objects.filter(resp_dept_code = deptcode)
+    dept_level_2 = []
+    dept_level_3 = []
+    dept_level_4 = []
+    for dept in dept_level_1:
+        dept2 = dept.dept_code
+        # name = dept.dept_name
+        dept_level_2.append(dept2)
+        # dept_level_2.append(name)
+        dept = ApfDeptView.objects.filter(resp_dept_code = dept2)
+        for data in dept:
+            dept3= data.dept_code
+            # name = data.dept_name
+            dept_level_3.append(dept3)
+            # dept_level_3.append(name)
+            dept = ApfDeptView.objects.filter(resp_dept_code = dept3)
+            for data in dept:
+                dept4 = data.dept_code
+                dept_level_4.append(dept4)
+    all_dept =  dept_level_2 + dept_level_3 + dept_level_4
+    all_dept.append(deptcode)
+    return all_dept
+
+
 @login_required
 def AllDept(request):
     '''
@@ -545,7 +610,7 @@ def _ecport_toexcel(all_emp):
 def export_users_xls(request):
     import xlwt
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="Employees.xls"'
+    response['Content-Disposition'] = 'attachment; filename="Employees-nosheets.xls"'
     all_emp =  cache.get('all_emp')
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
@@ -565,6 +630,37 @@ def export_users_xls(request):
     font_style = xlwt.XFStyle()
 
     rows = all_emp.values_list('empname', 'jobtitle', 'deptname', 'email','ext')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+def export_empnosheet_xls(request):
+    import xlwt
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Employees-notfinished.xls"'
+    all_emp =  cache.get('all_emp_nosheet')
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Users')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = [_('Name'), _('Job title'), _('Department'), _('Manager Name'), _('Task not complete')]
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = all_emp.values_list('empid__empname', 'empid__jobtitle', 'deptcode__deptname','deptcode__managername','total')
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):
@@ -602,7 +698,7 @@ def EmployeeNoSheet(request):
             )
     emp_list = []
     for data in emp_have_task:
-        emp_list.append(data.empid)
+        emp_list.append(data.empid.empid)
     #Fix date format
     start_date = start_date.strftime('%Y-%m-%d')
     end_date = end_date.strftime('%Y-%m-%d')
@@ -674,9 +770,9 @@ def EmpnotFinished(request):
     start_date = start_date.strftime('%Y-%m-%d')
     end_date = end_date.strftime('%Y-%m-%d')
     # sheets = sheets.values("empid").annotate(Count("id")).order_by()
-    sheets = sheets.values('empid__empname','empid__empid','deptcode__managername','deptcode__deptname').annotate(total=Count('empid'))
+    sheets = sheets.values('empid__empname','empid__jobtitle','empid__empid','deptcode__managername','deptcode__deptname').annotate(total=Count('empid'))
     paginator = Paginator(sheets, 20) # Show 5 contacts per page
-
+    cache.set('all_emp_nosheet',sheets)
     page = request.GET.get('page')
     try:
         _plist = paginator.page(page)
@@ -737,8 +833,8 @@ def AddSheet(request):
             for manager in emp3:
                  manager_4 = manager.managercode
             for obj in instances:
-                obj.empid = request.session['EmpID']
-                obj.deptcode = request.session['DeptCode']
+                obj.empid = get_object_or_404(Employee,empid__exact=EmpID)
+                obj.deptcode = get_object_or_404(Department,deptcode__exact=request.session['DeptCode'])
                 obj.managercode = managercode
                 obj.managerlevel2 = manager_2
                 obj.managerlevel3 = manager_3
@@ -779,7 +875,7 @@ def SubmitSheet(request,pk):
     # taskdate__gte=datetime.now()-timedelta(days=7), taskdate__lte=datetime.now()+ timedelta(days=7)
     SheetData = get_object_or_404(Sheet,pk=pk)
     sheetid = SheetData.empid
-    employeeid = SheetData.empid
+    employeeid = SheetData.empid.empid
     # if EmpID == str(sheetid):
     if request.method == 'POST':
         formset = SbmitSheet(request.POST)
@@ -804,6 +900,8 @@ def SubmitSheet(request,pk):
 
 @login_required
 def EditSheet(request,pk):
+    from django.utils import timezone
+    import pytz
     if request.user.is_authenticated():
         EmpID = request.session['EmpID']
     SbmitSheet = modelformset_factory(Sheet, fields=('taskdesc', 'tasktype', 'duration','durationhoure','taskdate','ifsubmitted','taskcount'), can_delete=True, extra=0,
@@ -820,7 +918,7 @@ def EditSheet(request,pk):
     formset = SbmitSheet(queryset=Sheet.objects.filter(id = pk,ifsubmitted='0' ))
     # taskdate__gte=datetime.now()-timedelta(days=7), taskdate__lte=datetime.now()+ timedelta(days=7)
     SheetData = get_object_or_404(Sheet,pk=pk)
-    sheetid = SheetData.empid
+    sheetid = SheetData.empid.empid
     if EmpID == str(sheetid):
         if request.method == 'POST':
             formset = SbmitSheet(request.POST)
@@ -828,7 +926,7 @@ def EditSheet(request,pk):
                 instances = formset.save(commit=False)
                 # Get managers as hierarchicaly
                 for obj in instances:
-                    obj.editdate = datetime.now()
+                    obj.editedate = timezone.now()
                     obj.ifsubmitted = 0
                     obj.save()
                 for obj in formset.deleted_objects:
@@ -859,7 +957,7 @@ def ChangeStatus(request,pk):
     formset = ChangeStatus(queryset=Sheet.objects.filter(ifsubmitted = '1',id = pk ))
     # taskdate__gte=datetime.now()-timedelta(days=7), taskdate__lte=datetime.now()+ timedelta(days=7)
     SheetData = get_object_or_404(Sheet,pk=pk)
-    sheetid = SheetData.empid
+    sheetid = SheetData.empid.empid
     if EmpID == str(sheetid):
         if request.method == 'POST':
             formset = ChangeStatus(request.POST)

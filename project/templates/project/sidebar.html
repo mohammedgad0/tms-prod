@@ -56,6 +56,7 @@
             <li><a href="{% url 'ns-project:dept-sheets'%}">{{_('All Department')}}</a></li>
              {% if request.user|has_group:"supermanager" %}
             <li><a href="{% url 'ns-project:emp-no-sheets'%}">{{_('Employess not have tasks')}}</a></li>
+            <li><a href="{% url 'ns-project:emp-not-finished'%}">{{_('Employess not finished tasks')}}</a></li>
              {%endif%}
           </ul>
         </li>
