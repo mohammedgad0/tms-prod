@@ -304,6 +304,76 @@ def AllSheets(request):
     return render(request, 'project/all_emp_sheets.html',context)
 
 
+def DeptsnoSheets(request):
+    dept_code = request.session.get('DeptCode', 2322)
+    """
+    Get current week range start week is sunday end day is saturday
+    """
+    date = datetime.now()
+    year, week, dow = date.isocalendar()
+    if dow == 7:
+        start_date = date
+    else:
+        start_date = date - timedelta(dow)
+    end_date = start_date + timedelta(6)
+    """ End current week """
+    #Fix date format
+    start_date = start_date.strftime('%Y-%m-%d')
+    end_date = end_date.strftime('%Y-%m-%d')
+
+    all_sheets = Sheet.objects.filter(
+        Q(deptcode__deptcode__gte = 0)&
+        Q(deptcode__deptcode__isnull= False )
+        )
+
+    sheets = all_sheets.filter(
+        Q(taskdate__gte=end_date , createddate__lte=start_date)|
+        Q(taskdate__lte=end_date , taskdate__gte=start_date)|
+        Q(createddate__lte=end_date , createddate__gte=start_date)
+        )
+
+    start = request.GET.get("q_start", start_date)
+    end = request.GET.get("q_end", end_date)
+    if start and end:
+        """ Get only sheet for date filter """
+        sheets = all_sheets.filter(
+            Q(taskdate__gte=end, createddate__lte=start)|
+            Q(taskdate__lte=end , taskdate__gte=start)|
+            Q(createddate__lte=end , createddate__gte=start)
+            )
+    # Get all tree dept
+    tree_dept = _get_tree_dept(dept_code)
+    if request.user.groups.filter(name='supermanager').exists():
+        sheets = all_sheets
+    else:
+        sheets = all_sheets.filter(deptcode__in = tree_dept)
+
+    # sheets = cache.get('sheets')
+
+    DeptHaveTask = []
+    for data in sheets:
+        try:
+            DeptHaveTask.append(data.deptcode.deptcode)
+        except:
+            pass
+    all_dept = Department.objects.exclude(deptcode__in = DeptHaveTask)
+    all_dept = all_dept.filter(deptcode__in=tree_dept)
+    paginator = Paginator(all_dept, 20) # Show 5 contacts per page
+    page = request.GET.get('page')
+    try:
+        _plist = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        _plist = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        _plist = paginator.page(paginator.num_pages) 
+
+
+    count =  (len(all_dept))    
+    context = {"total_count":_plist,"count":count,"start_date":start_date,"end_date":end_date}
+    return render(request, 'project/sheet_no_departments.html',context )
+
 @login_required
 def AllDepts(request):
     from django.db.models import Count, Case, When, IntegerField ,F
@@ -319,29 +389,71 @@ def AllDepts(request):
         start_date = date - timedelta(dow)
     end_date = start_date + timedelta(6)
     """ End current week """
-    sheets = Sheet.objects.all()
-        # Q(taskdate__gte=end_date , createddate__lte=start_date)|
-        # Q(taskdate__lte=end_date , taskdate__gte=start_date)|
-        # Q(createddate__lte=end_date , createddate__gte=start_date)
-        # )
-    cache.set('sheets',sheets)
-    sheets = cache.get('sheets')
-    # sheets = sheets.values('empid__empname','empid__jobtitle','empid__empid','deptcode__managername','deptcode__deptname')   
-    total_count = sheets.values('deptcode__deptname','deptcode__deptcode').annotate(total=Count('deptcode'),
-     new_task = Count(Case(When(status=0 , ifsubmitted =0 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+    all_sheets = Sheet.objects.filter(
+        Q(deptcode__deptcode__gte = 0)&
+        Q(deptcode__deptcode__isnull= False )
+        )
+    # Get all tree dept
+    tree_dept = _get_tree_dept(dept_code)
+    if request.user.groups.filter(name='supermanager').exists():
+        all_sheets = all_sheets
+    else:
+        all_sheets = all_sheets.filter(deptcode__in = tree_dept)
+    cache.set('sheets',all_sheets)
+    sheets = all_sheets.filter(
+        Q(taskdate__gte=end_date , createddate__lte=start_date)|
+        Q(taskdate__lte=end_date , taskdate__gte=start_date)|
+        Q(createddate__lte=end_date , createddate__gte=start_date)
+        )
+
+
+       # sheets = sheets.exclude(deptcode__in =DeptHaveTask)
+    #Fix date format
+    start_date = start_date.strftime('%Y-%m-%d')
+    end_date = end_date.strftime('%Y-%m-%d')
+
+    # cache.set('sheets',sheets)
+    # sheets = cache.get('sheets')
+    start = request.GET.get("q_start", start_date)
+    end = request.GET.get("q_end", end_date)
+    if start and end:
+        """ Get only sheet for date filter """
+        sheets = all_sheets.filter(
+            Q(taskdate__gte=end, createddate__lte=start)|
+            Q(taskdate__lte=end , taskdate__gte=start)|
+            Q(createddate__lte=end , createddate__gte=start)
+            )
+
+    select_menu = sheets.values('deptcode__deptname','deptcode__managername','deptcode__deptcode').annotate(total=Count('deptcode'))
+    query = request.GET.get("q")
+    if query and query != '0':
+        sheets = sheets.filter(
+        Q(deptcode__deptcode = query)
+        )
+    total_count = sheets.values('deptcode__deptname','deptcode__managername','deptcode__deptcode').annotate(total=Count('deptcode'),
+     new_task = Count(Case(When(ifsubmitted =0 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      submitted_task = Count(Case(When(ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      finished_task = Count(Case(When(status=2 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      inprogress_task = Count(Case(When(status=1 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      notfinished_task = Count(Case(When(status=3 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      ignore_task = Count(Case(When(ifsubmitted =2 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
+     ).all().order_by('-submitted_task')
 
-     ).all()
+    paginator = Paginator(total_count, 20) # Show 5 contacts per page
+    page = request.GET.get('page')
+    try:
+        _plist = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        _plist = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        _plist = paginator.page(paginator.num_pages) 
 
-        
-    print (total_count)
-    context = {"total_count":total_count}
+
+    count =  (len(total_count))
+    context = {"total_count":_plist,"select_menu":select_menu,"count":count,"start_date":start_date,"end_date":end_date}
     return render(request, 'project/sheet_all_departments.html',context)
-
 
 def _get_tree_dept(deptcode):
     dept_level_1 = ApfDeptView.objects.filter(resp_dept_code = deptcode)
@@ -366,7 +478,6 @@ def _get_tree_dept(deptcode):
     all_dept =  dept_level_2 + dept_level_3 + dept_level_4
     all_dept.append(deptcode)
     return all_dept
-
 
 @login_required
 def AllDept(request):
@@ -511,12 +622,12 @@ def DetailseSheet(request,empid):
 @login_required
 def DeptSheet(request,deptcode):
     if request.user.is_authenticated():
-        # DeptCode = request.session['DeptCode']
+        DeptCode = request.session.get("DeptCode", 0)
         EmpID = request.session['EmpID']
     dept = Department.objects.filter(deptcode= deptcode)[:1]
     managid = '0'
     sheets = None
-    alldept = request.session.get('TreeDept', '0')
+    alldept = _get_tree_dept(DeptCode)
     for data in dept:
         managid = data.managerid
     delegation = Delegation.objects.filter(authorized = EmpID, expired = '0')

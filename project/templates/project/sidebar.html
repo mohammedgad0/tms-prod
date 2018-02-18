@@ -45,7 +45,6 @@
            {%endif%}
            <li><a href="{% url 'ns-project:my-delegation'%}">{{_('Department Delegation')}}</a></li>
          </ul>
-
        </li>
        {%endif%}
            {% if request.user|has_group:"ismanager" %}

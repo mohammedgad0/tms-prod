@@ -19,51 +19,13 @@
 
             <h3>{% trans "All Departments" %} </h3>
             </br>
-<!--             {% for data in total_count%}
-              {{data.deptcode__deptname}}<br>
-              {{'all task is'}}{{  data.total}}<br>
-              {{"new task is" }}{{ data.new_task}}<br>
-              {{"finished task is" }}{{ data.finished_task}}<br>
-              {{"submitted task is" }}{{ data.submitted_task}}<br>
-              {{"done task is" }}{{ data.finished_task}}<br>
-              {{"ignore task is" }}{{ data.ignore_task}}<br>
-              {{"inprogress task is" }}{{ data.inprogress_task}}<br>
-
-            {% endfor %} -->
             </br>
          </div>
-         {% for data in dept%}
-         {{data.deptcode.deptcode}}
-         {%endfor%}
          <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
-               <form method="GET" action="">
-                  <div >
-                     <label> {{_('Choice Department')}}</label>
-                     <select id='js-select-dept' class="chosen form-control" onchange="this.form.submit()" name="q" class="form-control">
-                        <option value='0'>{{_('All Department')}}</option>
-                        {%for data in select_menu%}
-                      {% if data.deptcode__deptcode > 0%}<option value="{{data.deptcode__deptcode}}">{{data.deptcode__deptname}}</option>{% endif %}
-                        {%endfor%}
-                      }
-                     </select>
-
-                  </div>
-                  <!--      <input type="text" name="q" class="form-control" style="width:auto;" value="{{ request.GET.q}}" placeholder="{{_('Emp Or dept')}}...">
-                     <span class="input-group-btn">-->
-                  <!--  <button style="float: left;" class="btn btn-default" type="submit">{% trans "Go"  %}!</button> -->
-                  <!--  </span> -->
                   <ul class="nav nav-pills navbar-left" role="tablist" style="margin-top:5px;">
-                     <li>
-                        {% if count > 0 %}
-               <form method="GET" action="">
-               <button type="submit" class="btn btn-danger btn-md" name="filter" class="form-control" style="width:auto;" value="sheet-empty" ><i class="fa fa-filter"></i> {{ _('Dept not have task') }}</button>
-               </form>
-               {% endif %}
-               </li>
-               {% if request.GET.filter %}
                <a href="{% url 'ns-project:dept-sheets' %}" class="float-left" style="float:left"> <button type="button" class="btn btn-primary btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
-               {%endif%}
+    
                </ul>
             </div>
          </div>
@@ -117,45 +79,18 @@
                            <th style="width: 1%">#</th>
                            <th>{{ _('Department') }}</th>
                            <th>{{ _('Manager Name') }}</th>
-                           {% if request.GET.filter is None %} 
-                           <th>{% trans "Task count submitted" %}</th>
-                           <th>{% trans "Task count not submitted" %}</th>
-                           <th>{% trans "Task not submitted" %}</th>
-                           <th>{% trans "Task Done" %}</th>
-                           <th>{% trans "Task inprogress" %}</th>
-                           <th>{% trans "Task not complete" %}</th>
-                           
-                           <th>{% trans "View" %}</th>
-                           {%endif%}
-                           <!--  <th>{% trans "Status" %}</th> -->
-<!--               {{data.deptcode__deptname}}<br>
-              {{'all task is'}}{{  data.total}}<br>
-              {{"new task is" }}{{ data.new_task}}<br>
-              {{"finished task is" }}{{ data.finished_task}}<br>
-              {{"submitted task is" }}{{ data.submitted_task}}<br>
-              {{"done task is" }}{{ data.notfinished_task}}<br>
-              {{"ignore task is" }}{{ data.ignore_task}}<br>
-              {{"inprogress task is" }}{{ data.inprogress_task}}<br> -->
+
                         </tr>
                      </thead>
                      <tbody>
                         {% for data in total_count %}
-                        {% if data.deptcode__deptcode > 0%}
+                        
                         <tr>
                            <td>#</td>
-                           <td>{{data.deptcode__deptname}}  </td>
-                           <td>{{ data.deptcode__managername}}</td>
-                           {% if request.GET.filter is None %}
-                           <td>{{ data.submitted_task}}</td>
-                           <td>{{ data.new_task}}</td>
-                           <td>{{ data.ignore_task}} </td>
-                           <td>{{ data.finished_task}}</td>
-                           <td>{{ data.inprogress_task}} </td>
-                           <td>{{ data.notfinished_task}}</td>
-                          <td> <a href="/sheet/{{data.deptcode__deptcode}}/dept" class="btn btn-primary btn-xs">{% trans "View" %}</a></td>
-                           {% endif %}
+                           <td>{{data.deptname}}  </td>
+                           <td>{{ data.managername}}</td>
                         </tr>
-                        {% endif%}
+                      
                         {% endfor %}
                      </tbody>
                   </table>
@@ -245,9 +180,6 @@ $(document).ready(function() {
          "bLengthChange": false ,
           "info":     false
     } );
-var value = 0
-var value = {{request.GET.q}}
-$(".chosen").val(value).trigger("chosen:updated");
 } );
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.jquery.js"></script>

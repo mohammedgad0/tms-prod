@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^all_employees_sheets/$', views.AllSheets, name='emps-sheets'),
     url(r'^all_dept_sheet/$', views.AllDept, name='dept-sheets'),
     url(r'^all_dept_sheets/$', views.AllDepts, name='department-sheets'),
+    url(r'^dept_no_sheets/$', views.DeptsnoSheets, name='department-nosheets'),
     #url(r'^all_emp/$', views.IsManager, name='all-emp'),
     url(r'^sheet/(?P<deptcode>\d+)/dept/$', views.DeptSheet, name='dept-sheet'),
     # Employees does'nt have task
