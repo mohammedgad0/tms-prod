@@ -89,8 +89,8 @@
                         {% for data in sheets %}
                         <tr>
                            <td>#</td>
-                           <td><a href="{{data.empid}}">{{ data.empid__empname}}</a></td>
-                           <td><a href="{{data.empid}}">{{ data.empid__jobtitle}}</a></td>
+                        <td><a style="color: #337ab7;" href="{% url 'ns-project:emp-sheet' data.empid__empid%}">{{ data.empid__empname}}</a></td>
+                           <td>{{ data.empid__jobtitle}}</a></td>
                            <td>{{ data.deptcode__deptname}} </td>
                            <td>{{data.deptcode__managername }}</td>
                            <td style="color:red;">{{ data.total}} </td>

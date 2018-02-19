@@ -108,7 +108,7 @@ ul.stats-overview li{width:19% !important}
                   <tr>
 
                     <td>#</td>
-                    <td>{{data.empname}}</td>
+                    <td ><a style="color: #337ab7;" href="{% url 'ns-project:emp-sheet' data.empid%}">{{data.empname}}</a></td>
                     <td>{{data.jobtitle}}</td>
                     <td>{{data.deptname}}</td>
                     <td>{{data.email}}</td>

@@ -49,21 +49,19 @@
                      </select>
 
                   </div>
+                </form>
                   <!--      <input type="text" name="q" class="form-control" style="width:auto;" value="{{ request.GET.q}}" placeholder="{{_('Emp Or dept')}}...">
                      <span class="input-group-btn">-->
                   <!--  <button style="float: left;" class="btn btn-default" type="submit">{% trans "Go"  %}!</button> -->
                   <!--  </span> -->
                   <ul class="nav nav-pills navbar-left" role="tablist" style="margin-top:5px;">
                      <li>
-                        {% if count > 0 %}
-               <form method="GET" action="">
-               <button type="submit" class="btn btn-danger btn-md" name="filter" class="form-control" style="width:auto;" value="sheet-empty" ><i class="fa fa-filter"></i> {{ _('Dept not have task') }}</button>
-               </form>
+                        {% if count > 0 %}         
+<a href="{% url 'ns-project:department-nosheets' %}" class="float-left" style="float:left"> <button type="button" class="btn btn-danger btn-md">  <i class="fa fa-filter"></i>  {{ _('Dept not have task') }} </button></a>
+      
                {% endif %}
                </li>
-               {% if request.GET.filter %}
-               <a href="{% url 'ns-project:dept-sheets' %}" class="float-left" style="float:left"> <button type="button" class="btn btn-primary btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
-               {%endif%}
+      
                </ul>
             </div>
          </div>
@@ -72,6 +70,12 @@
       <div class="row">
          <div class="col-md-12">
             <div class="x_panel">
+                              <ul class="nav nav-pills navbar-left">
+                   <li>
+<a href="{% url 'ns-project:export_departmen_xls' %}" class="btn btn-success"> <i class="fa fa-file-excel-o"></i>&nbsp{{_("Export to excel")}}</a>
+               </li>
+     
+               </ul>
       <form class="form-inline" id="search" method="GET" action="">
       <div class="col-md-2">
   <label>{{_('satrt date')}}</label>

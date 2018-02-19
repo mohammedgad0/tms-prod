@@ -5142,11 +5142,11 @@ $(document).ready(function(){
 
 
 
-// var item = window.localStorage.getItem('q');
-// $('select[name=q]').val(item);
-//   $('select[name=q]').change(function() {
-//      window.localStorage.setItem('q', $(this).val());
-//   });
+var item = window.localStorage.getItem('q');
+$('select[name=q]').val(item);
+  $('select[name=q]').change(function() {
+     window.localStorage.setItem('q', $(this).val());
+  });
 
 
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 10:40+0300\n"
+"POT-Creation-Date: 2018-02-19 10:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -169,7 +169,7 @@ msgstr "اختر الحالة"
 #: .\project\templates\project\emp_no_sheet.html:103
 #: .\project\templates\project\project_delete.html:59
 #: .\project\templates\project\projects.html:75
-#: .\project\templates\project\sheet_all_departments.html:100
+#: .\project\templates\project\sheet_all_departments.html:133
 #: .\project\templates\project\sheet_all_dept.html:89
 #: .\project\templates\project\tasks.html:113
 msgid "Status"
@@ -279,7 +279,7 @@ msgstr "بحاجة الى دعم"
 msgid "Change piroty"
 msgstr "تغيير الأولوية"
 
-#: .\project\models.py:316 .\project\views.py:1164
+#: .\project\models.py:316 .\project\views.py:1344
 msgid "InProgress"
 msgstr "جارى العمل"
 
@@ -292,7 +292,7 @@ msgid "Cancelled"
 msgstr "ملغى"
 
 #: .\project\models.py:320 .\project\templates\project\tasks.html:65
-#: .\project\views.py:1230
+#: .\project\views.py:1410
 msgid "Closed"
 msgstr "مغلق"
 
@@ -334,8 +334,9 @@ msgstr "الصفحة التي تبحث عنها غير موجودة"
 #: .\project\templates\project\emp_no_sheet.html:153
 #: .\project\templates\project\project_team.html:162
 #: .\project\templates\project\projects.html:171
-#: .\project\templates\project\sheet_all_departments.html:180
+#: .\project\templates\project\sheet_all_departments.html:197
 #: .\project\templates\project\sheet_all_dept.html:167
+#: .\project\templates\project\sheet_no_departments.html:135
 #: .\project\templates\project\sheet_not_finished.html:133
 #: .\project\templates\project\tasks.html:221
 msgid "Page"
@@ -425,6 +426,7 @@ msgstr "حذف المهمة"
 #: .\project\templates\project\projects.html:5
 #: .\project\templates\project\sheet_all_departments.html:3
 #: .\project\templates\project\sheet_all_dept.html:3
+#: .\project\templates\project\sheet_no_departments.html:3
 #: .\project\templates\project\sheet_not_finished.html:3
 #: .\project\templates\project\sidebar.html:36
 #: .\project\templates\project\tasks.html:5
@@ -442,13 +444,13 @@ msgstr "إضافة تفويض"
 #: .\project\templates\project\all_sheets.html:83
 #: .\project\templates\project\edit_delegation.html:56
 #: .\project\templates\project\project_delete.html:92
-#: .\project\templates\project\sheet_all_departments.html:63
 #: .\project\templates\project\sheet_all_dept.html:54
+#: .\project\templates\project\sheet_no_departments.html:27
 msgid "Back"
 msgstr "رجوع"
 
 #: .\project\templates\project\add_project.html:16
-#: .\project\templates\project\projects.html:45 .\project\views.py:1005
+#: .\project\templates\project\projects.html:45 .\project\views.py:1185
 msgid "Ad Project"
 msgstr "إضافة مشروع"
 
@@ -462,7 +464,7 @@ msgstr "قائمة جميع المهام"
 
 #: .\project\templates\project\all_emp_sheets.html:20
 #: .\project\templates\project\emp_sheet.html:125
-#: .\project\templates\project\sheet_all_departments.html:50
+#: .\project\templates\project\sheet_all_departments.html:52
 #: .\project\templates\project\sheet_all_dept.html:41
 #: .\project\templates\project\update_sheet.html:103
 msgid "Emp Or dept"
@@ -476,8 +478,10 @@ msgstr "أسم الموظف او الإدارة"
 #: .\project\templates\project\emp_sheet.html:122
 #: .\project\templates\project\my_tasks.html:21
 #: .\project\templates\project\projects.html:33
-#: .\project\templates\project\sheet_all_departments.html:52
+#: .\project\templates\project\sheet_all_departments.html:54
+#: .\project\templates\project\sheet_all_departments.html:102
 #: .\project\templates\project\sheet_all_dept.html:43
+#: .\project\templates\project\sheet_no_departments.html:67
 #: .\project\templates\project\sheet_not_finished.html:63
 #: .\project\templates\project\tasks.html:34
 #: .\project\templates\project\update_sheet.html:105
@@ -490,8 +494,8 @@ msgstr "بحث"
 #: .\project\templates\project\emp_no_sheet.html:98
 #: .\project\templates\project\emp_sheet.html:35
 #: .\project\templates\project\sheet_not_finished.html:81
-#: .\project\templates\project\update_sheet.html:45 .\project\views.py:593
-#: .\project\views.py:624 .\project\views.py:655
+#: .\project\templates\project\update_sheet.html:45 .\project\views.py:709
+#: .\project\views.py:740 .\project\views.py:771
 msgid "Name"
 msgstr "اسم الموظف"
 
@@ -499,11 +503,13 @@ msgstr "اسم الموظف"
 #: .\project\templates\project\details_sheets.html:48
 #: .\project\templates\project\emp_no_sheet.html:100
 #: .\project\templates\project\emp_sheet.html:38
-#: .\project\templates\project\sheet_all_departments.html:88
+#: .\project\templates\project\sheet_all_departments.html:121
 #: .\project\templates\project\sheet_all_dept.html:79
+#: .\project\templates\project\sheet_no_departments.html:86
 #: .\project\templates\project\sheet_not_finished.html:83
-#: .\project\templates\project\update_sheet.html:48 .\project\views.py:593
-#: .\project\views.py:624 .\project\views.py:655
+#: .\project\templates\project\update_sheet.html:48 .\project\views.py:709
+#: .\project\views.py:740 .\project\views.py:771 .\project\views.py:802
+#: .\project\views.py:835
 msgid "Department"
 msgstr "الإدارة"
 
@@ -525,8 +531,8 @@ msgstr " مهام غير معتمدة"
 #: .\project\templates\project\all_emp_sheets.html:54
 #: .\project\templates\project\all_emp_sheets.html:78
 #: .\project\templates\project\projects.html:130
-#: .\project\templates\project\sheet_all_departments.html:98
-#: .\project\templates\project\sheet_all_departments.html:140
+#: .\project\templates\project\sheet_all_departments.html:131
+#: .\project\templates\project\sheet_all_departments.html:158
 #: .\project\templates\project\sheet_all_dept.html:87
 #: .\project\templates\project\sheet_all_dept.html:128
 msgid "View"
@@ -594,8 +600,8 @@ msgstr "عرض"
 #: .\project\templates\project\emp_no_sheet.html:99
 #: .\project\templates\project\emp_sheet.html:41
 #: .\project\templates\project\sheet_not_finished.html:82
-#: .\project\templates\project\update_sheet.html:51 .\project\views.py:593
-#: .\project\views.py:624 .\project\views.py:655
+#: .\project\templates\project\update_sheet.html:51 .\project\views.py:709
+#: .\project\views.py:740 .\project\views.py:771
 msgid "Job title"
 msgstr "المسمى الوظيفي"
 
@@ -611,8 +617,8 @@ msgstr "البريد الإلكتروني"
 #: .\project\templates\project\details_sheets.html:59
 #: .\project\templates\project\emp_no_sheet.html:102
 #: .\project\templates\project\emp_sheet.html:49
-#: .\project\templates\project\update_sheet.html:59 .\project\views.py:593
-#: .\project\views.py:624
+#: .\project\templates\project\update_sheet.html:59 .\project\views.py:709
+#: .\project\views.py:740
 msgid "Ext"
 msgstr "تحويلة المكتب"
 
@@ -710,23 +716,29 @@ msgid "Edit tasks"
 msgstr "تعديل المهام"
 
 #: .\project\templates\project\emp_no_sheet.html:27
-#: .\project\templates\project\sidebar.html:58
+#: .\project\templates\project\sidebar.html:57
 msgid "Employess not have tasks"
 msgstr "موظفين لايوجد لهم مهام"
 
 #: .\project\templates\project\emp_no_sheet.html:46
+#: .\project\templates\project\sheet_all_departments.html:74
+#: .\project\templates\project\sheet_no_departments.html:39
 #: .\project\templates\project\sheet_not_finished.html:34
 msgid "Export to excel"
 msgstr "تصدير الي إكسل"
 
 #: .\project\templates\project\emp_no_sheet.html:55
 #: .\project\templates\project\emp_sheet.html:100
+#: .\project\templates\project\sheet_all_departments.html:80
+#: .\project\templates\project\sheet_no_departments.html:45
 #: .\project\templates\project\sheet_not_finished.html:41
 msgid "satrt date"
 msgstr "بداية التاريخ"
 
 #: .\project\templates\project\emp_no_sheet.html:58
 #: .\project\templates\project\emp_sheet.html:103
+#: .\project\templates\project\sheet_all_departments.html:83
+#: .\project\templates\project\sheet_no_departments.html:48
 #: .\project\templates\project\sheet_not_finished.html:44
 #: .\project\templates\project\update_sheet.html:88
 msgid "form"
@@ -734,12 +746,16 @@ msgstr "من "
 
 #: .\project\templates\project\emp_no_sheet.html:65
 #: .\project\templates\project\emp_sheet.html:110
+#: .\project\templates\project\sheet_all_departments.html:90
+#: .\project\templates\project\sheet_no_departments.html:55
 #: .\project\templates\project\sheet_not_finished.html:51
 msgid "end date"
 msgstr "نهاية التاريخ"
 
 #: .\project\templates\project\emp_no_sheet.html:68
 #: .\project\templates\project\emp_sheet.html:113
+#: .\project\templates\project\sheet_all_departments.html:93
+#: .\project\templates\project\sheet_no_departments.html:58
 #: .\project\templates\project\sheet_not_finished.html:54
 #: .\project\templates\project\update_sheet.html:96
 msgid "to"
@@ -747,11 +763,15 @@ msgstr "الى"
 
 #: .\project\templates\project\emp_no_sheet.html:75
 #: .\project\templates\project\emp_sheet.html:120
+#: .\project\templates\project\sheet_all_departments.html:100
+#: .\project\templates\project\sheet_no_departments.html:65
 #: .\project\templates\project\sheet_not_finished.html:61
 msgid "search"
 msgstr "البحث عن ..."
 
 #: .\project\templates\project\emp_no_sheet.html:81
+#: .\project\templates\project\sheet_all_departments.html:106
+#: .\project\templates\project\sheet_no_departments.html:71
 #: .\project\templates\project\sheet_not_finished.html:67
 msgid "Result Number :"
 msgstr "عدد النتائج"
@@ -915,62 +935,64 @@ msgstr "نسبة الإنجاز"
 msgid "Complete"
 msgstr "مكتمل"
 
-#: .\project\templates\project\sheet_all_departments.html:19
+#: .\project\templates\project\sheet_all_departments.html:20
 #: .\project\templates\project\sheet_all_dept.html:19
 msgid "All Departments"
 msgstr "جميع الإدارات"
 
-#: .\project\templates\project\sheet_all_departments.html:41
+#: .\project\templates\project\sheet_all_departments.html:42
 #: .\project\templates\project\sheet_all_dept.html:33
 msgid "Choice Department"
 msgstr "اختر اسم الإدارة"
 
-#: .\project\templates\project\sheet_all_departments.html:43
+#: .\project\templates\project\sheet_all_departments.html:44
 #: .\project\templates\project\sheet_all_dept.html:35
-#: .\project\templates\project\sidebar.html:56
+#: .\project\templates\project\sidebar.html:55
 msgid "All Department"
 msgstr "جميع الإدارات"
 
-#: .\project\templates\project\sheet_all_departments.html:58
+#: .\project\templates\project\sheet_all_departments.html:59
 #: .\project\templates\project\sheet_all_dept.html:49
 msgid "Dept not have task"
 msgstr "إدارات ليس لها مهام آخر 7 ايام"
 
-#: .\project\templates\project\sheet_all_departments.html:89
+#: .\project\templates\project\sheet_all_departments.html:122
 #: .\project\templates\project\sheet_all_dept.html:80
+#: .\project\templates\project\sheet_no_departments.html:87
 #: .\project\templates\project\sheet_not_finished.html:84
-#: .\project\views.py:655
+#: .\project\views.py:771 .\project\views.py:802 .\project\views.py:835
 msgid "Manager Name"
 msgstr "المدير المباشر"
 
-#: .\project\templates\project\sheet_all_departments.html:91
-#: .\project\templates\project\sheet_all_dept.html:82
+#: .\project\templates\project\sheet_all_departments.html:124
+#: .\project\templates\project\sheet_all_dept.html:82 .\project\views.py:802
 msgid "Task count submitted"
 msgstr "اجمالى المهام المعتمدة"
 
-#: .\project\templates\project\sheet_all_departments.html:92
-#: .\project\templates\project\sheet_all_dept.html:83
+#: .\project\templates\project\sheet_all_departments.html:125
+#: .\project\templates\project\sheet_all_dept.html:83 .\project\views.py:802
 msgid "Task count not submitted"
 msgstr "مهام جديدة"
 
-#: .\project\templates\project\sheet_all_departments.html:93
+#: .\project\templates\project\sheet_all_departments.html:126
+#: .\project\views.py:802
 msgid "Task not submitted"
 msgstr "مهام غير معتمدة"
 
-#: .\project\templates\project\sheet_all_departments.html:94
-#: .\project\templates\project\sheet_all_dept.html:84
+#: .\project\templates\project\sheet_all_departments.html:127
+#: .\project\templates\project\sheet_all_dept.html:84 .\project\views.py:803
 msgid "Task Done"
 msgstr "المهام المنجزة"
 
-#: .\project\templates\project\sheet_all_departments.html:95
-#: .\project\templates\project\sheet_all_dept.html:85
+#: .\project\templates\project\sheet_all_departments.html:128
+#: .\project\templates\project\sheet_all_dept.html:85 .\project\views.py:803
 msgid "Task inprogress"
 msgstr "مهام قيد التنفيذ"
 
-#: .\project\templates\project\sheet_all_departments.html:96
+#: .\project\templates\project\sheet_all_departments.html:129
 #: .\project\templates\project\sheet_all_dept.html:86
 #: .\project\templates\project\sheet_not_finished.html:85
-#: .\project\views.py:655
+#: .\project\views.py:771 .\project\views.py:803
 msgid "Task not complete"
 msgstr "المهام غير المنجزة"
 
@@ -979,6 +1001,10 @@ msgstr "المهام غير المنجزة"
 #| msgid "Manager Name"
 msgid "No Manager"
 msgstr "المدير المباشر"
+
+#: .\project\templates\project\sheet_no_departments.html:20
+msgid "Departments no sheets"
+msgstr "إدارات ليس لها مهام"
 
 #: .\project\templates\project\sheet_not_finished.html:21
 msgid "Employees not finished tasks"
@@ -1013,15 +1039,15 @@ msgstr "إدارة التفويضات"
 msgid "Department Delegation"
 msgstr "إدارات مفوض عليها"
 
-#: .\project\templates\project\sidebar.html:52
+#: .\project\templates\project\sidebar.html:51
 msgid "manage all sheets"
 msgstr "إدارة سجل مهام الموظفين"
 
-#: .\project\templates\project\sidebar.html:54
+#: .\project\templates\project\sidebar.html:53
 msgid "Reports"
 msgstr "التقارير"
 
-#: .\project\templates\project\sidebar.html:59
+#: .\project\templates\project\sidebar.html:58
 msgid "Employess not finished tasks"
 msgstr "موظفين لم ينجزوا المهام"
 
@@ -1117,82 +1143,82 @@ msgstr "تسجيل خروج"
 msgid "No tasks"
 msgstr "عفواً, لا يوجد مهام تمت إضافتها"
 
-#: .\project\views.py:301 .\project\views.py:442
+#: .\project\views.py:301 .\project\views.py:558
 msgid "No data there"
 msgstr "عفواً, لا يوجد مهام لموظفين الإدارة"
 
-#: .\project\views.py:567
+#: .\project\views.py:683
 msgid "No data"
 msgstr "عفواً, لا يوجد مهام لموظفين الإدارة"
 
-#: .\project\views.py:593 .\project\views.py:624
+#: .\project\views.py:709 .\project\views.py:740
 msgid "Email address"
 msgstr ""
 
-#: .\project\views.py:851
+#: .\project\views.py:1031
 msgid "Post Submit"
 msgstr "تم حفظ المهام بنجاح"
 
-#: .\project\views.py:892
+#: .\project\views.py:1072
 msgid "Post Done"
 msgstr "تم تغيير الحاله بنجاح"
 
-#: .\project\views.py:934 .\project\views.py:1294
+#: .\project\views.py:1114 .\project\views.py:1474
 msgid "Edit complete"
 msgstr "تم التعديل بنجاح"
 
-#: .\project\views.py:971
+#: .\project\views.py:1151
 msgid "Change status done"
 msgstr "تم تغيير حالة المهمة بنجاح"
 
-#: .\project\views.py:998
+#: .\project\views.py:1178
 msgid "Project has created successfully"
 msgstr "تم إنشاء المشروع بنجاح"
 
-#: .\project\views.py:1039
+#: .\project\views.py:1219
 msgid "Project has updated successfully"
 msgstr "تم تحديث المشروع بنجاح"
 
-#: .\project\views.py:1045
+#: .\project\views.py:1225
 msgid "Edit Project"
 msgstr "تعديل المشروع"
 
-#: .\project\views.py:1052
+#: .\project\views.py:1232
 msgid "Project has deleted successfully"
 msgstr "تم حذف المشروع بنجاح"
 
-#: .\project\views.py:1166
+#: .\project\views.py:1346
 #, python-format
 msgid "Start Date Updated successfully for Task number %s "
 msgstr "تم تعديل تاريخ بدأ المهمة  %s بنجاح"
 
-#: .\project\views.py:1196
+#: .\project\views.py:1376
 msgid "Finished"
 msgstr "منجزة"
 
-#: .\project\views.py:1197
+#: .\project\views.py:1377
 #, fuzzy, python-format
 #| msgid " Finish Date Updated successfully for Task number"
 msgid " Finish Date Updated successfully for Task number %s "
 msgstr "تم تحديث وقت انهاء المهمة"
 
-#: .\project\views.py:1215
+#: .\project\views.py:1395
 #, fuzzy
 #| msgid "Enter a note ."
 msgid "Enter a notes ."
 msgstr "الرجاء إدخال السبب"
 
-#: .\project\views.py:1232
+#: .\project\views.py:1412
 #, fuzzy, python-format
 #| msgid " Close Date Updated successfully for Task number %s "
 msgid " Close Date Updated successfully for Task number %s "
 msgstr "تم تعديل تاريخ إغلاق المهمه بنجاح"
 
-#: .\project\views.py:1267
+#: .\project\views.py:1447
 msgid "Add complete"
 msgstr "تمت الإضافة بنجاح"
 
-#: .\project\views.py:1311 .\project\views.py:1323
+#: .\project\views.py:1491 .\project\views.py:1503
 msgid "No Delegations"
 msgstr "عفواً, لايوجد تفويضات"
 

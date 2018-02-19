@@ -17,14 +17,14 @@
       <div class="page-title">
          <div class="title_left">
 
-            <h3>{% trans "All Departments" %} </h3>
+            <h3>{% trans "Departments no sheets" %} </h3>
             </br>
             </br>
          </div>
          <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
                   <ul class="nav nav-pills navbar-left" role="tablist" style="margin-top:5px;">
-               <a href="{% url 'ns-project:dept-sheets' %}" class="float-left" style="float:left"> <button type="button" class="btn btn-primary btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
+               <a href="{% url 'ns-project:department-sheets' %}" class="float-left" style="float:left"> <button type="button" class="btn btn-primary btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
     
                </ul>
             </div>
@@ -34,6 +34,12 @@
       <div class="row">
          <div class="col-md-12">
             <div class="x_panel">
+                                   <ul class="nav nav-pills navbar-left">
+                   <li>
+<a href="{% url 'ns-project:export_departmennosheet_xls' %}" class="btn btn-success"> <i class="fa fa-file-excel-o"></i>&nbsp{{_("Export to excel")}}</a>
+               </li>
+     
+               </ul>
       <form class="form-inline" id="search" method="GET" action="">
       <div class="col-md-2">
   <label>{{_('satrt date')}}</label>
@@ -87,7 +93,7 @@
                         
                         <tr>
                            <td>#</td>
-                           <td>{{data.deptname}}  </td>
+                           <td><a style="color: #337ab7;" href="{% url 'ns-project:dept-sheet' data.deptcode%}">{{data.deptname}} </a> </td>
                            <td>{{ data.managername}}</td>
                         </tr>
                       

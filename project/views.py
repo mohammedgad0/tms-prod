@@ -303,7 +303,7 @@ def AllSheets(request):
     context = {'allemp':AllEmp,"count":count}
     return render(request, 'project/all_emp_sheets.html',context)
 
-
+@login_required
 def DeptsnoSheets(request):
     dept_code = request.session.get('DeptCode', 2322)
     """
@@ -344,9 +344,9 @@ def DeptsnoSheets(request):
     # Get all tree dept
     tree_dept = _get_tree_dept(dept_code)
     if request.user.groups.filter(name='supermanager').exists():
-        sheets = all_sheets
+        sheets = sheets
     else:
-        sheets = all_sheets.filter(deptcode__in = tree_dept)
+        sheets = sheets.filter(deptcode__in = tree_dept)
 
     # sheets = cache.get('sheets')
 
@@ -357,7 +357,12 @@ def DeptsnoSheets(request):
         except:
             pass
     all_dept = Department.objects.exclude(deptcode__in = DeptHaveTask)
-    all_dept = all_dept.filter(deptcode__in=tree_dept)
+    if request.user.groups.filter(name='supermanager').exists():
+        all_dept = all_dept
+    else:
+        all_dept = all_dept.filter(deptcode__in=tree_dept)
+
+    cache.set('all_dept',all_dept)
     paginator = Paginator(all_dept, 20) # Show 5 contacts per page
     page = request.GET.get('page')
     try:
@@ -438,7 +443,7 @@ def AllDepts(request):
      notfinished_task = Count(Case(When(status=3 , ifsubmitted =1 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      ignore_task = Count(Case(When(ifsubmitted =2 ,then=F("deptcode__deptcode")),output_field=IntegerField())),
      ).all().order_by('-submitted_task')
-
+    cache.set('all_dept',total_count)
     paginator = Paginator(total_count, 20) # Show 5 contacts per page
     page = request.GET.get('page')
     try:
@@ -780,6 +785,70 @@ def export_empnosheet_xls(request):
     wb.save(response)
     return response
 
+def export_department_xls(request):
+    import xlwt
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="departments.xls"'
+    all_emp =  cache.get('all_dept')
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Users')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = [_('Department'), _('Manager Name'), _('Task count submitted'), _('Task count not submitted'), _('Task not submitted')
+    , _('Task Done'), _('Task inprogress'), _('Task not complete')]
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = all_emp.values_list('deptcode__deptname', 'deptcode__managername', 'submitted_task','new_task','ignore_task',
+        'finished_task','inprogress_task','notfinished_task')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+def export_departmentnosheet_xls(request):
+    import xlwt
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="departments.xls"'
+    all_emp =  cache.get('all_dept')
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Users')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = [_('Department'), _('Manager Name'),]
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = all_emp.values_list('deptname', 'managername')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
 @login_required
 def EmployeeNoSheet(request):
     """
@@ -822,7 +891,7 @@ def EmployeeNoSheet(request):
     # all_emp = all_emp.filter(sexcode=1)
     all_emp_1 = all_emp
     export = request.GET.get("export")
-    print (all_emp.count())
+ 
     cache.set('all_emp',all_emp)
 
     paginator = Paginator(all_emp, 20) # Show 5 contacts per page

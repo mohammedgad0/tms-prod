@@ -55,5 +55,7 @@ urlpatterns = [
 
     url(r'^export/xls/$', views.export_users_xls, name='export_users_xls'),
     url(r'^export/xls/empnosheet$', views.export_empnosheet_xls, name='export_empnosheet_xls'),
+    url(r'^export/xls/depts$', views.export_department_xls, name='export_departmen_xls'),
+    url(r'^export/xls/deptsnosheet$', views.export_departmentnosheet_xls, name='export_departmennosheet_xls'),
 
 ]
