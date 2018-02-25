@@ -34,7 +34,4 @@ urlpatterns = [
     url(r'^accounts/logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
 
-
-
-
 ]

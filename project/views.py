@@ -237,7 +237,9 @@ def EmpSheet(request,empid):
     """ End current week """
     EmpData = get_object_or_404(Employee, empid = empid)
     deptcode = EmpData.deptcode
-    alldept = request.session.get('TreeDept', '0')
+    deptcode = request.session.get('DeptCode')
+    alldept = _get_tree_dept(deptcode)
+    # alldept = request.session.get('TreeDept', '0')
     delegation = Delegation.objects.filter(authorized = EmpID, expired = '0')
     auth_dept = []
     for data in delegation:
