@@ -22,15 +22,12 @@ class ApDeptTab(models.Model):
         managed = False
         db_table = 'ap_dept_tab'
 
-
-
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)
 
     class Meta:
         managed = False
         db_table = 'auth_group'
-
 
 class AuthGroupPermissions(models.Model):
     group_id = models.IntegerField()
@@ -41,7 +38,6 @@ class AuthGroupPermissions(models.Model):
         db_table = 'auth_group_permissions'
         unique_together = (('group_id', 'permission_id'),)
 
-
 class AuthPermission(models.Model):
     name = models.CharField(max_length=255)
     content_type_id = models.IntegerField()
@@ -51,7 +47,6 @@ class AuthPermission(models.Model):
         managed = False
         db_table = 'auth_permission'
         unique_together = (('content_type_id', 'codename'),)
-
 
 class AuthUser(models.Model):
     password = models.CharField(max_length=128)
@@ -69,7 +64,6 @@ class AuthUser(models.Model):
         managed = False
         db_table = 'auth_user'
 
-
 class AuthUserGroups(models.Model):
     user_id = models.IntegerField()
     group_id = models.IntegerField()
@@ -78,7 +72,6 @@ class AuthUserGroups(models.Model):
         managed = False
         db_table = 'auth_user_groups'
         unique_together = (('user_id', 'group_id'),)
-
 
 class AuthUserUserPermissions(models.Model):
     user_id = models.IntegerField()
@@ -89,7 +82,6 @@ class AuthUserUserPermissions(models.Model):
         db_table = 'auth_user_user_permissions'
         unique_together = (('user_id', 'permission_id'),)
 
-
 class Department(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
     deptname = models.CharField(db_column='DeptName', max_length=200, blank=True, null=True)  # Field name made lowercase.
@@ -99,7 +91,6 @@ class Department(models.Model):
     class Meta:
         managed = False
         db_table = 'department'
-
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -114,7 +105,6 @@ class DjangoAdminLog(models.Model):
         managed = False
         db_table = 'django_admin_log'
 
-
 class DjangoContentType(models.Model):
     app_label = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
@@ -123,7 +113,6 @@ class DjangoContentType(models.Model):
         managed = False
         db_table = 'django_content_type'
         unique_together = (('app_label', 'model'),)
-
 
 class DjangoMigrations(models.Model):
     app = models.CharField(max_length=255)
@@ -134,7 +123,6 @@ class DjangoMigrations(models.Model):
         managed = False
         db_table = 'django_migrations'
 
-
 class DjangoSession(models.Model):
     session_key = models.CharField(primary_key=True, max_length=40)
     session_data = models.TextField()
@@ -143,7 +131,6 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-
 
 class Employee(models.Model):
 		empid = models.IntegerField(db_column='EmpId', unique=True)  # Field name made lowercase.
@@ -162,7 +149,6 @@ class Employee(models.Model):
 		class Meta:
 			managed = False
 			db_table = 'employee'
-
 
 class Project(models.Model):
     name = models.CharField(db_column='Name', max_length=250)  # Field name made lowercase.
@@ -202,7 +188,6 @@ class ProjectStatus(models.Model):
         managed = False
         db_table = 'project_status'
 
-
 class Sheet(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
     empid = models.ForeignKey('Employee', to_field='empid',db_column='EmpId', blank=True, null=True)  # Field name made lowercase.
@@ -231,6 +216,7 @@ class Sheet(models.Model):
         ('2', _('not submitted')),
     )
     ifsubmitted = models.CharField(db_column='IfSubmitted',max_length=1,choices=SUBMITTED_STATUS, blank=True, null=True)  # Field name made lowercase.
+    submit = models.NullBooleanField(db_column='submit',blank=True)
     SHEET_STATUS = (
         ('', _('Choice status')),
         ('0', _('New')),

@@ -133,7 +133,11 @@ ul.stats-overview li{width:19% !important}
                       {{  data.notsubmitted }}
                     </td>
                     <td>
-                      <a href="/sheet/{{data.employeeid}}/show" class="btn btn-primary btn-xs">{% trans "Details" %}</a>
+                      <a href="/sheet/{{data.employeeid}}/show" class="btn btn-info btn-xs">{% trans "Details" %}</a>
+                      {%if managid == request.session.EmpID%}
+                      <a href="{% url 'ns-project:update-sheet' data.employeeid %}" class="btn btn-primary btn-xs">{% trans "Submitted" %}
+                      </a>
+                      {%endif%}
                     </td>
                     {%else%}
                     <td>#</td>

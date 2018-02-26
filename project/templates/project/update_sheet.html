@@ -4,6 +4,30 @@
 
 {% block stylesheets %}
 {{ block.super }}
+<style>
+  .submit-success{color:#398439;border: 1px solid;}
+   .submit-faild{color:red;border: 1px solid;}
+  select {
+  font-family: 'FontAwesome', 'neo'
+}
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.2); /* IE */
+  -moz-transform: scale(1.2); /* FF */
+  -webkit-transform: scale(1.2); /* Safari and Chrome */
+  -o-transform: scale(1.2); /* Opera */
+  padding: 10px;
+}
+.cust-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #f5f5f5;
+</style>
 <link href="/static/vendors/jquery/dist/jquery-ui.css" rel="stylesheet">
 {% endblock stylesheets %}
 {% block content %}
@@ -79,32 +103,16 @@
       <div class="row">
         <div class="col-md-12">
           <div class="x_panel">
-          <h4>اختيار المهام حسب التاريخ </h4>
+        
             <div class="x_content">
-
-      <form method="GET" action="">
-        <div class="col-md-2">
-        <div class="input-group date" data-provide="datepicker">
-          <input class="datepicker form-control" name="q_start" type="text" value='{{ request.GET.q_start}}' placeholder="{{_('form')}}">
-        <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th"></span>
-        </div>
-       </div>
-     </div>
-     <div class="col-md-2">
-     <div class="input-group date" data-provide="datepicker">
-    <input class="datepicker form-control" name="q_end" type="text" value='{{ request.GET.q_end}}'placeholder="{{_('to')}}">
-     <div class="input-group-addon">
-         <span class="glyphicon glyphicon-th"></span>
-     </div>
-    </div>
-  </div>
-
-      <!--<input type="text" name="q" class="form-control" style="width:auto;" value="{{ request.GET.q}}" placeholder="{{_('Emp Or dept')}}..."> -->
-      <span class="input-group-btn">
-        <button class="btn btn-primary " type="submit">{% trans "Go"  %}!</button>
-      </span>
-    </form>
+              {% for message in messages %}
+                <div style="font-size: 20px;" class="alert {{ message.tags }} alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+                </div>
+              {% endfor %}
   <table class="table table-striped">
     <form method="POST" action="">
     {% csrf_token %}
@@ -113,33 +121,62 @@
       <tr>
         <th>{{ _('Task Descreption') }}</th>
         <th>{{ _('Task type') }}</th>
-        <th>{{ _('Duration') }}</th>
+        <th>{{ _('Duration by days') }}</th>
+        <th>{{ _('Duration per hour') }}</th>
+        <th>{{ _('Task repeat') }}</th>
        <th>{{ _('Task Date') }}</th>
-       <th>{{ _('Submitted') }} </th>
+       <th style="text-align: center;"> {{ _('Submitted') }}</th>
+       <!-- <th>{{ _('Submitted') }} </th> -->
       </tr>
     </thead>
     <tbody>
       {% for form in form %}
       <tr>
         {{ form.id}}
-        <td>{{ form.taskdesc }}</td>
-        <td>
+        <td style="width:35%">{{ form.taskdesc }}</td>
+        <td style="width:15%">
         {{ form.tasktype }}
         </td>
-        <td class="col-md-2"> {{ form.duration }}</td>
-        <td class="col-md-2"> {{ form.taskdate }} </td>
+        <td > {{ form.duration }}</td>
+        <td > {{ form.durationhoure }}</td>
+        <td style="width:5%" > {{ form.taskcount }}</td>
+        <td "> {{ form.taskdate }} </td>
           </div>
          </div>
         </td>
-        <td>
-          {{ form.ifsubmitted }}
+        <td style="width:13%; text-align: center;">
+          {{ form.submit }}
+
         </td>
       </tr>
       {% endfor %}
     </tbody>
-  </table>
+      <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      {% if count > 0 %}<td> <div id="js-select-submit-style" >
+<select  id='js-select-submit' class="chosen form-control"   name="query" class="form-control"
+<i class="fa fa-caret-down" aria-hidden="true"></i>
+                   >
 
-<button type="submit" name="_submit" class="btn btn-success">{{ _('Submit') }}</button>
+                    <option value='0'>{{_('Chois Submitted')}} </option>
+                    <option value="1">&#xf046; {{_('submitted task')}}</option>
+                    <option value="2">&#xf057; {{_('not submitted task')}}</option>
+                   </select>
+
+                </div>  </td>{%endif%}
+    </tr>
+  </tfoot>
+  </table>
+  
+<a href="{% url 'ns-project:dept-sheet'  request.session.DeptCode  %}" class="float-left" style="float:left"> <button type="button" class="btn btn-info btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
+<button  type="submit" name="_submit" class="btn btn-success pull-left">{{ _('Submit') }}</button>
+
 </form>
 
             </div>
@@ -156,4 +193,23 @@
 {% block javascripts %}
 
   {{ block.super }}
+  <script>
+  $(document).ready(function(){  
+ 
+  $('#js-select-submit').change(function(){
+    var value = this.value;
+    console.log(value);
+      if (value == 2){
+        $('#js-select-submit').removeClass('submit-success')
+      $('#js-select-submit').addClass('submit-faild')
+    }
+    if (value == 1){
+      $('#js-select-submit').removeClass('submit-faild')
+      $('#js-select-submit').addClass('submit-success')
+    }
+
+  });
+   $('#js-select-submit').prop('selectedIndex',0);
+});
+</script>
 {% endblock javascripts %}

@@ -9,8 +9,10 @@ logger.setLevel(logging.DEBUG)
 # Baseline configuration.
 AUTH_LDAP_SERVER_URI = "ldap://stats.gov.sa:389"
 
-AUTH_LDAP_BIND_DN = "CN=netim,CN=Users,DC=stats,DC=gov,DC=sa"
+AUTH_LDAP_BIND_DN = "CN=ldpweb,CN=Users,DC=stats,DC=gov,DC=sa"
 AUTH_LDAP_BIND_PASSWORD = "Windows.5085780"
+# AUTH_LDAP_BIND_DN = "CN=ldpw,CN=Service Account,DC=stats,DC=gov,DC=sa"
+# AUTH_LDAP_BIND_PASSWORD = "Password@123"
 AUTH_LDAP_USER_SEARCH = LDAPSearch("DC=stats,DC=gov,DC=sa",
     ldap.SCOPE_SUBTREE, "(mail=%(user)s)")
 # or perhaps:

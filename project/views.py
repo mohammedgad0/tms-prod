@@ -568,19 +568,25 @@ def AllDept(request):
 
 @login_required
 def UpdateSheet(request,empid):
-    SbmitSheet = modelformset_factory(Sheet, fields=('taskdesc', 'tasktype', 'duration','taskdate','ifsubmitted'), extra=0,
+
+    SbmitSheet = modelformset_factory(Sheet, fields=('taskdesc', 'tasktype', 'duration','durationhoure','taskcount','taskdate','submit'), extra=0,
         widgets = {
             'taskdesc': forms.TextInput(attrs={'class': 'form-control','readonly':True}),
-            'tasktype': forms.Select(attrs={'class': 'form-control pointer','readonly':True}),
+            'tasktype': forms.Select(attrs={'class': 'form-control pointer cust-select','readonly':True}),
             'duration': forms.NumberInput(attrs={'class': 'form-control','readonly':True}),
+            'durationhoure': forms.NumberInput(attrs={'class': 'form-control','readonly':True}),
+            'taskcount': forms.NumberInput(attrs={'class': 'form-control','readonly':True}),
             'taskdate': forms.TextInput(attrs={'class': 'form-control pointer','readonly':True}),
-            'ifsubmitted': forms.Select(attrs={'class': 'form-control'}),
+            'submit': forms.CheckboxInput(attrs={'class':'custom-control-input'})
         }
     )
-    formset = SbmitSheet(queryset=Sheet.objects.filter(~Q(ifsubmitted = '1'), empid= empid ,
-    taskdate__gte=datetime.now()-timedelta(days=7), taskdate__lte=datetime.now()+ timedelta(days=7)
-    ))
 
+    # formset = SbmitSheet()
+    formset = SbmitSheet(queryset=Sheet.objects.filter(Q(ifsubmitted = '0'), empid= empid
+    ))
+    count = Sheet.objects.filter(Q(ifsubmitted = '0'), empid= empid).count()
+    if count == 0:
+        messages.info(request, _("No data for submitted"))
     start = request.GET.get("q_start")
     end = request.GET.get("q_end")
     if start:
@@ -600,25 +606,34 @@ def UpdateSheet(request,empid):
     # empid = 123456
     if managid == EmpID:
         if request.method == 'POST':
+            submit = request.POST.get("query")
             formset = SbmitSheet(request.POST)
             if formset.is_valid():
                 instances = formset.save(commit=False)
                 # Get managers as hierarchicaly
                 for obj in instances:
+                    submit = request.POST.get("query")
+
                     obj.submittedby = request.session['EmpID']
                     obj.submitteddate = datetime.now()
-                    if obj.ifsubmitted == '1':
+         
+                    if obj.submit is True and submit == '1':
+                        obj.submit = False
+                        obj.ifsubmitted = '1'
                         obj.status = '1'
-                    if obj.ifsubmitted == '2':
-                        obj.status = '3'
+                    if obj.submit is True and submit == '2':
+                        obj.submit = False
+                        obj.ifsubmitted ='2'
+                        obj.status = '3' 
                     obj.save()
-                return HttpResponseRedirect(reverse('ns-project:all-sheets'))
+                return HttpResponseRedirect(reverse('ns-project:update-sheet', kwargs={'empid':empid} ))
+                # return HttpResponseRedirect(reverse('ns-project:all-sheets'))
         else:
             formset = formset
     else:
         raise Http404
     # form = form_class(request.POST or None)
-    return render(request, 'project/update_sheet.html', {'form': formset,'EmpData':EmpData})
+    return render(request, 'project/update_sheet.html', {'form': formset,'EmpData':EmpData,'count':count})
 
 @login_required
 def DetailseSheet(request,empid):
@@ -648,11 +663,12 @@ def DeptSheet(request,deptcode):
         # if this user is manager
         AllEmp = "0"
         #count all data
+        sheet = Sheet.objects.all()
         emp_count = Employee.objects.filter(deptcode = deptcode).count()
-        total_task = Sheet.objects.filter(deptcode = deptcode,ifsubmitted='1').count()
-        inprogress_task = Sheet.objects.filter(deptcode = deptcode,ifsubmitted='1',status = 1).count()
-        submitted_task = Sheet.objects.filter(deptcode = deptcode,ifsubmitted='1', status = 2).count()
-        not_submitted_task = Sheet.objects.filter(deptcode = deptcode,ifsubmitted='1', status = 3).count()
+        total_task = sheet.filter(deptcode = deptcode,ifsubmitted='1').count()
+        inprogress_task = sheet.filter(deptcode = deptcode,ifsubmitted='1',status = 1).count()
+        submitted_task = sheet.filter(deptcode = deptcode,ifsubmitted='1', status = 2).count()
+        not_submitted_task = sheet.filter(deptcode = deptcode,ifsubmitted='1', status = 3).count()
         AllEmp = VSheetsdata.objects.filter(deptcode = deptcode).order_by('new')
         query = request.GET.get("q")
         if query:
@@ -678,7 +694,7 @@ def DeptSheet(request,deptcode):
         raise Http404
 
     count = len(list(AllEmp))
-    context = {'allemp':AllEmp,"count":count,"total_task":total_task,'dpartment_code':deptcode,
+    context = {'managid':managid,'allemp':AllEmp,"count":count,"total_task":total_task,'dpartment_code':deptcode,
     "data7week":emp_last_week,"filteremp":AllEmp,"inprogress_task":inprogress_task,
     "submitted_task":submitted_task,"n_task":not_submitted_task,"emp_count":emp_count}
     if count == 0:
