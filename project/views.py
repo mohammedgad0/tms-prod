@@ -571,7 +571,7 @@ def UpdateSheet(request,empid):
 
     SbmitSheet = modelformset_factory(Sheet, fields=('taskdesc', 'tasktype', 'duration','durationhoure','taskcount','taskdate','submit'), extra=0,
         widgets = {
-            'taskdesc': forms.TextInput(attrs={'class': 'form-control','readonly':True}),
+            'taskdesc': forms.Textarea(attrs={'class': 'form-control','readonly':True,'rows': 1}),
             'tasktype': forms.Select(attrs={'class': 'form-control pointer cust-select','readonly':True}),
             'duration': forms.NumberInput(attrs={'class': 'form-control','readonly':True}),
             'durationhoure': forms.NumberInput(attrs={'class': 'form-control','readonly':True}),
@@ -602,7 +602,7 @@ def UpdateSheet(request,empid):
         managid = data.managerid
     EmpID = 0
     if request.user.is_authenticated():
-        EmpID = request.session['EmpID']
+        EmpID = request.session.get('EmpID', "1")
     # empid = 123456
     if managid == EmpID:
         if request.method == 'POST':
@@ -616,7 +616,7 @@ def UpdateSheet(request,empid):
 
                     obj.submittedby = request.session['EmpID']
                     obj.submitteddate = datetime.now()
-         
+                    
                     if obj.submit is True and submit == '1':
                         obj.submit = False
                         obj.ifsubmitted = '1'
@@ -625,6 +625,7 @@ def UpdateSheet(request,empid):
                         obj.submit = False
                         obj.ifsubmitted ='2'
                         obj.status = '3' 
+                    obj.submit = False
                     obj.save()
                 return HttpResponseRedirect(reverse('ns-project:update-sheet', kwargs={'empid':empid} ))
                 # return HttpResponseRedirect(reverse('ns-project:all-sheets'))
@@ -988,12 +989,12 @@ def EmpnotFinished(request):
 def AddSheet(request):
     AddSheet = modelformset_factory(Sheet, fields=('taskdesc', 'tasktype', 'duration','durationhoure','taskdate','taskcount'),can_delete=True, extra=7,
         widgets = {
-            'taskdesc': forms.TextInput(attrs={'class': 'form-control'}),
+            'taskdesc': forms.Textarea(attrs={'class': 'form-control','rows': 1 ,   }),
             'tasktype': forms.Select(attrs={'class': 'form-control'}),
-            'duration': forms.NumberInput(attrs={'class': 'form-control'}),
-            'durationhoure': forms.NumberInput(attrs={'class': 'form-control'}),
-            'taskcount': forms.NumberInput(attrs={'class': 'form-control'}),
-            'taskdate': forms.TextInput(attrs={'class': 'datepicker form-control'}),
+            'duration': forms.NumberInput(attrs={'class': 'form-control','min': 0}),
+            'durationhoure': forms.NumberInput(attrs={'class': 'form-control','min': 0}),
+            'taskcount': forms.NumberInput(attrs={'class': 'form-control','min': 0}),
+            'taskdate': forms.TextInput(attrs={'class': 'datepicker form-control',}),
         }
     )
     EmpID = 0

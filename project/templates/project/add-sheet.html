@@ -49,16 +49,15 @@
 
       {% for form in form %}
       <tr>
-
-
         {{ form.id}}
-        <td class="col-md-3">{{ form.taskdesc }}
+        <td class="col-md-5">{{ form.taskdesc }}
           {{ form.taskdesc.errors }}
+          <span class='form-{{ forloop.counter0 }}-taskdesc'></span>
         </td >
         <td class="col-md-2">{{ form.tasktype }}{{ form.tasktype.errors }}</td>
-        <td > {{ form.duration }}{{ form.duration.errors }}</td>
-         <td > {{ form.durationhoure }}{{ form.duration.errors }}</td>
-        <td >{{ form.taskcount }}{{ form.taskcount.errors }}</td>
+        <td style="width:6%" > {{ form.duration }}{{ form.duration.errors }}</td>
+         <td style="width:6%"> {{ form.durationhoure }}{{ form.duration.errors }}</td>
+        <td style="width:6%">{{ form.taskcount }}{{ form.taskcount.errors }}</td>
         <td >
           <div class="input-group date" data-provide="datepicker"> {{ form.taskdate }}
           <div class="input-group-addon">
@@ -90,6 +89,46 @@
 
 </script>
 {% block javascripts %}
+{{ block.super }}
+<script>
+$(document).ready(function(){  
+$('input[name="form-0-taskdesc"]').focus(function () {
+ $(this).after('<textarea class="form-control" id="id_form-0-taskdesc" maxlength="400" name="form-0-taskdesc"></textarea>').remove()
+});
+$('input[name="form-0-taskdesc"]').blur(function () {
+    var style = $(this).attr('style'),
+    textinput = $(document.createElement('textinput')).attr('style', style);
+    $(this).replaceWith(textinput);
+});
 
-  {{ block.super }}
+});
+
+    var x = $('#js-table tr').length;
+    for (i = 0; i <= x; i++){
+    $('#id_form-'+i+'-taskdesc').keypress(function(){
+    var id = $(this).attr('name');
+    var value = this.value;
+    if(this.value.length >= 400){
+        return false;
+    }
+  
+    $("."+id).attr('style', 'display:block;')
+  $("."+id).html("عدد الحروف المتبقية : " +(400 - this.value.length));
+ 
+
+
+ });
+$('#id_form-'+i+'-taskdesc').focus(function(){
+  var id = $(this).attr('name');
+  $(this).attr('rows',3);
+  $("."+id).attr('style', 'display:block;')
+});
+$('#id_form-'+i+'-taskdesc').blur(function(){
+  var id = $(this).attr('name');
+  $(this).attr('rows',1);
+  $("."+id).attr('style', 'display:none;')
+});
+};
+
+</script>
 {% endblock javascripts %}

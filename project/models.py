@@ -196,7 +196,7 @@ class Sheet(models.Model):
     managerlevel2 = models.BigIntegerField(db_column='ManagerLevel2', blank=True, null=True)  # Field name made lowercase.
     managerlevel3 = models.BigIntegerField(db_column='ManagerLevel3', blank=True, null=True)  # Field name made lowercase.
     managerlevel4 = models.BigIntegerField(db_column='ManagerLevel4', blank=True, null=True)  # Field name made lowercase.
-    taskdesc = models.CharField(_('Task Descreption'),db_column='TaskDesc', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    taskdesc = models.CharField(_('Task Descreption'),db_column='TaskDesc', max_length=400, blank=True, null=True)  # Field name made lowercase.
     TASK_STATUS = (
         ('', _('Choice type')),
         ('m', _('Master')),
