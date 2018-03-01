@@ -113,7 +113,7 @@ input[type=checkbox]
                   {{ message }}
                 </div>
               {% endfor %}
-  <table class="table table-striped">
+  <table id="js-table" class="table table-striped">
     <form method="POST" action="">
     {% csrf_token %}
     {{ form.management_form }}
@@ -214,14 +214,12 @@ input[type=checkbox]
     var x = $('#js-table tr').length;
     for (i = 0; i <= x; i++){
    $('#id_form-'+i+'-taskdesc').focus(function(){
-  var id = $(this).attr('name');
   $(this).attr('rows',3);
-  $("."+id).attr('style', 'display:block;')
+
 });
 $('#id_form-'+i+'-taskdesc').blur(function(){
-  var id = $(this).attr('name');
   $(this).attr('rows',1);
-  $("."+id).attr('style', 'display:none;')
+
 });
 };
 
