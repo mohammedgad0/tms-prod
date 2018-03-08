@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'project.middleware.ForceLangMiddleware',
+    'project.middleware.LangBasedOnUrlMiddleware'
 
 
 ]
@@ -92,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        
         },
     },
 ]
