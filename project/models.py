@@ -133,7 +133,7 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 class Employee(models.Model):
-		empid = models.IntegerField(db_column='EmpId', unique=True)  # Field name made lowercase.
+		empid = models.CharField(db_column='EmpId', unique=True,max_length=50)  # Field name made lowercase.
 		empname = models.CharField(db_column='EmpName', max_length=255, blank=True, null=True)  # Field name made lowercase.
 		deptcode = models.CharField(db_column='DeptCode', max_length=45, blank=True, null=True)  # Field name made lowercase.
 		deptname = models.CharField(db_column='DeptName', max_length=200, blank=True, null=True)  # Field name made lowercase.
