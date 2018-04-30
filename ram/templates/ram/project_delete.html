@@ -1,0 +1,110 @@
+{% extends "project/base_site.html" %}
+{% load i18n %}
+{% block title %} Plain Page {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3></h3>
+          </div>
+
+          <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h3>{{ _('delete project confirmation') }} </h3>
+           
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+              
+              <div class="col-md-3 col-sm-3 col-xs-12">
+
+                      <section class="panel">
+
+                        
+                        <div class="panel-body">
+                          <h3 class="green"><i class="fa fa-paint-brush"></i> {{p.name}}</h3>
+
+                          <p>{{p.desc}}</p>
+                          <br>
+
+                          <div class="project_detail">
+
+                            <p class="title">{{_('Created By')}}</p>
+                            <p>{{emp_obj.empname}}</p>
+                            <p class="title">{{_('Created Date')}}</p>
+                            <p>{{p.createddate}}</p>
+                            <p class="title">{{ _('Status')}}</p>
+                            <p>
+                             {% if LANGUAGE_CODE == 'ar' %}
+                      {{ p.status.name_ar  }}
+                      {% else %}
+                      {{ p.status.name  }}
+                      {% endif %}
+                             </p>
+                          </div>
+
+                          <br>
+                          <h5>{{_('Attachments')}}</h5>
+                          <ul class="list-unstyled project_files">
+                            <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
+                            </li>
+                          </ul>
+                          <br>
+
+               
+                        </div>
+
+                      </section>
+           <div class="text-center mtop20">
+                            <form  action="" method="post" class="form-horizontal form-label-left input_mask" >
+                 {% csrf_token %}
+                <a href="{% url 'ns-project:project-list' %}" >  <button type="button" class="btn btn-primary">{{ _('Back')}}</button></a>
+                   <button type="submit" class="btn btn-danger">{{_('Delete')}}</button>
+               </form>
+                          </div>
+                    </div>
+              
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+{% endblock javascripts %}
+

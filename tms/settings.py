@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'project.apps.AppConfig',
+    'ram',
     'django_filters',
      'widget_tweaks',
 ]
@@ -75,7 +76,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'project.middleware.ForceLangMiddleware',
-    
+
 
 ]
 ROOT_URLCONF = 'tms.urls'
@@ -92,7 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        
+
         },
     },
 ]
@@ -111,7 +112,7 @@ WSGI_APPLICATION = 'tms.wsgi.application'
 # }
 DATABASES = {
    'default': {
-       'ENGINE': 'django.db.backends.mysql',    
+       'ENGINE': 'django.db.backends.mysql',
        'NAME': 'tms',
        'USER': 'gad',
        'PASSWORD': 'Gad!@#321',

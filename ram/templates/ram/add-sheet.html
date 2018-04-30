@@ -1,0 +1,134 @@
+{% extends "project/base_site.html" %}
+{% load i18n %}
+{% block title %} {% trans "sheets list" %} {% endblock title %}
+
+{% block stylesheets %}
+{{ block.super }}
+<link href="/static/vendors/jquery/dist/jquery-ui.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>{% trans "add tasks" %} </h3>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+            <div class="x_content">
+            <!--  <form method="POST">
+                {% csrf_token %}
+                {{ form.management_form }}
+                {% for form in form %}
+                {{ form.errors }}
+                {{ form.label_tag }} {{  form}}
+                  <div class="clearfix"></div>
+                {% endfor %}
+                <button type="submit" name="_submit" class="btn btn-success">{{ _('Submit') }}</button>
+              </form> -->
+  <form method="POST">
+  {% csrf_token %}
+  {{ form.management_form }}
+  <table id="js-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th>{{ _('Task Descreption') }}</th>
+        <th>{{ _('Task type') }}</th>
+        <th>{{ _('Duration') }}</th>
+        <th>{{ _('Duration per hour') }}</th>
+        <th>{{ _('Task repeat') }}</th>
+       <th>{{ _('Task Date') }}</th>
+       <th style="text-align: center;" width="8%">{{ _('Sheet Delete') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for form in form %}
+      <tr>
+        {{ form.id}}
+        <td class="col-md-5">{{ form.taskdesc }}
+          {{ form.taskdesc.errors }}
+          <span class='form-{{ forloop.counter0 }}-taskdesc'></span>
+        </td >
+        <td class="col-md-2">{{ form.tasktype }}{{ form.tasktype.errors }}</td>
+        <td style="width:6%" > {{ form.duration }}{{ form.duration.errors }}</td>
+         <td style="width:6%"> {{ form.durationhoure }}{{ form.duration.errors }}</td>
+        <td style="width:6%">{{ form.taskcount }}{{ form.taskcount.errors }}</td>
+        <td >
+          <div class="input-group date" data-provide="datepicker"> {{ form.taskdate }}
+          <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+          </div>
+         </div>
+         {{ form.taskdate.errors }}
+        </td>
+
+        <td style="text-align: center;">
+          {{form.DELETE }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <button type="submit" name="_submit" class="btn btn-success">{{ _('Submit') }}</button>
+</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+<script>
+
+
+</script>
+{% block javascripts %}
+{{ block.super }}
+<script>
+$(document).ready(function(){  
+$('input[name="form-0-taskdesc"]').focus(function () {
+ $(this).after('<textarea class="form-control" id="id_form-0-taskdesc" maxlength="400" name="form-0-taskdesc"></textarea>').remove()
+});
+$('input[name="form-0-taskdesc"]').blur(function () {
+    var style = $(this).attr('style'),
+    textinput = $(document.createElement('textinput')).attr('style', style);
+    $(this).replaceWith(textinput);
+});
+
+});
+
+    var x = $('#js-table tr').length;
+    for (i = 0; i <= x; i++){
+    $('#id_form-'+i+'-taskdesc').keypress(function(){
+    var id = $(this).attr('name');
+    var value = this.value;
+    if(this.value.length >= 400){
+        return false;
+    }
+  
+    $("."+id).attr('style', 'display:block;')
+  $("."+id).html("عدد الحروف المتبقية : " +(400 - this.value.length));
+ 
+
+
+ });
+$('#id_form-'+i+'-taskdesc').focus(function(){
+  var id = $(this).attr('name');
+  $(this).attr('rows',3);
+  $("."+id).attr('style', 'display:block;')
+});
+$('#id_form-'+i+'-taskdesc').blur(function(){
+  var id = $(this).attr('name');
+  $(this).attr('rows',1);
+  $("."+id).attr('style', 'display:none;')
+});
+};
+
+</script>
+{% endblock javascripts %}

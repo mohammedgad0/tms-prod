@@ -1,0 +1,180 @@
+{% extends "project/base_site.html" %}
+{% load i18n %}
+{% block title %} {% trans "Projects" %} {% endblock title %}
+
+{% block stylesheets %}
+{{ block.super }}
+<style>
+ul.stats-overview li{width:19% !important}
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="page-title">
+        <div class="title_left">
+          <h3>{% trans "Tasks List Department" %} </h3>
+{% for emp in AllSheets %}
+  {{ emp.empname }}
+{% endfor %}
+        </div>
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group" style="float:left;">
+              <form method="GET" action="">
+              <input type="text" name="q" class="form-control" style="width:auto;" value="{{ request.GET.q}}" placeholder="{{_('Empolyee Name')}}...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">{% trans "Go"  %}!</button>
+              </span>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+              <div class="x_title">
+            </div>
+            <div class="x_content">
+                    <ul class="stats-overview">
+        <li>
+          <span class="name"> {{_('Total employees')}} </span>
+          <span class="value text-success"> {{emp_count}}</span>
+        </li>
+        <li>
+          <span class="name"> {{_('Total tasks')}} </span>
+          <span class="value text-success"> {{total_task}} </span>
+        </li>
+                <li class="hidden-phone">
+          <span class="name"> {{_('task inprogress')}} </span>
+          <span class="value text-success"> {{inprogress_task}} </span>
+        </li>
+        <li class="hidden-phone">
+          <span class="name"> {{_('task completed')}} </span>
+          <span class="value text-success"> {{submitted_task}} </span>
+        </li>
+        <li class="hidden-phone">
+          <span class="name"> {{_('task not completed')}} </span>
+          <span class="value text-success"> {{n_task}} </span>
+        </li>
+      </ul>
+
+<!-- {%for data in data7week%}
+{{data.empid}}
+{%endfor%}
+{{data7week}}
+<br>
+{%for data in filteremp%}
+{{data.empid}}
+{%endfor%} -->
+      <ul class="nav nav-pills navbar-left" role="tablist" style="margin-top:5px;">
+        <li>
+          {% if count > 0 %}
+            <form method="GET" action="">
+             <button type="submit" class="btn btn-danger btn-md" name="filter" class="form-control" style="width:auto;" value="sheet-empty" ><i class="fa fa-filter"></i> {{ _('Emp not have task') }}</button>
+            </form>
+           {% endif %}
+          </li>
+            {% if request.GET.filter %}
+            <a href="{% url 'ns-project:dept-sheet' dpartment_code %}" class="float-left" style="float:left"> <button type="button" class="btn btn-primary btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
+            {%endif%}
+       </ul>
+              <!-- start project list -->
+              {% for message in messages %}
+                <div style="font-size: 20px;" class="alert {{ message.tags }} alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+                </div>
+              {% endfor %}
+              {% if count > 0 %}
+         
+              <table class="table table-striped projects">
+                <thead>
+                  <tr>
+                    <th style="width: 1%">#</th>
+                    <th>{{ _('Name') }}</th>
+                    {% if request.GET.filter is None %}
+                    <th>{% trans "Task count" %}</th>
+                    <th>{% trans "New task Count" %}</th>
+                    <th>{% trans "Task Submitted Count" %}</th>
+                    <th>{% trans "Task not submitted count" %}</th>
+                    <th>{% trans "Details" %}</th>
+                    {% else %}
+                    <th>{% trans "Job title" %}</th>
+                    <th>{% trans "Email" %}</th>
+                    
+                    <th>{% trans "Ext" %}</th>
+                
+                    {% endif %}
+                  <!--  <th>{% trans "Status" %}</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for data in allemp %}
+                  <tr>
+                    {% if request.GET.filter is None %}
+                    <td>#</td>
+                    <td>{{ data.employeename}}
+                    </td>
+                    <td>
+                    {{ data.totaltask}} 
+                    </td>
+                    <td>{{ data.new}} </td>
+                    <td>
+                 {{ data.submitted}} 
+                    </td>
+                    <td class="project_progress">
+                      {{  data.notsubmitted }}
+                    </td>
+                    <td>
+                      <a href="/sheet/{{data.employeeid}}/show" class="btn btn-info btn-xs">{% trans "Details" %}</a>
+                      {%if managid == request.session.EmpID%}
+                      <a href="{% url 'ns-project:update-sheet' data.employeeid %}" class="btn btn-primary btn-xs">{% trans "Submitted" %}
+                      </a>
+                      {%endif%}
+                    </td>
+                    {%else%}
+                    <td>#</td>
+                    <td>{{data.empname}}</td>
+                    <td>{{data.jobtitle}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.ext}}</td>
+                    {%endif%}
+                  
+                    <!--  <td>
+                      {% if data.ifsubmitted == 0 %}
+                      <button type="button" class="btn btn-danger btn-xs">{% trans "not submitted" %}</button>
+                      {% endif %}
+                      {% if data.ifsubmitted == 1 %}
+                      <button type="button" class="btn btn-success btn-xs">{% trans "submitted" %}</button>
+                      {% endif %}
+                      {% if data.ifsubmitted == 2 %}
+                      <button type="button" class="btn btn-primary btn-xs">{% trans "in process" %}</button>
+                      {% endif %}
+                    </td>
+                  -->
+
+                    </tr>
+                  {% endfor %}
+          </tbody>
+              </table>
+              {%endif%}
+              <!-- end project list -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+{% endblock javascripts %}

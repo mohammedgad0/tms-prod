@@ -1,0 +1,40 @@
+{% load i18n %}
+<div class="left_col scroll-view">
+  <div class="navbar nav_title" style="border: 0;">
+
+    <a href="{% url 'ns-project:index' %}" class="site_title"> <img src="/static/images/stats_logo.png" alt="..." class="img-rounded  profile_img" style="width:50px;">  <span>{{ _("Task Management") }} </span></a>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <!-- menu profile quick info -->
+  <div class="profile clearfix">
+    <div class="profile_info">
+  {% if user.is_authenticated %}
+      {% if 'EmpName' in request.session %}
+      <h2>  {{ request.session.EmpName }}</h2>
+      <span>  {{ request.session.JobTitle }}</span>
+      <br>
+      <span>  {{ request.session.DeptName }}</span>
+        {# {{ mail }}#}
+        {% endif %}
+        {% endif %}
+
+    </div>
+  </div>
+  <!-- /menu profile quick info -->
+
+  <br />
+
+  <!-- sidebar menu -->
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+      <ul class="nav side-menu">
+           <li><a href="{% url 'ns-project:my-sheet' %}"><i class="fa fa-list"></i> {% trans "RAMADAN" %} <span class="fa"></span></a>  </li>
+      </ul>
+    </div></div>
+
+  <!-- /sidebar menu -->
+
+
+</div>

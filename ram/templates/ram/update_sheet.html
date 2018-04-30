@@ -1,0 +1,228 @@
+{% extends "project/base_site.html" %}
+{% load i18n %}
+{% block title %} {% trans "sheets list" %} {% endblock title %}
+
+{% block stylesheets %}
+{{ block.super }}
+<style>
+  .submit-success{color:#398439;border: 1px solid;}
+   .submit-faild{color:red;border: 1px solid;}
+  select {
+  font-family: 'FontAwesome', 'neo'
+}
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.2); /* IE */
+  -moz-transform: scale(1.2); /* FF */
+  -webkit-transform: scale(1.2); /* Safari and Chrome */
+  -o-transform: scale(1.2); /* Opera */
+  padding: 10px;
+}
+.cust-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #f5f5f5;
+</style>
+<link href="/static/vendors/jquery/dist/jquery-ui.css" rel="stylesheet">
+{% endblock stylesheets %}
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2 style="font-size:20px; line-height:1.5em;">{{ _('Employee Details')}} </h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Settings 1</a>
+                  </li>
+                  <li><a href="#">Settings 2</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <section class="content invoice">
+              <!-- title row -->
+              <div class="row">
+                <!-- /.col -->
+              </div>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  {% for data in EmpData %}
+              <address style="font-size: 17px;">
+                <br>
+                <b>{{ _('Name')}}:</b> {{ data.empname}}
+                <br>
+                <br>
+                <b>{{ _('Department')}}:</b> {{ data.deptname}}
+                <br>
+                <br>
+                 <b>{{ _('Job title')}}:</b> {{ data.jobtitle}}
+              </address>
+                </div>
+                <div class="col-sm-4 invoice-col"style="font-size: 17px;">
+                  <br>
+                  <b>{{ _('Mobile')}}:</b> {{ data.mobile}}
+                  <br>
+                  <br>
+                   <b>{{ _('Ext')}}:</b> {{ data.ext}}
+                  <br>
+                  <br>
+                   <b>{{ _('Email')}}:</b> {{ data.email}}
+                </div>
+                {% endfor %}
+                <!-- /.col -->
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <!--  <div class="page-title">
+        <div class="title_left">
+        <h3>{% trans "submitted tasks" %} </h3>
+        </div>
+      </div>-->
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+        
+            <div class="x_content">
+              {% for message in messages %}
+                <div style="font-size: 20px;" class="alert {{ message.tags }} alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+                </div>
+              {% endfor %}
+  <table id="js-table" class="table table-striped">
+    <form method="POST" action="">
+    {% csrf_token %}
+    {{ form.management_form }}
+    <thead>
+      <tr>
+        <th>{{ _('Task Descreption') }}</th>
+        <th>{{ _('Task type') }}</th>
+        <th>{{ _('Duration by days') }}</th>
+        <th>{{ _('Duration per hour') }}</th>
+        <th>{{ _('Task repeat') }}</th>
+       <th>{{ _('Task Date') }}</th>
+       <th style="text-align: center;"> {{ _('Submitted') }}</th>
+       <!-- <th>{{ _('Submitted') }} </th> -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for form in form %}
+      <tr>
+        {{ form.id}}
+        <td style="width:35%">{{ form.taskdesc }}</td>
+        <td style="width:15%">
+        {{ form.tasktype }}
+        </td>
+        <td > {{ form.duration }}</td>
+        <td > {{ form.durationhoure }}</td>
+        <td style="width:5%" > {{ form.taskcount }}</td>
+        <td "> {{ form.taskdate }} </td>
+          </div>
+         </div>
+        </td>
+        <td style="width:13%; text-align: center;">
+          {{ form.submit }}
+
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+      <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      {% if count > 0 %}<td> <div id="js-select-submit-style" >
+<select  id='js-select-submit' class="chosen form-control"   name="query" class="form-control"
+<i class="fa fa-caret-down" aria-hidden="true"></i>
+                   >
+
+                    <option value='0'>{{_('Chois Submitted')}} </option>
+                    <option value="1">&#xf046; {{_('submitted task')}}</option>
+                    <option value="2">&#xf057; {{_('not submitted task')}}</option>
+                   </select>
+
+                </div>  </td>{%endif%}
+    </tr>
+  </tfoot>
+  </table>
+  
+<a href="{% url 'ns-project:dept-sheet'  request.session.DeptCode  %}" class="float-left" style="float:left"> <button type="button" class="btn btn-info btn-md">  <i class="fa fa-arrow-left"></i>  {{ _('Back') }} </button></a>
+<button  type="submit" name="_submit" class="btn btn-success pull-left">{{ _('Submit') }}</button>
+
+</form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+<script>
+
+
+</script>
+{% block javascripts %}
+
+  {{ block.super }}
+  <script>
+  $(document).ready(function(){  
+ 
+  $('#js-select-submit').change(function(){
+    var value = this.value;
+    console.log(value);
+      if (value == 2){
+        $('#js-select-submit').removeClass('submit-success')
+      $('#js-select-submit').addClass('submit-faild')
+    }
+    if (value == 1){
+      $('#js-select-submit').removeClass('submit-faild')
+      $('#js-select-submit').addClass('submit-success')
+    }
+
+  });
+   $('#js-select-submit').prop('selectedIndex',0);
+
+    var x = $('#js-table tr').length;
+    for (i = 0; i <= x; i++){
+   $('#id_form-'+i+'-taskdesc').focus(function(){
+  $(this).attr('rows',3);
+
+});
+$('#id_form-'+i+'-taskdesc').blur(function(){
+  $(this).attr('rows',1);
+
+});
+};
+
+});
+</script>
+{% endblock javascripts %}

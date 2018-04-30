@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     # app/ -> Genetelella UI and resources
     url(r'^project/', include('project.urls')),
+    url(r'^ram/', include('ram.urls')),
     url(r'^', include('project.urls')),
     url(r'^accounts/login/$',
         views.myuser,

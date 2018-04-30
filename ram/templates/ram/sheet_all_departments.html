@@ -1,0 +1,265 @@
+{% extends "project/base_site.html" %}
+{% load i18n %}
+{% block title %} {% trans "Projects" %} {% endblock title %}
+{% block stylesheets %}
+{{ block.super }}
+<link href="/static/vendors/jquery/dist/jquery-ui.css" rel="stylesheet">
+    <link href="/static/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="/static/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="/static/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+  <link href="/static/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+  <link href="/static/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.css" />
+{% endblock stylesheets %}
+{% block content %}
+<div class="right_col" role="main">
+   <div class="">
+      <div class="page-title">
+         <div class="title_left">
+
+            <h3>{% trans "All Departments" %} </h3>
+            </br>
+<!--             {% for data in total_count%}
+              {{data.deptcode__deptname}}<br>
+              {{'all task is'}}{{  data.total}}<br>
+              {{"new task is" }}{{ data.new_task}}<br>
+              {{"finished task is" }}{{ data.finished_task}}<br>
+              {{"submitted task is" }}{{ data.submitted_task}}<br>
+              {{"done task is" }}{{ data.finished_task}}<br>
+              {{"ignore task is" }}{{ data.ignore_task}}<br>
+              {{"inprogress task is" }}{{ data.inprogress_task}}<br>
+
+            {% endfor %} -->
+            </br>
+         </div>
+         {% for data in dept%}
+         {{data.deptcode.deptcode}}
+         {%endfor%}
+         <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+               <form method="GET" action="">
+                  <div >
+                     <label> {{_('Choice Department')}}</label>
+                     <select id='js-select-dept' class="chosen form-control" onchange="this.form.submit()" name="q" class="form-control">
+                        <option value='0'>{{_('All Department')}}</option>
+                        {%for data in select_menu%}
+                      {% if data.deptcode__deptcode > 0%}<option value="{{data.deptcode__deptcode}}">{{data.deptcode__deptname}}</option>{% endif %}
+                        {%endfor%}
+                      }
+                     </select>
+
+                  </div>
+                </form>
+                  <!--      <input type="text" name="q" class="form-control" style="width:auto;" value="{{ request.GET.q}}" placeholder="{{_('Emp Or dept')}}...">
+                     <span class="input-group-btn">-->
+                  <!--  <button style="float: left;" class="btn btn-default" type="submit">{% trans "Go"  %}!</button> -->
+                  <!--  </span> -->
+                  <ul class="nav nav-pills navbar-left" role="tablist" style="margin-top:5px;">
+                     <li>
+                        {% if count > 0 %}         
+<a href="{% url 'ns-project:department-nosheets' %}" class="float-left" style="float:left"> <button type="button" class="btn btn-danger btn-md">  <i class="fa fa-filter"></i>  {{ _('Dept not have task') }} </button></a>
+      
+               {% endif %}
+               </li>
+      
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+         <div class="col-md-12">
+            <div class="x_panel">
+                              <ul class="nav nav-pills navbar-left">
+                   <li>
+<a href="{% url 'ns-project:export_departmen_xls' %}" class="btn btn-success"> <i class="fa fa-file-excel-o"></i>&nbsp{{_("Export to excel")}}</a>
+               </li>
+     
+               </ul>
+      <form class="form-inline" id="search" method="GET" action="">
+      <div class="col-md-2">
+  <label>{{_('satrt date')}}</label>
+      <div class="input-group date" data-provide="datepicker">
+
+      <input class="datepicker form-control" name="q_start" type="text"+ {% if request.GET.q_start %} + value='{{ request.GET.q_start}}' +{% else %}+  value='{{ start_date}}' + {% endif %}+ placeholder="{{_('form')}}">
+      <div class="input-group-addon">
+      <span class="glyphicon glyphicon-th"></span>
+      </div>
+      </div>
+      </div>
+      <div class="col-md-2">
+  <label>{{_('end date')}}</label>
+      <div class="input-group date" data-provide="datepicker">
+
+      <input class="datepicker form-control" name="q_end" type="text"+ {% if request.GET.q_end %} + value='{{ request.GET.q_end}}' +{% else %}+  value='{{ end_date}}' + {% endif %}+ placeholder="{{_('to')}}">
+      <div class="input-group-addon">
+      <span class="glyphicon glyphicon-th"></span>
+      </div>
+      </div>
+      <input type="hidden" name="q" value="{{request.GET.q}}">
+      </div>
+            <label style="color:#fff;">{{_('search')}}</label>
+      <span class="input-group-btn">
+      <button id="submit" class="btn btn-primary " type="submit">{% trans "Go"  %}!</button>
+      </span>
+    </form>
+               <div class="x_content">
+                <div>  <i class="fa  fa-eye"></i> {% trans "Result Number :" %} <span>{{count}} </span> </div>
+                  <!-- start project list -->
+                  {% for message in messages %}
+                  <div style="font-size: 20px;" class="alert {{ message.tags }} alert-dismissible" role="alert">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                     {{ message }}
+                  </div>
+                  {% endfor %}
+                  {% if count > 0 %}
+                  <table class="table table-striped projects" id='dept-table'>
+                     <thead>
+                        <tr>
+                           <th style="width: 1%">#</th>
+                           <th>{{ _('Department') }}</th>
+                           <th>{{ _('Manager Name') }}</th>
+                           {% if request.GET.filter is None %} 
+                           <th>{% trans "Task count submitted" %}</th>
+                           <th>{% trans "Task count not submitted" %}</th>
+                           <th>{% trans "Task not submitted" %}</th>
+                           <th>{% trans "Task Done" %}</th>
+                           <th>{% trans "Task inprogress" %}</th>
+                           <th>{% trans "Task not complete" %}</th>
+                           
+                           <th>{% trans "View" %}</th>
+                           {%endif%}
+                           <!--  <th>{% trans "Status" %}</th> -->
+<!--               {{data.deptcode__deptname}}<br>
+              {{'all task is'}}{{  data.total}}<br>
+              {{"new task is" }}{{ data.new_task}}<br>
+              {{"finished task is" }}{{ data.finished_task}}<br>
+              {{"submitted task is" }}{{ data.submitted_task}}<br>
+              {{"done task is" }}{{ data.notfinished_task}}<br>
+              {{"ignore task is" }}{{ data.ignore_task}}<br>
+              {{"inprogress task is" }}{{ data.inprogress_task}}<br> -->
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {% for data in total_count %}
+                        {% if data.deptcode__deptcode > 0%}
+                        <tr>
+                           <td>#</td>
+                           <td>{{data.deptcode__deptname}}  </td>
+                           <td>{{ data.deptcode__managername}}</td>
+                           {% if request.GET.filter is None %}
+                           <td>{{ data.submitted_task}}</td>
+                           <td>{{ data.new_task}}</td>
+                           <td>{{ data.ignore_task}} </td>
+                           <td>{{ data.finished_task}}</td>
+                           <td>{{ data.inprogress_task}} </td>
+                           <td>{{ data.notfinished_task}}</td>
+                          <td> <a href="/sheet/{{data.deptcode__deptcode}}/dept" class="btn btn-primary btn-xs">{% trans "View" %}</a></td>
+                           {% endif %}
+                        </tr>
+                        {% endif%}
+                        {% endfor %}
+                     </tbody>
+                  </table>
+                  {%endif%}
+                  <!--  pager -->
+<div>
+
+{% if total_count.has_other_pages %}
+ <ul class="pagination">
+
+
+   {% if total_count.has_previous %}
+     <li><a href="?page={{ total_count.previous_page_number }}">&laquo;</a></li>
+   {% else %}
+     <li class="disabled"><span>&laquo;</span></li>
+   {% endif %}
+   {% for i in total_count.paginator.page_range %}
+     {% if total_count.number == i %}
+       <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+     {% else %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+     {% endif %}
+   {% endfor %}
+   {% if total_count.has_next %}
+     <li><a href="?page={{ total_count.next_page_number }}">&raquo;</a></li>
+   {% else %}
+     <li class="disabled"><span>&raquo;</span></li>
+   {% endif %}
+ </ul>
+{% endif %}
+
+
+<ul class="pagination" >
+<li>
+<span class="current">
+           {{ _('Page') }} {{ total_count.number }} of {{ total_count.paginator.num_pages }}
+       </span>
+       </li>
+       </ul>
+
+
+</div>
+<!-- end pager -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}
+{% block javascripts %}
+
+{{ block.super }}
+
+ <script src="/static/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/static/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="/static/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="/static/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/static/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="/static/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+
+
+  <script type="text/javascript">
+$(document).ready(function() {
+    $('#dept-table').DataTable( {
+          "language": {
+    "sProcessing":   "جارٍ التحميل...",
+    "sLengthMenu":   "أظهر _MENU_ مدخلات",
+    "sZeroRecords":  "لم يعثر على أية سجلات",
+    "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+    "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجل",
+    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+    "sInfoPostFix":  "",
+    "sSearch":       "ابحث:",
+    "sUrl":          "",
+    "oPaginate": {
+    "sFirst":    "الأول",
+    "sPrevious": "السابق",
+    "sNext":     "التالي",
+    "sLast":     "الأخير"
+    }
+        },
+      "pageLength": 20,
+        "scrollCollapse": true,
+        "paging":         false,
+        "searching" :false,
+         "bLengthChange": false ,
+          "info":     false
+    } );
+var value = 0
+var value = {{request.GET.q}}
+$(".chosen").val(value).trigger("chosen:updated");
+} );
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.jquery.js"></script>
+  <script>
+     $(".chosen").data("placeholder","Select Frameworks...").chosen();
+     $(".chosen").chosen({no_results_text: "Oops, nothing found!"});
+     $('.chosen').chosen({allow_single_deselect: true,no_results_text: "لا يوجد نتائج!"});
+
+
+</script>
+{% endblock javascripts %}
