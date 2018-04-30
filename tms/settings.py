@@ -75,8 +75,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'project.middleware.ForceLangMiddleware',
-    'project.middleware.LangBasedOnUrlMiddleware'
-
+    
 
 ]
 ROOT_URLCONF = 'tms.urls'
