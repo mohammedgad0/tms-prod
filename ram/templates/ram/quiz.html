@@ -1,0 +1,81 @@
+{% extends "ram/base_site.html" %}
+{% block title %} Dashboard 1 {% endblock title %}
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+          <div class="row x_title">
+            <div class="col-md-6">
+              <h3>المسابقة الرمضانية  <small>1439 - 2018</small></h3>
+            </div>
+
+          </div>
+          <!-- start form -->
+
+
+{# {{quiz}} #}
+{% for p_id, p_info in quiz.items %}
+
+    {{p_id.question_desc}}<br>
+{{p_info}}<br>
+  {%for key in p_info %}
+      
+{%endfor%}
+{%endfor%}
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="">
+  <label class="form-check-label" for="defaultCheck1">
+    Default checkbox
+  </label>
+</div>
+
+
+            <!-- End form -->
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <br />
+
+    <div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+
+  </div>
+    </div>
+
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super}}
+  <!-- Chart.js -->
+  <script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+  <!-- gauge.js -->
+  <script src="/static/vendors/gauge.js/dist/gauge.min.js"></script>
+  <!-- Skycons -->
+  <script src="/static/vendors/skycons/skycons.js"></script>
+  <!-- Flot -->
+  <script src="/static/vendors/Flot/jquery.flot.js"></script>
+  <script src="/static/vendors/Flot/jquery.flot.pie.js"></script>
+  <script src="/static/vendors/Flot/jquery.flot.time.js"></script>
+  <script src="/static/vendors/Flot/jquery.flot.stack.js"></script>
+  <script src="/static/vendors/Flot/jquery.flot.resize.js"></script>
+  <!-- Flot plugins -->
+  <script src="/static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+  <script src="/static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+  <script src="/static/vendors/flot.curvedlines/curvedLines.js"></script>
+  <!-- DateJS -->
+  <script src="/static/vendors/DateJS/build/date.js"></script>
+  <!-- JQVMap -->
+  <script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
+  <script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+  <script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+{% endblock javascripts %}

@@ -10,6 +10,7 @@ urlpatterns = [
     # Or create a separate django app.
     # The home page
     url(r'^$', views.index, name='index'),
+    url(r'^quiz/$', views.quiz, name='quiz'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
 ]
