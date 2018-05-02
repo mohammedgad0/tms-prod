@@ -1,26 +1,47 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response ,get_object_or_404,redirect
 from .models import *
 from .forms import *
+from project.models import Employee
 
 # Create your views here.
 
+
 def index(request):
-    context = {}
+    print (request.session.get('EmpID'))
+    # employee = Employee.objects.get(empid = request.session.get('empid'))
+    employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
+    question = get_object_or_404(Questions, question_no = 1)
+    # question = Questions.objects.filter(question_no = 1)
+    EmployeeAnswer.objects.create(emp_id=employee, question_no= question)
+    form = QuizForm
+    context = {'form':form}
     return render(request, 'ram/home.html', context)
 
 def quiz(request):
-    Quiz = QuizForm()
-    quiz = {}
-    array = []
-    array1 = []
-    answer = Answers.objects.all()
-    for data in answer:
-        quiz[data.question_no] = {data.answer_no:data.answer_desc}
-    for p_id, p_info in quiz.items():
-        print("\nQuestion ID:", p_id)
+    # quiz = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
+    # ans = {}
+    # for data in quiz:
+    #     answer = Answers.objects.filter(question_no = data.question_no.question_no)
+    #     ans[data.question_no.question_no]  = answer
+    # print (ans)
 
-    for key in p_info:
-        print(str(key) + ':', p_info[key])
+    question = Questions.objects.all()
+    for q in question:
+        answer = q.choices.all()
+        print("this is question" , q.question_no)
+        for data in answer:
+            print(data.answer_no)
+    # print(question.choices.all())
 
-    context = {'answer':answer, 'quiz':quiz}
+    context = {'answer':answer,'question':question}
     return render(request, 'ram/quiz.html', context)
+
+
+
+# def quiz(request):
+#     query = EmployeeAnswer.objects.filter(emp_id = '1056821208')
+#     quiz_emp = modelformset_factory(EmployeeAnswer, form=QuizForm, extra=0)
+#     formset = quiz_emp(request.POST or None,queryset=query)
+#     # form = QuizForm()
+#     context = {'form':formset}
+#     return render(request, 'ram/quiz.html', context)

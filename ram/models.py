@@ -10,23 +10,30 @@ class Questions(models.Model):
     correct_answer_no = models.IntegerField(db_column='CORRECT_ANSWER_NO')
     period_no = models.ForeignKey('PeriodQuestion', to_field= 'period_no' ,db_column='PERIOD_NO')
 
+    def __str__(self):
+        return self.question_desc
+
     class Meta:
         managed = True
         db_table = 'RAM_QUESTIONS'
 
 class Answers(models.Model):
+    question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO',related_name="choices")
     answer_no = models.IntegerField(db_column='ANSWER_NO')
-    question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO')
     answer_desc = models.CharField(db_column='ANSWER_DESC', max_length= 255)
 
     class Meta:
+        unique_together = [
+        # no duplicated choice per question
+        ("question_no", "answer_desc"),
+        ]
         managed = True
         db_table = 'RAM_ANSWERS'
 
 class EmployeeAnswer(models.Model):
     emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID')
     question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO')
-    emp_answer_number = models.IntegerField(db_column='EMP_ANSWER_NUMBER')
+    emp_answer_number = models.IntegerField(db_column='EMP_ANSWER_NUMBER',blank=True, null=True)
 
     class Meta:
         managed = True
