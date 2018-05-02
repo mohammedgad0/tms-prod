@@ -15,7 +15,7 @@ class AnswerList(ModelChoiceField):
 
 
 class QuizForm(ModelForm):
-    # answers = AnswerList(queryset=Answers.objects.all(),to_field_name="answer_no",empty_label=_("Select Answer"),required=False,widget=forms.Select(attrs={'class': 'chosen form-control'} ))
+    answers = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=_("Select Answer"),required=False,widget=forms.Select(attrs={'class': 'chosen form-control'} ))
     class Meta:
         model = EmployeeAnswer
         fields = ['question_no','emp_answer_number',]
