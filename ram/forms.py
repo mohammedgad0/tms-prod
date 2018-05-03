@@ -7,6 +7,7 @@ from .models import *
 from django.forms import ModelForm, Textarea,TextInput,DateField
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.forms import ModelChoiceField
+from django.db.models import Count, Case, When, IntegerField ,F
 
 class AnswerList(ModelChoiceField):
     def label_from_instance(self, obj):
@@ -18,15 +19,15 @@ class QuizForm(ModelForm):
     answers = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=_("Select Answer"),required=False,widget=forms.Select(attrs={'class': 'chosen form-control'} ))
     class Meta:
         model = EmployeeAnswer
-        fields = ['question_no','emp_answer_number',]
+        fields = ['question_no',]
     widgets = {
     'question_no':TextInput(attrs={'class': 'form-control','placeholder':_('Project Name'),'required': True}),
     'emp_answer_number':forms.Select(attrs={'class': 'form-control','placeholder':_('Select answer')}),
     }
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['emp_answer_number'].queryset = Answers.objects.none()
+        super(QuizForm, self).__init__(*args, **kwargs)
+        self.fields['answers'].queryset = Answers.objects.filter(question_no = self.instance.question_no.question_no)
 
 
 
