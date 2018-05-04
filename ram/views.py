@@ -45,3 +45,7 @@ def quiz(request):
     # form = QuizForm()
     context = {'form':formset}
     return render(request, 'ram/quiz.html', context)
+
+def levels(request):
+    context = {}
+    return render(request, 'ram/levels.html', context)

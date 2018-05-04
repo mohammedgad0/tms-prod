@@ -11,6 +11,7 @@ urlpatterns = [
     # The home page
     url(r'^$', views.index, name='index'),
     url(r'^quiz/$', views.quiz, name='quiz'),
+    url(r'^levels/$', views.levels, name='levels'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
 ]

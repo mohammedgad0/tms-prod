@@ -1,0 +1,159 @@
+{% extends "ram/base_site.html" %} {% block title %} Dashboard 1 {% endblock title %} {% block stylesheets %} {{ block.super }} {% endblock stylesheets %} {% block content %}{% load static %}
+<style>
+    .panel-heading {
+        background: linear-gradient(to left, #483D93 10%, #41529F 20%, #3864AB 30%, #297CC0 40%, #1797D4 50%, #00AEE5 60%, #1DACBC 70%, #34B4A5 80%, #41A578 90%, #449555 100%);
+        font-size: 20px;
+    }
+    
+    .panel-primary {
+        border: none;
+        box-shadow: 0px 0px 5px 3px;
+        min-height: 461px;
+        width: 100%;
+    }
+
+    .btn-block{
+      display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #538fbe;
+    padding: 20px 70px;
+    font-size: 24px;
+    border: 1px solid #2d6898;
+    background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+ 
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(73,132,180)),
+        color-stop(1, rgb(97,155,203))
+    );
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    }
+    .panel-body{
+        min-height: 466px;
+    }
+    .ansewrs-num{
+        padding-top: 8%;
+        font-size: 4em;
+        font-weight: bold;
+
+    }
+
+    .answer-text{
+        border: 10px dotted #cfd4da;
+        height: 260px;
+        width: 80%;
+        margin-right: 10%;
+        padding-top: 7%;
+        color: white;
+    }
+
+    .right_col{
+        background-image: url("{% static '/images/ram1.jpg' %}") !important;
+        background-repeat: no-repeat;
+    }
+</style>
+<div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Donut Example-->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
+                </div>
+                <div class="panel-body text-center" style="background-color: #40a880">
+                        <div class="ansewrs-num" style="min-height: 355px">
+                            <div class="answer-text">
+                                    <span>
+                                        أكملت المرحلة<br>
+                                        <i class="fa fa-thumbs-up" style="font-size: 2em"></i>
+                                    </span>
+                                </div>
+                        </div>
+                    <a href="#" class="btn btn-default btn-block disabled">دخول إلى المرحلة</a>
+                </div>
+            </div>
+            <!--End Donut Example-->
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Donut Example-->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثانية
+                </div>
+                <div class="panel-body text-center" style="background-color: #494693">
+                        <div class="ansewrs-num" style="min-height: 355px">
+                            <div class="answer-text">
+                                    <span>
+                                        أجبت على<br>
+                                        <span>3 / 8</span>
+                                    </span>
+                                </div>
+                        </div>
+                    <a href="#" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                </div>
+            </div>
+            <!--End Donut Example-->
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Donut Example-->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثالثة
+                </div>
+                <div class="panel-body text-center" style="background-color: #30b0b1">
+                    <div class="ansewrs-num" style="min-height: 355px">
+                            <div class="answer-text">
+                                    <span>
+                                        لم تبدأ بعد<br>
+                                        <i class="fa fa-lock" style="font-size: 2em"></i>
+                                    </span>
+                                </div>
+                    </div>
+                    <a href="#" class="btn btn-default btn-block disabled">دخول إلى المرحلة</a>
+                </div>
+            </div>
+            <!--End Donut Example-->
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block javascripts %} {{ block.super}}
+<!-- Chart.js -->
+<script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="/static/vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- Skycons -->
+<script src="/static/vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="/static/vendors/Flot/jquery.flot.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.time.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="/static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="/static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="/static/vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="/static/vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+{% endblock javascripts %}
