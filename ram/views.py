@@ -49,3 +49,8 @@ def quiz(request):
 def levels(request):
     context = {}
     return render(request, 'ram/levels.html', context)
+
+def EmployeeData(request):
+    form = EmpDataForm(request.POST)
+    context = {"form":form}
+    return render(request, 'ram/EmployeeData.html', context)
