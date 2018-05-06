@@ -2,17 +2,43 @@ from django.shortcuts import render, render_to_response ,get_object_or_404,redir
 from .models import *
 from .forms import *
 from project.models import Employee
+from django.db.models import Q
+from datetime import timedelta
+
 
 # Create your views here.
 
 
+def get_period(date):
+    try:
+        period = PeriodQuestion.objects.get(date_from__lte = date , date_to__gte = date)
+        return period.period_no
+    except:
+        period = 5
+    return period
 def index(request):
     print (request.session.get('EmpID'))
     # employee = Employee.objects.get(empid = request.session.get('empid'))
     employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
     question = get_object_or_404(Questions, question_no = 1)
+    all_emp_question_list = set()
+    all_emp_question = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
+    date = datetime.datetime.now()
+    date = date + timedelta(days=10)
+    period = get_period(date)
+    for item in all_emp_question:
+        all_emp_question_list.add(item.question_no.question_no)
+    questions = Questions.objects.filter(
+    Q(period_no = period)&
+    ~Q(question_no__in= all_emp_question_list))
+    for item in questions:
+        q_no = Questions.objects.get(question_no= item.question_no)
+        EmployeeAnswer.objects.create(emp_id=employee, question_no= q_no)
+
+    print ("period is ", period)
+    print(all_emp_question_list)
     # question = Questions.objects.filter(question_no = 1)
-    EmployeeAnswer.objects.create(emp_id=employee, question_no= question)
+    # EmployeeAnswer.objects.create(emp_id=employee, question_no= question)
     form = QuizForm
     context = {'form':form}
     return render(request, 'ram/home.html', context)
