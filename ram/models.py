@@ -19,22 +19,20 @@ class Questions(models.Model):
 
 class Answers(models.Model):
     question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO',related_name="choices")
-    answer_no = models.IntegerField(db_column='ANSWER_NO')
+    answer_no = models.CharField(db_column='ANSWER_NO',max_length=10)
     answer_desc = models.CharField(db_column='ANSWER_DESC', max_length= 255)
+    def __str__(self):
+        return self.answer_no
 
     class Meta:
-        unique_together = [
-        # no duplicated choice per question
-        ("question_no", "answer_desc"),
-        ]
         managed = True
         db_table = 'RAM_ANSWERS'
 
 class EmployeeAnswer(models.Model):
-    emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID')
-    question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO')
-    emp_answer_number = models.IntegerField(db_column='EMP_ANSWER_NUMBER',blank=True, null=True)
-    is_save = models.NullBooleanField(db_column='IS_SAVE',blank=True)
+    emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID',null=True,blank=True)
+    question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO',null=True,blank=True)
+    emp_answer_number = models.CharField(db_column='EMP_ANSWER_NUMBER',blank=True, null=True,max_length=50)
+    is_save = models.NullBooleanField(db_column='IS_SAVE',blank=True,)
     is_submitted = models.NullBooleanField(db_column='IS_SUBMITTED',blank=True)
 
     class Meta:
