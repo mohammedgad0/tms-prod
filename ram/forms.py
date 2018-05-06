@@ -14,11 +14,7 @@ class AnswerList(ModelChoiceField):
 
 
 class QuizForm(ModelForm):
-<<<<<<< HEAD
     emp_answer_number = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=None,required=False,widget=forms.RadioSelect(attrs={'class': ''} ))
-=======
-    answers = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=None,required=False,widget=forms.RadioSelect(attrs={'class': 'option-input radio'} ))
->>>>>>> 2866a15893ba6c62137d698cb16d5fe998d7473d
     class Meta:
         model = EmployeeAnswer
         fields = ['question_no','emp_answer_number']
