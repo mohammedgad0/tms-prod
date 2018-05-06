@@ -65,7 +65,7 @@ def index(request):
 
 
 def quiz(request):
-    query = EmployeeAnswer.objects.filter(emp_id = '1056821208')
+    query = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
     quiz_emp = modelformset_factory(EmployeeAnswer, form=QuizForm, extra=0)
     formset = quiz_emp(request.POST or None,queryset=query)
     # form = QuizForm()
