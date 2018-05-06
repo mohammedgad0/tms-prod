@@ -84,5 +84,8 @@ def levels(request):
 
 def EmployeeData(request):
     form = EmpDataForm(request.POST)
+
+    if form.is_valid():
+        return redirect('/ram/levels')
     context = {"form":form}
     return render(request, 'ram/EmployeeData.html', context)

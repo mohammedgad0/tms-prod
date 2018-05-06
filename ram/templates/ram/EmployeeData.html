@@ -1,7 +1,10 @@
 {% extends "ram/base_site.html" %} {% block title %} Dashboard 1 {% endblock title %} {% block stylesheets %} {{ block.super }} {% endblock stylesheets %} {% block content %}{% load static %}
 <style>
     .right_col{
-        
+        padding-top: 13% !important;
+        background-image: url("{%static 'images/ram.png'%}") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% !important; 
     }
 
     #box{
@@ -14,6 +17,10 @@
     input{
         height: 50px !important;
     }
+    button{
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 1px;
+        margin-bottom: 5px !important;
+    }
 </style>
 <div class="right_col " role="main">
     <!-- top tiles -->
@@ -21,7 +28,7 @@
         <div class="col-md-offset-4 col-md-4" id="box">
             <h2 style="text-align:center; font-weight: bold">معلومات المتسابق</h2>
             <hr>
-            <form class="form-horizontal" action=" " method="" id="contact_form">
+            <form class="form-horizontal" action=" " method="post" id="contact_form">
                     {% csrf_token %}
                 <fieldset>
                         {% load widget_tweaks %}
@@ -29,7 +36,11 @@
                         <div class="col-md-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                {% render_field form.fullname value=request.session.EmpName %}
+                                {% if request.session.EmpName != null%}
+                                {% render_field form.fullname value=request.session.EmpName readonly='True' %}
+                                {%else%}
+                                {% render_field form.fullname %}
+                                {%endif%}
                             </div>
                         </div>
                     </div>
@@ -37,7 +48,11 @@
                         <div class="col-md-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                {% render_field form.dept value=request.session.DeptName %}
+                                {% if request.session.DeptName != null%}
+                                {% render_field form.dept value=request.session.DeptName readonly='True' %}
+                                {%else%}
+                                {% render_field form.dept %}
+                                {%endif%}
                             </div>
                         </div>
                     </div>
@@ -45,7 +60,11 @@
                         <div class="col-md-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                {% render_field form.email value=request.user.email %}
+                                {% if request.user.email != null%}
+                                {% render_field form.email value=request.user.email readonly='True' %}
+                                {%else%}
+                                {% render_field form.email%}
+                                {%endif%}
                             </div>
                         </div>
                     </div>
@@ -53,7 +72,11 @@
                         <div class="col-md-12 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                {% render_field form.mobile value=request.session.Mobile %}
+                                {% if request.session.Mobile != null%}
+                                {% render_field form.mobile value=request.session.Mobile readonly='True' %}
+                                {%else%}
+                                {% render_field form.mobile %}
+                                {%endif%}
                             </div>
                         </div>
                     </div>

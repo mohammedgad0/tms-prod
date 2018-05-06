@@ -4,6 +4,68 @@
   {{ block.super }}
 {% endblock stylesheets %}
 {% block content %}
+<style>
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  -webkit-transition: all 0.15s ease-out 0s;
+  -moz-transition: all 0.15s ease-out 0s;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #9faab7;
+}
+.option-input:checked {
+  background: #40e0d0;
+}
+
+.option-input:checked::before {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  content: '\2714';
+  display: inline-block;
+  font-size: 17px;
+  text-align: center;
+}
+
+.option-input.radio {
+  border-radius: 50%;
+}
+
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+body label {
+  font-size: 15px;
+}
+.md-radio ul{
+  list-style: none;
+}
+
+p{
+  font-size: 18px;
+  font-weight: bold;
+}
+button{
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 1px;
+        margin-bottom: 5px !important;
+    }
+</style>
   <div class="right_col" role="main">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -17,13 +79,22 @@
           <!-- start form -->
           {% for data in form %}
 
-                 {{ data.instance.question_no }}
+                 <div>
+                   <p>
+                    {{ data.instance.question_no }}
+                   </p>
+                 </div>
                      <div class="md-radio">
+<<<<<<< HEAD
                  {{data.emp_answer_number}}
        </div>
+=======
+                 {{data.answers}}
+       </div><br><br>
+>>>>>>> 2866a15893ba6c62137d698cb16d5fe998d7473d
                  {% endfor %}
-                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                   Button
+                 <button class="btn btn-primary">
+                   تقديم الأجوبة
                  </button>
 
 
