@@ -24,7 +24,7 @@ def index(request):
     all_emp_question_list = set()
     all_emp_question = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
     date = datetime.datetime.now()
-    date = date + timedelta(days=10)
+    # date = date + timedelta(days=10)
     period = get_period(date)
     for item in all_emp_question:
         all_emp_question_list.add(item.question_no.question_no)
@@ -65,7 +65,13 @@ def index(request):
 
 
 def quiz(request):
-    query = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
+    date = datetime.datetime.now()
+    # date = date + timedelta(days=10)
+    period = get_period(date)
+    query = EmployeeAnswer.objects.filter(
+    Q(emp_id = request.session.get('EmpID'))&
+    Q(question_no__period_no = period)
+    )
     quiz_emp = modelformset_factory(EmployeeAnswer, form=QuizForm, extra=0)
     formset = quiz_emp(request.POST or None,queryset=query)
     # form = QuizForm()

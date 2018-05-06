@@ -34,6 +34,8 @@ class EmployeeAnswer(models.Model):
     emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID')
     question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO')
     emp_answer_number = models.IntegerField(db_column='EMP_ANSWER_NUMBER',blank=True, null=True)
+    is_save = models.NullBooleanField(db_column='IS_SAVE',blank=True)
+    is_submitted = models.NullBooleanField(db_column='IS_SUBMITTED',blank=True)
 
     class Meta:
         managed = True

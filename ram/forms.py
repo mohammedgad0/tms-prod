@@ -13,21 +13,21 @@ class AnswerList(ModelChoiceField):
         return obj.answer_desc
 
 
-
 class QuizForm(ModelForm):
-    answers = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=None,required=False,widget=forms.RadioSelect(attrs={'class': ''} ))
+    emp_answer_number = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=None,required=False,widget=forms.RadioSelect(attrs={'class': ''} ))
     class Meta:
         model = EmployeeAnswer
-        fields = ['question_no',]
+        fields = ['question_no','emp_answer_number']
     widgets = {
     'question_no':TextInput(attrs={'class': 'form-control','placeholder':_('Project Name'),'required': True}),
-
     'emp_answer_number':forms.ModelChoiceField(queryset=Answers.objects.none(),widget=forms.RadioSelect)
     }
 
     def __init__(self, *args, **kwargs):
         super(QuizForm, self).__init__(*args, **kwargs)
-        self.fields['answers'].queryset = Answers.objects.filter(question_no = self.instance.question_no.question_no)
+        self.fields['emp_answer_number'].queryset = Answers.objects.filter(question_no = self.instance.question_no.question_no)
+        if self.instance.is_submitted:
+            self.fields['emp_answer_number'].widget.attrs['disabled'] = True
         # self.fields['answers'].widget = forms.RadioSelect()
 
 # class QuizForm(ModelForm):
@@ -50,7 +50,7 @@ class QuizForm(ModelForm):
     #         self.add_error('enddate', msg)
 
 class EmpDataForm(forms.Form):
-    
+
     fullname = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control form-group",'placeholder':"الإسم الكامل"}),)
     dept = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"الإدارة"}),)
     email = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"البريد الإلكتروني"}),)
