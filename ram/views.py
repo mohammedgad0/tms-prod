@@ -45,3 +45,12 @@ def quiz(request):
     # form = QuizForm()
     context = {'form':formset}
     return render(request, 'ram/quiz.html', context)
+
+def levels(request):
+    context = {}
+    return render(request, 'ram/levels.html', context)
+
+def EmployeeData(request):
+    form = EmpDataForm(request.POST)
+    context = {"form":form}
+    return render(request, 'ram/EmployeeData.html', context)

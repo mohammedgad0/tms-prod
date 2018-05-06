@@ -8,7 +8,6 @@ from django.forms import ModelForm, Textarea,TextInput,DateField
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.forms import ModelChoiceField
 from django.db.models import Count, Case, When, IntegerField ,F
-
 class AnswerList(ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.answer_desc
@@ -49,3 +48,10 @@ class QuizForm(ModelForm):
     #     if enddate < startdate:
     #         msg = _("End date is less than start date")
     #         self.add_error('enddate', msg)
+
+class EmpDataForm(forms.Form):
+    
+    fullname = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control form-group",'placeholder':"الإسم الكامل"}),)
+    dept = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"الإدارة"}),)
+    email = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"البريد الإلكتروني"}),)
+    mobile = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"الجوال"}),)

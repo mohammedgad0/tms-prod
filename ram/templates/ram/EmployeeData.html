@@ -1,0 +1,95 @@
+{% extends "ram/base_site.html" %} {% block title %} Dashboard 1 {% endblock title %} {% block stylesheets %} {{ block.super }} {% endblock stylesheets %} {% block content %}{% load static %}
+<style>
+    .right_col{
+        
+    }
+
+    #box{
+        border: 0.5px solid rgb(200, 200, 200);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+        background: rgba(200, 200, 200, 0.1);
+        border-radius: 4px;
+        top:50px;
+    }
+    input{
+        height: 50px !important;
+    }
+</style>
+<div class="right_col " role="main">
+    <!-- top tiles -->
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4" id="box">
+            <h2 style="text-align:center; font-weight: bold">معلومات المتسابق</h2>
+            <hr>
+            <form class="form-horizontal" action=" " method="" id="contact_form">
+                    {% csrf_token %}
+                <fieldset>
+                        {% load widget_tweaks %}
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                {% render_field form.fullname value=request.session.EmpName %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+                                {% render_field form.dept value=request.session.DeptName %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                {% render_field form.email value=request.user.email %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                {% render_field form.mobile value=request.session.Mobile %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-warning">دخول إلى المسابقة <i class="fa fa-play-circle"></i>
+
+                            </span></button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block javascripts %} {{ block.super}}
+<!-- Chart.js -->
+<script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="/static/vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- Skycons -->
+<script src="/static/vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="/static/vendors/Flot/jquery.flot.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.time.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="/static/vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="/static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="/static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="/static/vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="/static/vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+{% endblock javascripts %}
