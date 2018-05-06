@@ -271,3 +271,6 @@ pip-selfcheck.json
 media/
 tms/settings.py
 *.pyc
+tms/__pycache__/wsgi.cpython-36.pyc
+tms/settings.py
+tms/__pycache__/wsgi.cpython-36.pyc

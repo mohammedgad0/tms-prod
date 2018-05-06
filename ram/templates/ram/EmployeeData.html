@@ -1,7 +1,10 @@
 {% extends "ram/base_site.html" %} {% block title %} Dashboard 1 {% endblock title %} {% block stylesheets %} {{ block.super }} {% endblock stylesheets %} {% block content %}{% load static %}
 <style>
     .right_col{
-        
+        padding-top: 13% !important;
+        background-image: url("{%static 'images/ram.png'%}") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% !important; 
     }
 
     #box{
