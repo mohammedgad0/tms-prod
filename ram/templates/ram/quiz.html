@@ -78,22 +78,42 @@ button{
 
           </div>
           <!-- start form -->
+    <form method="POST">
+      {% csrf_token %}
+    {{ form.management_form }}
           {% for data in form %}
-
+            {{ data.id}}
                  <div>
                    <p>
                     {{ data.instance.question_no }}
                    </p>
                  </div>
                      <div class="md-radio">
-                 {{data.emp_answer_number}}
+                 {{data.emp_answer_number}}{{data.emp_answer_number.errors}}
        </div>
                  {% endfor %}
-                 <button class="btn btn-primary">
-                   تقديم الأجوبة
+                 <button type="submit" name="save" class="btn btn-primary">
+                  حفظ الإجابات
+                 </button>
+                 <button type="submit" name="submit" class="btn btn-success">
+                ارسال الإجابات
                  </button>
 
-
+               </form>
+               {% if form.errors %}
+                   {% for field in form %}
+                       {% for error in field.errors %}
+                           <div class="alert alert-danger">
+                               <strong>{{ error|escape }}</strong>
+                           </div>
+                       {% endfor %}
+                   {% endfor %}
+                   {% for error in form.non_field_errors %}
+                       <div class="alert alert-danger">
+                           <strong>{{ error|escape }}</strong>
+                       </div>
+                   {% endfor %}
+               {% endif %}
 <!--
 <form method="POST">
 {% csrf_token %}

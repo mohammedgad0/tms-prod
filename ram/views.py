@@ -4,6 +4,7 @@ from .forms import *
 from project.models import Employee
 from django.db.models import Q
 from datetime import timedelta
+from django.http import HttpResponse ,HttpResponseRedirect,Http404 ,HttpResponseForbidden
 
 
 # Create your views here.
@@ -73,10 +74,28 @@ def quiz(request):
     Q(question_no__period_no = period)
     )
     quiz_emp = modelformset_factory(EmployeeAnswer, form=QuizForm, extra=0)
-    formset = quiz_emp(request.POST or None,queryset=query)
-    # form = QuizForm()
+    formset = quiz_emp(queryset=query)
+    if request.method == 'POST':
+        print('this is post')
+        formset = quiz_emp(request.POST)
+        if formset.is_valid():
+            print("form valid")
+            if 'save' in request.POST:
+                instances = formset.save(commit=False)
+                for obj in instances:
+                    obj.is_save = 1
+                    print(obj.emp_answer_number)
+                    obj.save()
+            elif '_submit':
+                instances = formset.save(commit=False)
+                for obj in instances:
+                    obj.is_submitted = 1
+                    # obj.save()
+        # return HttpResponseRedirect(reverse('ramadan:index'))
     context = {'form':formset}
     return render(request, 'ram/quiz.html', context)
+
+
 
 def levels(request):
     context = {}
