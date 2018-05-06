@@ -15,7 +15,18 @@
 
           </div>
           <!-- start form -->
-{{form}}
+          {% for data in form %}
+
+                 {{ data.instance.question_no }}
+                     <div class="md-radio">
+                 {{data.answers}}
+       </div>
+                 {% endfor %}
+                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                   Button
+                 </button>
+
+
 <!--
 <form method="POST">
 {% csrf_token %}

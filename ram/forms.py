@@ -16,21 +16,20 @@ class AnswerList(ModelChoiceField):
 
 
 class QuizForm(ModelForm):
-    answers = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=_("Select Answer"),required=False,widget=forms.Select(attrs={'class': 'chosen form-control'} ))
+    answers = AnswerList(queryset=Answers.objects.filter(question_no = 1),to_field_name="answer_no",empty_label=None,required=False,widget=forms.RadioSelect(attrs={'class': ''} ))
     class Meta:
         model = EmployeeAnswer
         fields = ['question_no',]
     widgets = {
     'question_no':TextInput(attrs={'class': 'form-control','placeholder':_('Project Name'),'required': True}),
-    'emp_answer_number':forms.Select(attrs={'class': 'form-control','placeholder':_('Select answer')}),
+
+    'emp_answer_number':forms.ModelChoiceField(queryset=Answers.objects.none(),widget=forms.RadioSelect)
     }
 
     def __init__(self, *args, **kwargs):
         super(QuizForm, self).__init__(*args, **kwargs)
         self.fields['answers'].queryset = Answers.objects.filter(question_no = self.instance.question_no.question_no)
-
-
-
+        # self.fields['answers'].widget = forms.RadioSelect()
 
 # class QuizForm(ModelForm):
 #     employee = AnswerList(queryset=Answers.objects.all(),to_field_name="answer_no",empty_label=_("Select Answer"),required=False,widget=forms.Select(attrs={'class': 'chosen form-control'} ))
