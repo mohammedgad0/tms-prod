@@ -49,11 +49,8 @@ class QuizForm(ModelForm):
         self.fields['emp_answer_number'].choices = [(q.answer_no, q.answer_desc) for q in answers_list]
         # self.fields['question_no']=forms.CharField(max_length=100)
         self.fields['question_no'].widget.attrs['hidden'] = True
-
         if self.instance.is_submitted:
             self.fields['emp_answer_number'].widget.attrs['disabled'] = True
-
-
 
 class EmpDataForm(forms.Form):
     fullname = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control form-group",'placeholder':"الإسم الكامل"}),)

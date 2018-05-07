@@ -63,8 +63,6 @@ def index(request):
 #     context = {'answer':answer,'question':question}
 #     return render(request, 'ram/quiz.html', context)
 
-
-
 def quiz(request):
     date = datetime.datetime.now()
     # date = date + timedelta(days=10)
@@ -104,9 +102,13 @@ def quiz(request):
     context = {'form':formset}
     return render(request, 'ram/quiz.html', context)
 
-
-
 def levels(request):
+    # period_1
+
+    # period_2
+
+    # period_3
+
     context = {}
     return render(request, 'ram/levels.html', context)
 
