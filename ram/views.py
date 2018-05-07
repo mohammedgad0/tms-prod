@@ -108,6 +108,11 @@ def levels(request):
     # period_2
 
     # period_3
+    emp = request.session.get('EmpID')
+    is_agree = Conditions.objects.filter(emp_id=emp)
+    if len(is_agree) == 0:
+        print(len(is_agree))
+        return HttpResponseRedirect(reverse('ramadan:conditions'))
 
     context = {}
     return render(request, 'ram/levels.html', context)
