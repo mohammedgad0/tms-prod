@@ -91,6 +91,7 @@ def quiz(request):
                 instances = formset.save(commit=False)
                 for obj in instances:
                     print(obj.emp_answer_number)
+
                     obj.is_submitted = 1
                 for form in formset:
                     instances = form.instance
@@ -119,6 +120,7 @@ def EmployeeData(request):
 
 
 def conditions(request):
+<<<<<<< HEAD
 
 
     if request.method == "POST":
@@ -129,3 +131,8 @@ def conditions(request):
 
     context = {}
     return render(request,'ram/conditions.html',context)
+=======
+    form = conditions(request.POST)
+    context = {'form':form}
+    return render(request,'ram/conditions.html',context)
+>>>>>>> 367b2712731f49c6c805abc20836daa5cd0db5f4

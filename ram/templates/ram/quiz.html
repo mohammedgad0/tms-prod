@@ -103,57 +103,6 @@ button{
                   <a href="{% url 'ramadan:levels' %}" class="btn btn-info" role="button">  رجوع</a>
                </div>
                </form>
-
-               {% if form.errors %}
-                   {% for field in form %}
-                       {% for error in field.errors %}
-                           <div class="alert alert-danger">
-                               <strong>{{ error|escape }}</strong>
-                           </div>
-                       {% endfor %}
-                   {% endfor %}
-                   {% for error in form.non_field_errors %}
-                       <div class="alert alert-danger">
-                           <strong>{{ error|escape }}</strong>
-                       </div>
-                   {% endfor %}
-               {% endif %}
-<!--
-<form method="POST">
-{% csrf_token %}
-{% for q in question%}
-  {{q}}<br>
-{% for c in q.choices.all %}
-<div class="radio">
-  <label>
-  <input type="radio" name="optradio-{{q.question_no}}" value="{{c.answer_no}}">
-    {{c.answer_desc}}
-  </label>
-</div>
-{% endfor %}
-{% endfor%}
-  <button type="submit" name="_submit" class="btn btn-success">{{ _('Submit') }}</button>
-</form>
-
--->
-
-<!--<br>
-{% for q in answer%}
-{% if forloop.first %}
-{{q.question_no}}<br>
-{% endif %}
-  {{q.answer_no}}-{{q.answer_desc}} <br>
-{% endfor %} -->
-
-
-<!--  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="">
-  <label class="form-check-label" for="defaultCheck1">
-    Default checkbox
-  </label>
-</div> -->
-
-
             <!-- End form -->
           <div class="clearfix"></div>
         </div>
@@ -176,28 +125,7 @@ button{
 
 {% block javascripts %}
   {{ block.super}}
-  <!-- Chart.js -->
-  <script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
-  <!-- gauge.js -->
-  <script src="/static/vendors/gauge.js/dist/gauge.min.js"></script>
-  <!-- Skycons -->
-  <script src="/static/vendors/skycons/skycons.js"></script>
-  <!-- Flot -->
-  <script src="/static/vendors/Flot/jquery.flot.js"></script>
-  <script src="/static/vendors/Flot/jquery.flot.pie.js"></script>
-  <script src="/static/vendors/Flot/jquery.flot.time.js"></script>
-  <script src="/static/vendors/Flot/jquery.flot.stack.js"></script>
-  <script src="/static/vendors/Flot/jquery.flot.resize.js"></script>
-  <!-- Flot plugins -->
-  <script src="/static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-  <script src="/static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-  <script src="/static/vendors/flot.curvedlines/curvedLines.js"></script>
-  <!-- DateJS -->
-  <script src="/static/vendors/DateJS/build/date.js"></script>
-  <!-- JQVMap -->
-  <script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
-  <script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-  <script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+
   <script>
   $('#quiz').submit(function() {
       $('input').removeAttr('disabled');
