@@ -95,7 +95,8 @@ def quiz(request):
                 for form in formset:
                     instances = form.instance
                     print(instances.emp_answer_number)
-                    instances.is_submitted = 1
+                    if instances.emp_answer_number:
+                        instances.is_submitted = 1
                     instances.save()
         return HttpResponseRedirect(reverse('ramadan:quiz'))
     else:

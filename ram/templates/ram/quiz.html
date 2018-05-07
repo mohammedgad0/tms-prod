@@ -91,7 +91,7 @@ button{
                  </div>
                      <div class="md-radio">
                  {{data.emp_answer_number}}{{data.emp_answer_number.errors}}
-       </div>
+               </div>
                  {% endfor %}
                  <button type="submit" name="save" class="btn btn-primary">
                   حفظ الإجابات
@@ -99,8 +99,11 @@ button{
                  <button type="submit" name="submit" class="btn btn-success">
                 ارسال الإجابات
                  </button>
-
+                 <div class="pull-left">
+                  <a href="{% url 'ramadan:levels' %}" class="btn btn-info" role="button">  رجوع</a>
+               </div>
                </form>
+
                {% if form.errors %}
                    {% for field in form %}
                        {% for error in field.errors %}
