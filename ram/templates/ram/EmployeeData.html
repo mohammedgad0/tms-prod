@@ -2,9 +2,7 @@
 <style>
     .right_col{
         padding-top: 13% !important;
-        background-image: url("{%static 'images/ram.png'%}") !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% !important; 
+       
     }
 
     #box{
@@ -21,76 +19,97 @@
         box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 1px;
         margin-bottom: 5px !important;
     }
+    .bg-img::before{
+        content: ' ';
+    display: block;
+    position: absolute;
+    right: 10%;
+    top: 6% !important;
+    width: 90%;
+    height: 94%;
+    top: inherit;
+    z-index: 0;
+    opacity: 0.1;
+    background-image: url("{%static 'images/ram.jpg' %}") !important;
+    background-repeat: no-repeat;
+    -ms-background-size: 100%;
+    -o-background-size: 100%;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    }
 </style>
-<div class="right_col " role="main">
-    <!-- top tiles -->
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4" id="box">
-            <h2 style="text-align:center; font-weight: bold">معلومات المتسابق</h2>
-            <hr>
-            <form class="form-horizontal" action=" " method="post" id="contact_form">
-                    {% csrf_token %}
-                <fieldset>
-                        {% load widget_tweaks %}
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                {% if request.session.EmpName != null%}
-                                {% render_field form.fullname value=request.session.EmpName readonly='True' %}
-                                {%else%}
-                                {% render_field form.fullname %}
-                                {%endif%}
-                            </div>
-                        </div>
+<div class="bg-img">
+        <div class="right_col " role="main">
+                <!-- top tiles -->
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-4" id="box">
+                        <h2 style="text-align:center; font-weight: bold">معلومات المتسابق</h2>
+                        <hr>
+                        <form class="form-horizontal" action=" " method="post" id="contact_form">
+                                {% csrf_token %}
+                            <fieldset>
+                                    {% load widget_tweaks %}
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            {% if request.session.EmpName != null%}
+                                            {% render_field form.fullname value=request.session.EmpName readonly='True' %}
+                                            {%else%}
+                                            {% render_field form.fullname %}
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+                                            {% if request.session.DeptName != null%}
+                                            {% render_field form.dept value=request.session.DeptName readonly='True' %}
+                                            {%else%}
+                                            {% render_field form.dept %}
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                            {% if request.user.email != null%}
+                                            {% render_field form.email value=request.user.email readonly='True' %}
+                                            {%else%}
+                                            {% render_field form.email%}
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                            {% if request.session.Mobile != null%}
+                                            {% render_field form.mobile value=request.session.Mobile readonly='True' %}
+                                            {%else%}
+                                            {% render_field form.mobile %}
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-warning">دخول إلى المسابقة <i class="fa fa-play-circle"></i>
+            
+                                        </span></button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                {% if request.session.DeptName != null%}
-                                {% render_field form.dept value=request.session.DeptName readonly='True' %}
-                                {%else%}
-                                {% render_field form.dept %}
-                                {%endif%}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                {% if request.user.email != null%}
-                                {% render_field form.email value=request.user.email readonly='True' %}
-                                {%else%}
-                                {% render_field form.email%}
-                                {%endif%}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                {% if request.session.Mobile != null%}
-                                {% render_field form.mobile value=request.session.Mobile readonly='True' %}
-                                {%else%}
-                                {% render_field form.mobile %}
-                                {%endif%}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-warning">دخول إلى المسابقة <i class="fa fa-play-circle"></i>
-
-                            </span></button>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+                </div>
+            </div>
 </div>
 {% endblock content %} {% block javascripts %} {{ block.super}}
 <!-- Chart.js -->
