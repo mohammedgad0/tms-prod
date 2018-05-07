@@ -108,3 +108,6 @@ def EmployeeData(request):
         return redirect('/ram/levels')
     context = {"form":form}
     return render(request, 'ram/EmployeeData.html', context)
+def conditions(request):
+    context = {}
+    return render(request,'ram/conditions.html',context)

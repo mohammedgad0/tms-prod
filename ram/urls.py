@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^quiz/$', views.quiz, name='quiz'),
     url(r'^levels/$', views.levels, name='levels'),
     url(r'^employee-data/$', views.EmployeeData, name='employee-data'),
+    url(r'^conditions/$', views.conditions, name='conditions'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
 ]
