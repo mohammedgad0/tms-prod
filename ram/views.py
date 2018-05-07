@@ -119,6 +119,13 @@ def EmployeeData(request):
 
 
 def conditions(request):
-    form = conditions(request.POST)
-    context = {'form':form}
+
+
+    if request.method == "POST":
+        emp_id = request.session.get('EmpID')
+        employee = Employee.objects.get(empid=emp_id)
+        Conditions.objects.create(emp_id=employee, is_agree= 1)
+        return HttpResponseRedirect(reverse('ramadan:levels'))
+
+    context = {}
     return render(request,'ram/conditions.html',context)

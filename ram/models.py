@@ -32,8 +32,8 @@ class EmployeeAnswer(models.Model):
     emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID',null=True,blank=True)
     question_no = models.ForeignKey('Questions',to_field='question_no', db_column='QUESTION_NO',null=True,blank=True)
     emp_answer_number = models.CharField(db_column='EMP_ANSWER_NUMBER',blank=True, null=True,max_length=50)
-    is_save = models.NullBooleanField(db_column='IS_SAVE',blank=True,)
-    is_submitted = models.NullBooleanField(db_column='IS_SUBMITTED',blank=True)
+    # is_save = models.NullBooleanField(db_column='IS_SAVE',blank=True,)
+    # is_submitted = models.NullBooleanField(db_column='IS_SUBMITTED',blank=True)
 
     class Meta:
         managed = True
@@ -48,3 +48,9 @@ class PeriodQuestion(models.Model):
     class Meta:
         managed = True
         db_table = 'RAM_PERIOD'
+class Conditions(models.Model):
+    emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID',null=True,blank=True)
+    is_agree = models.NullBooleanField(db_column='IS_SUBMITTED',blank=True)
+    class Meta:
+        managed = True
+        db_table = 'RAM_CONDITIONS'
