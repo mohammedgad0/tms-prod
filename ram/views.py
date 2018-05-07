@@ -95,8 +95,7 @@ def quiz(request):
                 for form in formset:
                     instances = form.instance
                     print(instances.emp_answer_number)
-                    if instances.emp_answer_number:
-                        instances.is_submitted = 1
+                    instances.is_submitted = 1
                     instances.save()
         return HttpResponseRedirect(reverse('ramadan:quiz'))
     else:
@@ -120,6 +119,6 @@ def EmployeeData(request):
 
 
 def conditions(request):
-
-    context = {}
+    form = conditions(request.POST)
+    context = {'form':form}
     return render(request,'ram/conditions.html',context)
