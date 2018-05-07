@@ -22,7 +22,10 @@
                 </ul>
                 <form method="POST">
                     {%csrf_token%}
-                    {{form.as_p}}
+                    
+                    <button type="submit" name="submit" class="btn btn-success">
+                           موافقة و استمرار
+                             </button>
                 </form>
             </div>
         </div>

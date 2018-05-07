@@ -58,5 +58,12 @@ class EmpDataForm(forms.Form):
     email = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"البريد الإلكتروني"}),)
     mobile = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"الجوال"}),)
 
-class conditions(forms.Form):
-    agree = forms.BooleanField()
+
+class conditionsForm(ModelForm):
+    class Meta:
+        model = conditions
+        fields = ['emp_id','is_agree','desc_conditions']
+        widget = {
+            'emp_id':TextInput(attrs={'class':'form-control'}),
+            'desc_conditions': Textarea(attrs={'id':'dConditions','class':'form-control'}),
+        }
