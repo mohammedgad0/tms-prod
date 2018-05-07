@@ -15,12 +15,13 @@ class AnswerList(ModelChoiceField):
 
 class QuizForm(ModelForm):
     emp_answer_number = ModelChoiceField(
-        widget=forms.RadioSelect,
+        widget=forms.RadioSelect(attrs={'class': 'option-input radio'}),
         queryset=None,
         empty_label=None,
         to_field_name='answer_no',
         label = 'Please select',
         required = False
+
         )
     # emp_answer_number = (queryset=None,)forms.RadioSelect(attrs={'class': 'option-input radio'} )
     class Meta:
@@ -34,11 +35,12 @@ class QuizForm(ModelForm):
         super(QuizForm, self).__init__(*args, **kwargs)
         answers_list = Answers.objects.filter(question_no = self.instance.question_no.question_no)
         self.fields['emp_answer_number'].queryset = answers_list
-
         self.fields['emp_answer_number'].choices = [(q.answer_no, q.answer_desc) for q in answers_list]
-        # if self.instance.is_submitted:
-        #     self.fields['emp_answer_number'].widget.attrs['disabled'] = True
-        # self.fields['answers'].widget = forms.RadioSelect()
+        
+        self.fields['question_no'].widget.attrs['hidden'] = True
+        if self.instance.is_submitted:
+            self.fields['emp_answer_number'].widget.attrs['disabled'] = True
+
 
 # class QuizForm(ModelForm):
 #     employee = AnswerList(queryset=Answers.objects.all(),to_field_name="answer_no",empty_label=_("Select Answer"),required=False,widget=forms.Select(attrs={'class': 'chosen form-control'} ))
