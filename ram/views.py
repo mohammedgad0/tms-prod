@@ -91,6 +91,7 @@ def quiz(request):
                 instances = formset.save(commit=False)
                 for obj in instances:
                     print(obj.emp_answer_number)
+
                     obj.is_submitted = 1
                 for form in formset:
                     instances = form.instance
