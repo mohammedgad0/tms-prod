@@ -78,13 +78,14 @@ button{
 
           </div>
           <!-- start form -->
-    <form method="POST">
+    <form id='quiz' method="POST">
       {% csrf_token %}
     {{ form.management_form }}
           {% for data in form %}
             {{ data.id}}
                  <div>
                    <p>
+                     {{ data.question_no }}
                     {{ data.instance.question_no }}
                    </p>
                  </div>
@@ -194,4 +195,9 @@ button{
   <script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
   <script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
   <script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+  <script>
+  $('#quiz').submit(function() {
+      $('input').removeAttr('disabled');
+  });
+  </script>
 {% endblock javascripts %}
