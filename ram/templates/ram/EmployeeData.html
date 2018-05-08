@@ -14,6 +14,7 @@
     }
     input{
         height: 50px !important;
+        width: 100%;
     }
     button{
         box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 1px;
@@ -48,49 +49,76 @@
                         <hr>
                         <form class="form-horizontal" action=" " method="post" id="contact_form">
                             {% csrf_token %}
-                            
-                            <fieldset>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            {{form.emp_name}}
-                                        </div>
+                        <fieldset>
+                                {% load widget_tweaks %}
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        {% if request.session.EmpName != null%}
+                                        {% render_field form.emp_name value=request.session.EmpName readonly='True' %}
+                                        {%else%}
+                                        {% render_field form.name %}
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+                                        {% if request.session.DeptName != null%}
+                                        {% render_field form.emp_dept value=request.session.DeptName readonly='True' %}
+                                        {%else%}
+                                        {% render_field form.emp_dept %}
+                                        {%endif%}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                                        {% if request.session.Mobile != null%}
+                                        {% render_field form.emp_mobile value=request.session.Mobile readonly='True' %}
+                                        {%else%}
+                                        {% render_field form.emp_mobile%}
+                                        {%endif%}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                            {{form.emp_dept}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                            {{form.emp_mobile}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12 inputGroupContainer">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                            {{form.emp_ext}}
+                                            {% if request.session.Ext != null%}
+                                            {% render_field form.emp_ext value=request.session.Ext readonly='True' %}
+                                            {%else%}
+                                            {% render_field form.emp_ext%}
+                                            {%endif%}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">دخول إلى المسابقة <i class="fa fa-play-circle"></i>
-
-                                        </span></button>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                        {% if request.user.email != null%}
+                                        {% render_field form.emp_email value=request.user.email readonly='True' %}
+                                        {%else%}
+                                        {% render_field form.emp_email%}
+                                        {%endif%}
                                     </div>
                                 </div>
-                            </fieldset>
-                        </form>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary">دخول إلى المسابقة <i class="fa fa-play-circle"></i>
+        
+                                    </span></button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
                     </div>
                 </div>
             </div>
