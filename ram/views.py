@@ -111,18 +111,23 @@ def levels(request):
     # period_3
     emp = request.session.get('EmpID')
     is_agree = Conditions.objects.filter(emp_id=emp)
-    if len(is_agree) == 0:
-        print(len(is_agree))
+    if not is_agree:
         return HttpResponseRedirect(reverse('ramadan:conditions'))
 
     context = {}
     return render(request, 'ram/levels.html', context)
 
 def EmployeeData(request):
-    form = EmpDataForm(request.POST)
+    emp = request.session.get('EmpID')
+    is_agree = Conditions.objects.filter(emp_id=emp)
+    if not is_agree:
+        return HttpResponseRedirect(reverse('ramadan:conditions'))
 
-    if form.is_valid():
-        return redirect('/ram/levels')
+    form = EmpDataForm
+    if request.method == "POST":
+        if form.is_valid():
+            return HttpResponseRedirect(reverse('ramadan:levels'))
+    
     context = {"form":form}
     return render(request, 'ram/EmployeeData.html', context)
 
@@ -130,14 +135,13 @@ def EmployeeData(request):
 def conditions(request):
     emp = request.session.get('EmpID')
     is_agree = Conditions.objects.filter(emp_id=emp)
-    if len(is_agree) != 0:
-        print(len(is_agree))
+    if is_agree:
         return HttpResponseRedirect(reverse('ramadan:employee-data'))
 
     if request.method == "POST":
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
         Conditions.objects.create(emp_id=employee, is_agree= 1)
-        return HttpResponseRedirect(reverse('ramadan:levels'))
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
     context = {}
     return render(request,'ram/conditions.html',context)
