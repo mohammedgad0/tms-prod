@@ -61,9 +61,8 @@ class EmpDataForm(forms.Form):
 
 class conditionsForm(ModelForm):
     class Meta:
-        model = conditions
-        fields = ['emp_id','is_agree','desc_conditions']
+        model = Conditions
+        fields = ['emp_id']
         widget = {
             'emp_id':TextInput(attrs={'class':'form-control'}),
-            'desc_conditions': Textarea(attrs={'id':'dConditions','class':'form-control'}),
         }

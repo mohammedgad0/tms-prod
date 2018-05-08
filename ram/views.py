@@ -17,7 +17,7 @@ def get_period(date):
     except:
         period = 5
     return period
-    
+
 def index(request):
     print (request.session.get('EmpID'))
     # employee = Employee.objects.get(empid = request.session.get('empid'))
@@ -109,6 +109,11 @@ def levels(request):
     # period_2
 
     # period_3
+    emp = request.session.get('EmpID')
+    is_agree = Conditions.objects.filter(emp_id=emp)
+    if len(is_agree) == 0:
+        print(len(is_agree))
+        return HttpResponseRedirect(reverse('ramadan:conditions'))
 
     context = {}
     return render(request, 'ram/levels.html', context)
@@ -123,13 +128,16 @@ def EmployeeData(request):
 
 
 def conditions(request):
+    emp = request.session.get('EmpID')
+    is_agree = Conditions.objects.filter(emp_id=emp)
+    if len(is_agree) != 0:
+        print(len(is_agree))
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
+
     if request.method == "POST":
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
         Conditions.objects.create(emp_id=employee, is_agree= 1)
         return HttpResponseRedirect(reverse('ramadan:levels'))
     context = {}
-    return render(request,'ram/conditions.html',context)
-    form = conditions(request.POST)
-    context = {'form':form}
     return render(request,'ram/conditions.html',context)
