@@ -52,7 +52,7 @@ class QuizForm(ModelForm):
         if self.instance.is_submitted:
             self.fields['emp_answer_number'].widget.attrs['disabled'] = True
 
-class EmpDataForm(forms.Form):
+class EmpDataForm(ModelForm):
     class Meta:
         model = EmployeeData
         fields = ['emp_name','emp_dept','emp_mobile','emp_ext']
