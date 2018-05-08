@@ -144,15 +144,23 @@ def levels(request):
     }
     return render(request, 'ram/levels.html', context)
 
-def EmployeeData(request):
+def EmployeeDataView(request):
     emp = request.session.get('EmpID')
+    empName = request.session.get('EmpName')
+    empDept = request.session.get('DeptName')
+    empMobile = request.session.get('Mobile')
+    empExt = request.session.get('Ext')
     is_agree = Conditions.objects.filter(emp_id=emp)
     if not is_agree:
         return HttpResponseRedirect(reverse('ramadan:conditions'))
-
     form = EmpDataForm
+    
     if request.method == "POST":
+        form = EmpDataForm(request.POST)
         if form.is_valid():
+            employee = Employee.objects.get(empid=emp)
+            EmployeeData.objects.create(emp_id=employee)
+            form.save()
             return HttpResponseRedirect(reverse('ramadan:levels'))
     
     context = {"form":form}
