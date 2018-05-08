@@ -1,5 +1,6 @@
 from django.conf.urls import url ,include
 from ram import views
+from project.views import loginfromdrupal
 # from project.views import ProjectMembersListView
 #application namespace
 app_name = 'ramadan'
@@ -14,6 +15,7 @@ urlpatterns = [
     url(r'^levels/$', views.levels, name='levels'),
     url(r'^employee-data/$', views.EmployeeDataView, name='employee-data'),
     url(r'^conditions/$', views.conditions, name='conditions'),
+    url(r'^auth/(?P<email>.*)/(?P<signature>.*)/(?P<time>.*)/$', loginfromdrupal, name='loginfromdrupal'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
 ]

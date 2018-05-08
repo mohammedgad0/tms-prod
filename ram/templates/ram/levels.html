@@ -174,7 +174,7 @@
         {% endif %}
 
         <!-- inprogress period -->
-        {% if period == 2 and not if_p2_submitted%}
+        {% if period == 2 or period > 2 and not if_p2_submitted%}
         <div class="col-md-3">
            <div class="panel panel-primary">
               <div class="panel-heading">
@@ -239,7 +239,7 @@
        </div>
        {% endif %}
        <!-- inprogress period -->
-       {% if period == 3 and not if_p3_submitted%}
+       {% if period == 3 or period > 3 and not if_p3_submitted%}
        <div class="col-md-3">
           <div class="panel panel-primary">
              <div class="panel-heading">
