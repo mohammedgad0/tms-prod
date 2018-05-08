@@ -55,11 +55,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        {% if request.session.EmpName != null%}
-                                        {% render_field form.emp_name value=request.session.EmpName readonly='True' %}
-                                        {%else%}
-                                        {% render_field form.name %}
-                                        {%endif%}
+                                        {{form.emp_name}}
                                     </div>
                                 </div>
                             </div>
@@ -67,11 +63,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                        {% if request.session.DeptName != null%}
-                                        {% render_field form.emp_dept value=request.session.DeptName readonly='True' %}
-                                        {%else%}
-                                        {% render_field form.emp_dept %}
-                                        {%endif%}
+                                        {{form.emp_dept}}
                                     </div>
                                 </div>
                             </div>
@@ -79,22 +71,14 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-                                        {% if request.session.Mobile != null%}
-                                        {% render_field form.emp_mobile value=request.session.Mobile readonly='True' %}
-                                        {%else%}
-                                        {% render_field form.emp_mobile%}
-                                        {%endif%}
+                                        {{form.emp_mobile}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                            {% if request.session.Ext != null%}
-                                            {% render_field form.emp_ext value=request.session.Ext readonly='True' %}
-                                            {%else%}
-                                            {% render_field form.emp_ext%}
-                                            {%endif%}
+                                            {{form.emp_ext}}
                                         </div>
                                     </div>
                             </div>
@@ -118,6 +102,7 @@
                                 </div>
                             </div>
                         </fieldset>
+                       
                     </form>
                     </div>
                 </div>

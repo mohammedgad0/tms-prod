@@ -55,7 +55,7 @@ class QuizForm(ModelForm):
 class EmpDataForm(ModelForm):
     class Meta:
         model = EmployeeData
-        fields = ('emp_name','emp_dept','emp_mobile','emp_ext','emp_email')
+        fields = '__all__'
         widgets = {
             'emp_name':TextInput(attrs={'class': 'form-control form-group','placeholder':'الإسم الكامل'}),
             'emp_dept':TextInput(attrs={'class': "form-control",'placeholder':"الإدارة"}),
@@ -63,6 +63,7 @@ class EmpDataForm(ModelForm):
             'emp_ext':TextInput(attrs={'class': "form-control",'placeholder':"هاتف المكتب"}),
             'emp_email':TextInput(attrs={'class': "form-control",'placeholder':"بريد العمل الإلكتروني"}),
         }
+
 
 
 class conditionsForm(ModelForm):

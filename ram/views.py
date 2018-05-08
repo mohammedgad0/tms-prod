@@ -148,21 +148,22 @@ def levels(request):
 
 def EmployeeDataView(request):
     emp = request.session.get('EmpID')
-    empName = request.session.get('EmpName')
-    empDept = request.session.get('DeptName')
-    empMobile = request.session.get('Mobile')
-    empExt = request.session.get('Ext')
+    emp_mail = request.user.email
     is_agree = Conditions.objects.filter(emp_id=emp)
     if not is_agree:
         return HttpResponseRedirect(reverse('ramadan:conditions'))
+    if Employee.objects.get(email=emp_mail):
+        return HttpResponseRedirect(reverse('ramadan:levels'))
     form = EmpDataForm
     
     if request.method == "POST":
         form = EmpDataForm(request.POST)
         if form.is_valid():
+            print("is valid")
             employee = Employee.objects.get(empid=emp)
-            EmployeeData.objects.create(emp_id=employee)
-            form.save()
+            obj = form.save(commit=False)
+            obj.emp_id = employee
+            obj.save()
             return HttpResponseRedirect(reverse('ramadan:levels'))
 
     context = {"form":form}
