@@ -127,6 +127,12 @@ def EmployeeData(request):
 
 
 def conditions(request):
+    emp = request.session.get('EmpID')
+    is_agree = Conditions.objects.filter(emp_id=emp)
+    if len(is_agree) != 0:
+        print(len(is_agree))
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
+
     if request.method == "POST":
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
