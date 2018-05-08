@@ -53,10 +53,15 @@ class QuizForm(ModelForm):
             self.fields['emp_answer_number'].widget.attrs['disabled'] = True
 
 class EmpDataForm(forms.Form):
-    fullname = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control form-group",'placeholder':"الإسم الكامل"}),)
-    dept = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"الإدارة"}),)
-    email = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"البريد الإلكتروني"}),)
-    mobile = forms.CharField(max_length=254,widget=forms.TextInput(attrs={'class': "form-control",'placeholder':"الجوال"}),)
+    class Meta:
+        model = EmployeeData
+        fields = ['emp_name','emp_dept','emp_mobile','emp_ext']
+        widget = {
+            'emp_name':TextInput(attrs={'class': "form-control form-group",'placeholder':"الإسم الكامل"}),
+            'emp_dept':TextInput(attrs={'class': "form-control",'placeholder':"الإدارة"}),
+            'emp_mobile':TextInput(attrs={'class': "form-control",'placeholder':"البريد الإلكتروني"}),
+            'emp_ext':TextInput(attrs={'class': "form-control",'placeholder':"الجوال"}),
+        }
 
 
 class conditionsForm(ModelForm):
