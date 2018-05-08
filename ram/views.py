@@ -104,18 +104,45 @@ def quiz(request):
     return render(request, 'ram/quiz.html', context)
 
 def levels(request):
-    # period_1
-
-    # period_2
-
-    # period_3
+    #Check For Agreement
     emp = request.session.get('EmpID')
     is_agree = Conditions.objects.filter(emp_id=emp)
     if len(is_agree) == 0:
         print(len(is_agree))
         return HttpResponseRedirect(reverse('ramadan:conditions'))
+    # Get period
+    date = datetime.datetime.now()
+    period = get_period(date)
+    question = Questions.objects.all()
 
-    context = {}
+    # period_1
+    all_q_p1 = question.filter(period_no = 1).count()
+    emp_answer_p1 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 1,emp_answer_number__isnull=False).count()
+    emp_submitted_p1 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 1,emp_answer_number__isnull=False,is_submitted=1).count()
+    if_p1_submitted = False
+    if all_q_p1 == emp_submitted_p1:
+        if_p1_submitted = True
+    print(if_p1_submitted)
+
+    # period_2
+    all_q_p2 = question.filter(period_no = 2).count()
+    emp_answer_p1 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 2,emp_answer_number__isnull=False).count()
+    emp_submitted_p2 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 2,emp_answer_number__isnull=False,is_submitted=1).count()
+    if_p2_submitted = False
+    if all_q_p2 == emp_submitted_p2:
+        if_p2_submitted = True
+
+    # period_3
+    all_q_p3 = question.filter(period_no = 3).count()
+    emp_answer_p3 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 3,emp_answer_number__isnull=False).count()
+    emp_submitted_p3 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 3,emp_answer_number__isnull=False,is_submitted=1).count()
+    if_p3_submitted = False
+    if all_q_p3 == emp_submitted_p3:
+        if_p3_submitted = True
+
+    context = {'all_q_p1':all_q_p1, 'emp_answer_p1':emp_answer_p1,'emp_submitted_p1':emp_submitted_p1,
+    'period':period
+    }
     return render(request, 'ram/levels.html', context)
 
 def EmployeeData(request):
@@ -138,6 +165,6 @@ def conditions(request):
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
         Conditions.objects.create(emp_id=employee, is_agree= 1)
-        return HttpResponseRedirect(reverse('ramadan:levels'))
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
     context = {}
     return render(request,'ram/conditions.html',context)
