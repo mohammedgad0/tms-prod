@@ -162,26 +162,14 @@ def myuser(request, *args, **kwargs):
 
 @login_required
 def index(request):
+    URL = request.META.get('HTTP_REFERER')
+    print("this is url",URL)
     if request.user.is_authenticated():
         deptcode= request.session.get('DeptCode')
     if request.session.get('IsManager'):
         return HttpResponseRedirect(reverse('ns-project:dept-sheet' ,kwargs={'deptcode': deptcode}))
     else:
         return HttpResponseRedirect(reverse('ns-project:my-sheet'))
-    # if request.user.is_authenticated():
-    #     email = request.user.email
-    #     emp = Employee.objects.filter(email= email)
-    # # Get all data filtered by user email and set in session
-    #     for data in emp:
-    #         request.session['EmpID'] = data.empid
-    #         request.session['EmpName'] = data.empname
-    #         request.session['DeptName'] = data.deptname
-    #         request.session['Mobile'] = data.mobile
-    #         request.session['DeptCode'] = data.deptcode
-    # Populate User From Ldap Without Login
-    # from django_auth_ldap.backend import LDAPBackend
-    # ldap_backend = LDAPBackend()
-    # ldap_backend.populate_user('aalbatil@stats.gov.sa')
     if request.user.is_authenticated():
         emp = get_object_or_404(Employee, empid = request.session.get('empid'))
     if emp.ismanager == 1:
@@ -207,7 +195,6 @@ def gentella_html(request):
 @login_required
 @permission_required('project.add_sheet',raise_exception=True)
 def MySheet(request):
-
     EmpID = 0
     if request.user.is_authenticated():
         EmpID = request.session.get('EmpID',1)
@@ -374,10 +361,10 @@ def DeptsnoSheets(request):
         _plist = paginator.page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
-        _plist = paginator.page(paginator.num_pages) 
+        _plist = paginator.page(paginator.num_pages)
 
 
-    count =  (len(all_dept))    
+    count =  (len(all_dept))
     context = {"total_count":_plist,"count":count,"start_date":start_date,"end_date":end_date}
     return render(request, 'project/sheet_no_departments.html',context )
 
@@ -455,7 +442,7 @@ def AllDepts(request):
         _plist = paginator.page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
-        _plist = paginator.page(paginator.num_pages) 
+        _plist = paginator.page(paginator.num_pages)
 
 
     count =  (len(total_count))
@@ -616,7 +603,7 @@ def UpdateSheet(request,empid):
 
                     obj.submittedby = request.session['EmpID']
                     obj.submitteddate = datetime.now()
-                    
+
                     if obj.submit is True and submit == '1':
                         obj.submit = False
                         obj.ifsubmitted = '1'
@@ -624,7 +611,7 @@ def UpdateSheet(request,empid):
                     if obj.submit is True and submit == '2':
                         obj.submit = False
                         obj.ifsubmitted ='2'
-                        obj.status = '3' 
+                        obj.status = '3'
                     obj.submit = False
                     obj.save()
                 return HttpResponseRedirect(reverse('ns-project:update-sheet', kwargs={'empid':empid} ))
@@ -715,7 +702,7 @@ def _ecport_toexcel(all_emp):
     emp_list = set(emp_list)
     all_emp = Employee.objects.exclude(Q(empid__in = emp_list)|
         Q(ismanager = 1)
-        )   
+        )
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Users')
 
@@ -910,7 +897,7 @@ def EmployeeNoSheet(request):
     # all_emp = all_emp.filter(sexcode=1)
     all_emp_1 = all_emp
     export = request.GET.get("export")
- 
+
     cache.set('all_emp',all_emp)
 
     paginator = Paginator(all_emp, 20) # Show 5 contacts per page
@@ -963,7 +950,7 @@ def EmpnotFinished(request):
             Q(taskdate__gte=end, createddate__lte=start)|
             Q(taskdate__lte=end , taskdate__gte=start)|
             Q(createddate__lte=end , createddate__gte=start)
-            )        
+            )
 
     #Fix date format
     start_date = start_date.strftime('%Y-%m-%d')
@@ -983,7 +970,7 @@ def EmpnotFinished(request):
         _plist = paginator.page(paginator.num_pages)
     count =  (len(sheets))
     context ={"sheets":_plist,'count':count,"start_date":start_date,"end_date":end_date,}
-    return render(request, 'project/sheet_not_finished.html', context) 
+    return render(request, 'project/sheet_not_finished.html', context)
 
 @login_required
 def AddSheet(request):
