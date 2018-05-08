@@ -82,9 +82,11 @@
 <div class="bg-img">
    <div class="right_col" role="main">
       <!-- top tiles -->
+
       <div class="row">
           <!-- Start period one -->
-          <!-- compelete period -->
+          <!-- complete period -->
+          {% if if_p1_submitted %}
          <div class="col-md-3">
             <div class="panel panel-primary">
                <div class="panel-heading">
@@ -103,18 +105,20 @@
                </div>
             </div>
          </div>
+          {% endif %}
          <!-- inprogress period -->
+         {% if period == 1 or period > 1 and not if_p1_submitted%}
          <div class="col-md-3">
             <div class="panel panel-primary">
                <div class="panel-heading">
-                  <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثانية
+                  <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
                </div>
                <div class="panel-body text-center" style="background-color: #494693">
                   <div class="ansewrs-num">
                      <div class="answer-text">
                         <span>
                         أجبت على<br>
-                        <span>3 / 8</span>
+                        <span>{{emp_answer_p1}} / {{all_q_p1}}</span>
                         </span>
                      </div>
                   </div>
@@ -122,11 +126,13 @@
                </div>
             </div>
          </div>
+         {% endif %}
          <!-- not start period -->
+         {% if period != 1 and period < 1 %}
          <div class="col-md-3">
             <div class="panel panel-primary">
                <div class="panel-heading">
-                  <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثالثة
+                  <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
                </div>
                <div class="panel-body text-center" style="background-color: #30b0b1">
                   <div class="ansewrs-num">
@@ -141,14 +147,16 @@
                </div>
             </div>
          </div>
+         {% endif %}
          <!--End period one -->
 
          <!-- Start period two -->
          <!-- compelete period -->
+         {% if if_p2_submitted %}
         <div class="col-md-3">
            <div class="panel panel-primary">
               <div class="panel-heading">
-                 <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
+                 <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثانية
               </div>
               <div class="panel-body text-center" style="background-color: #40a880">
                  <div class="ansewrs-num">
@@ -163,7 +171,10 @@
               </div>
            </div>
         </div>
+        {% endif %}
+
         <!-- inprogress period -->
+        {% if period == 2 and not if_p2_submitted%}
         <div class="col-md-3">
            <div class="panel panel-primary">
               <div class="panel-heading">
@@ -174,7 +185,7 @@
                     <div class="answer-text">
                        <span>
                        أجبت على<br>
-                       <span>3 / 8</span>
+                         <span>{{emp_answer_p2}} / {{all_q_p2}}</span>
                        </span>
                     </div>
                  </div>
@@ -182,11 +193,13 @@
               </div>
            </div>
         </div>
+        {% endif %}
         <!-- not start period -->
+        {% if period != 2%}
         <div class="col-md-3">
            <div class="panel panel-primary">
               <div class="panel-heading">
-                 <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثالثة
+                 <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثانية
               </div>
               <div class="panel-body text-center" style="background-color: #30b0b1">
                  <div class="ansewrs-num">
@@ -201,15 +214,15 @@
               </div>
            </div>
         </div>
+        {% endif %}
         <!--End period two -->
-
-
         <!-- Start period three -->
         <!-- compelete period -->
+        {% if if_p3_submitted %}
        <div class="col-md-3">
           <div class="panel panel-primary">
              <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
+                <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثالثة
              </div>
              <div class="panel-body text-center" style="background-color: #40a880">
                 <div class="ansewrs-num">
@@ -224,18 +237,20 @@
              </div>
           </div>
        </div>
+       {% endif %}
        <!-- inprogress period -->
+       {% if period == 3 and not if_p3_submitted%}
        <div class="col-md-3">
           <div class="panel panel-primary">
              <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثانية
+                <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثالثة
              </div>
              <div class="panel-body text-center" style="background-color: #494693">
                 <div class="ansewrs-num">
                    <div class="answer-text">
                       <span>
                       أجبت على<br>
-                      <span>3 / 8</span>
+                      <span>{{emp_answer_p3}} / {{all_q_p3}}</span>
                       </span>
                    </div>
                 </div>
@@ -243,7 +258,9 @@
              </div>
           </div>
        </div>
+       {% endif %}
        <!-- not start period -->
+       {% if period != 3%}
        <div class="col-md-3">
           <div class="panel panel-primary">
              <div class="panel-heading">
@@ -262,6 +279,7 @@
              </div>
           </div>
        </div>
+       {% endif %}
        <!--End period three -->
 
       </div>
