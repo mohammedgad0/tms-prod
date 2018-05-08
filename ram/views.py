@@ -125,12 +125,12 @@ def levels(request):
 
     # period_2
     all_q_p2 = question.filter(period_no = 2).count()
-    emp_answer_p1 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 2,emp_answer_number__isnull=False).count()
+    emp_answer_p2  = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 2,emp_answer_number__isnull=False).count()
     emp_submitted_p2 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 2,emp_answer_number__isnull=False,is_submitted=1).count()
     if_p2_submitted = False
     if all_q_p2 == emp_submitted_p2:
         if_p2_submitted = True
-
+    print(if_p2_submitted)
     # period_3
     all_q_p3 = question.filter(period_no = 3).count()
     emp_answer_p3 = EmployeeAnswer.objects.filter(emp_id = emp , question_no__period_no = 3,emp_answer_number__isnull=False).count()
@@ -139,7 +139,9 @@ def levels(request):
     if all_q_p3 == emp_submitted_p3:
         if_p3_submitted = True
 
-    context = {'all_q_p1':all_q_p1, 'emp_answer_p1':emp_answer_p1,'emp_submitted_p1':emp_submitted_p1,
+    context = {'all_q_p1':all_q_p1, 'emp_answer_p1':emp_answer_p1,'emp_submitted_p1':emp_submitted_p1,'if_p1_submitted':if_p1_submitted,
+    'all_q_p2':all_q_p2, 'emp_answer_p2':emp_answer_p2,'emp_submitted_p2':emp_submitted_p2,'if_p2_submitted':if_p2_submitted,
+    'all_q_p3':all_q_p3, 'emp_answer_p3':emp_answer_p3,'emp_submitted_p3':emp_submitted_p3,'if_p3_submitted':if_p3_submitted,
     'period':period
     }
     return render(request, 'ram/levels.html', context)
@@ -162,7 +164,7 @@ def EmployeeDataView(request):
             EmployeeData.objects.create(emp_id=employee)
             form.save()
             return HttpResponseRedirect(reverse('ramadan:levels'))
-    
+
     context = {"form":form}
     return render(request, 'ram/EmployeeData.html', context)
 
