@@ -17,6 +17,7 @@ def get_period(date):
     except:
         period = 5
     return period
+    
 def index(request):
     print (request.session.get('EmpID'))
     # employee = Employee.objects.get(empid = request.session.get('empid'))
@@ -122,19 +123,13 @@ def EmployeeData(request):
 
 
 def conditions(request):
-<<<<<<< HEAD
-
-
     if request.method == "POST":
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
         Conditions.objects.create(emp_id=employee, is_agree= 1)
         return HttpResponseRedirect(reverse('ramadan:levels'))
-
     context = {}
     return render(request,'ram/conditions.html',context)
-=======
     form = conditions(request.POST)
     context = {'form':form}
     return render(request,'ram/conditions.html',context)
->>>>>>> 367b2712731f49c6c805abc20836daa5cd0db5f4
