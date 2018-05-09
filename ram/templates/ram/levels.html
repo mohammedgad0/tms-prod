@@ -58,16 +58,14 @@
    }
    .right_col{
    padding-top: 13% !important;
+   margin-right: 0 !important;
    }
    .bg-img::before{
    content: ' ';
    display: block;
    position: absolute;
-   right: 10%;
-   top: 6% !important;
-   width: 90%;
-   height: 94%;
-   top: inherit;
+   width: 100%;
+   height: 100%;
    z-index: 0;
    opacity: 0.1;
    background-image: url("{%static 'images/ram.jpg' %}") !important;
@@ -78,6 +76,48 @@
    -webkit-background-size: 100%;
    background-size: 100%;
    }
+   
+.led-red {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 auto;
+  width: 65px;
+  height: 24px;
+  background-color: #F00;
+  border-radius: 12%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+  -webkit-animation: blinkRed 0.5s infinite;
+  -moz-animation: blinkRed 0.5s infinite;
+  -ms-animation: blinkRed 0.5s infinite;
+  -o-animation: blinkRed 0.5s infinite;
+  animation: blinkRed 0.5s infinite;
+}
+
+@-webkit-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-moz-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-ms-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-o-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
 </style>
 <div class="bg-img">
    <div class="right_col" role="main">
@@ -112,6 +152,7 @@
             <div class="panel panel-primary">
                <div class="panel-heading">
                   <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
+                      <div class="led-red pull-left text-center">غير مرسل</div>
                </div>
                <div class="panel-body text-center" style="background-color: #494693">
                   <div class="ansewrs-num">

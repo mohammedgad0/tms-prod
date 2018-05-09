@@ -1,8 +1,22 @@
 {% load i18n %}
-<div class="nav_menu">
+<style>
+  .top_nav{
+        position: relative;
+        z-index: 1;
+        margin-right: 0 !important;
+    }
+    .nav-md .container.body .right_col {
+    margin-right: 0;
+}
+</style>
+<div class="nav_menu" style="padding-right: 20px">
   <nav>
-    <div class="nav toggle">
-      <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+    <div class="nav navbar-brand">
+      <a>
+        <p style="font-weight: bold">
+            المسابقة الرمضانية لعام 1439 هـ -2018
+        </p>
+      </a>
     </div>
 <!-- <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}" />
@@ -18,7 +32,7 @@
     </select>
     <input type="submit" value="Go" />
 </form> -->
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" style="width: auto">
       <li class="">
         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <img src="/static/images/user.png" alt="">
