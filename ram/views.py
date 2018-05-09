@@ -43,7 +43,7 @@ def index(request):
     # EmployeeAnswer.objects.create(emp_id=employee, question_no= question)
     form = QuizForm
     context = {'form':form}
-    return render(request, 'ram/home.html', context)
+    return HttpResponseRedirect(reverse('ramadan:levels'))
 
 # def quiz(request):
 #     # quiz = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
@@ -97,7 +97,7 @@ def quiz(request):
                     print(instances.emp_answer_number)
                     instances.is_submitted = 1
                     instances.save()
-        return HttpResponseRedirect(reverse('ramadan:quiz'))
+        return HttpResponseRedirect(reverse('ramadan:levels'))
     else:
         formset = formset
     context = {'form':formset}
@@ -155,7 +155,7 @@ def EmployeeDataView(request):
     if Employee.objects.get(email=emp_mail):
         return HttpResponseRedirect(reverse('ramadan:levels'))
     form = EmpDataForm
-    
+
     if request.method == "POST":
         form = EmpDataForm(request.POST)
         if form.is_valid():

@@ -107,7 +107,7 @@
          </div>
           {% endif %}
          <!-- inprogress period -->
-         {% if period == 1 or period > 1 and not if_p1_submitted%}
+         {% if period == 1 and not if_p1_submitted or period > 1 and not if_p1_submitted%}
          <div class="col-md-3">
             <div class="panel panel-primary">
                <div class="panel-heading">
@@ -122,7 +122,7 @@
                         </span>
                      </div>
                   </div>
-                  <a href="#" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                  <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
                </div>
             </div>
          </div>
@@ -174,7 +174,7 @@
         {% endif %}
 
         <!-- inprogress period -->
-        {% if period == 2 or period > 2 and not if_p2_submitted%}
+        {% if period == 2 and not if_p2_submitted or period > 2 and not if_p2_submitted%}
         <div class="col-md-3">
            <div class="panel panel-primary">
               <div class="panel-heading">
@@ -189,7 +189,7 @@
                        </span>
                     </div>
                  </div>
-                 <a href="#" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                 <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
               </div>
            </div>
         </div>
@@ -239,7 +239,7 @@
        </div>
        {% endif %}
        <!-- inprogress period -->
-       {% if period == 3 or period > 3 and not if_p3_submitted%}
+       {% if period == 3 and not if_p3_submitted  or period > 3 and not if_p3_submitted%}
        <div class="col-md-3">
           <div class="panel panel-primary">
              <div class="panel-heading">
@@ -254,7 +254,7 @@
                       </span>
                    </div>
                 </div>
-                <a href="#" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
              </div>
           </div>
        </div>

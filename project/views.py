@@ -35,6 +35,12 @@ class BaseSheetFormSet(BaseModelFormSet):
 
 
 def loginfromdrupal(request, email,signature,time):
+    from django.urls import resolve
+    current_url = resolve(request.path_info).namespaces
+    if current_url:
+        request.session['current_url'] = current_url
+    print ("current url" ,current_url)
+
     from django.contrib.auth import login
     import getpass
     import datetime
@@ -70,54 +76,55 @@ def loginfromdrupal(request, email,signature,time):
     current_ip = request.META.get('REMOTE_ADDR')
     """" Get url from"""
     URL = request.META.get('HTTP_REFERER')
+    print (URL)
     referer = None
     if URL:
         referer= URL.split("/")[2]
     if referer == 'portal.stats.gov.sa':
-        if current_ip in ip:
-        #     if time == time_now or time == date_after_minute:
-            username = mail
-            try:
-                user = User.objects.get(username=username)
-                #manually set the backend attribute
-                user.backend = 'django.contrib.auth.backends.ModelBackend'
-                login(request, user)
-            except User.DoesNotExist:
-                from django_auth_ldap.backend import LDAPBackend
-                ldap_backend = LDAPBackend()
-                ldap_backend.populate_user(username)
-                # return HttpResponseRedirect(reverse('login'))
-            try:
-                user = User.objects.get(username=username)
-                #manually set the backend attribute
-                user.backend = 'django.contrib.auth.backends.ModelBackend'
-                login(request, user)
-            except User.DoesNotExist:
-                return HttpResponseRedirect(reverse('login'))
-            if request.user.is_authenticated():
-                email = request.user.email
-                emp = Employee.objects.filter(email= email)
-            # Get all data filtered by user email and set in session
-                for data in emp:
-                    request.session['EmpID'] = data.empid
-                    request.session['EmpName'] = data.empname
-                    request.session['DeptName'] = data.deptname
-                    request.session['Mobile'] = data.mobile
-                    request.session['DeptCode'] = data.deptcode
-                    request.session['JobTitle'] = data.jobtitle
-                    request.session['IsManager'] = data.ismanager
-                if emp:
-                    if data.ismanager == 1:
-                        g = Group.objects.get(name='ismanager')
-                        g.user_set.add(request.user.id)
-                    else:
-                        g = Group.objects.get(name='employee')
-                        g.user_set.add(request.user.id)
-                # if not emp:
-                #     g = Group.objects.get(name='employee')
-                #     g.user_set.add(request.user.id)
-            else:
-                return HttpResponseRedirect(reverse('login'))
+    # if current_ip in ip:
+    #     if time == time_now or time == date_after_minute:
+        username = mail
+        try:
+            user = User.objects.get(username=username)
+            #manually set the backend attribute
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            login(request, user)
+        except User.DoesNotExist:
+            from django_auth_ldap.backend import LDAPBackend
+            ldap_backend = LDAPBackend()
+            ldap_backend.populate_user(username)
+            # return HttpResponseRedirect(reverse('login'))
+        try:
+            user = User.objects.get(username=username)
+            #manually set the backend attribute
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            login(request, user)
+        except User.DoesNotExist:
+            return HttpResponseRedirect(reverse('login'))
+        if request.user.is_authenticated():
+            email = request.user.email
+            emp = Employee.objects.filter(email= email)
+        # Get all data filtered by user email and set in session
+            for data in emp:
+                request.session['EmpID'] = data.empid
+                request.session['EmpName'] = data.empname
+                request.session['DeptName'] = data.deptname
+                request.session['Mobile'] = data.mobile
+                request.session['DeptCode'] = data.deptcode
+                request.session['JobTitle'] = data.jobtitle
+                request.session['IsManager'] = data.ismanager
+            if emp:
+                if data.ismanager == 1:
+                    g = Group.objects.get(name='ismanager')
+                    g.user_set.add(request.user.id)
+                else:
+                    g = Group.objects.get(name='employee')
+                    g.user_set.add(request.user.id)
+            # if not emp:
+            #     g = Group.objects.get(name='employee')
+            #     g.user_set.add(request.user.id)
+        else:
+            return HttpResponseRedirect(reverse('login'))
     else:
         return HttpResponseRedirect(reverse('login'))
 
@@ -162,8 +169,11 @@ def myuser(request, *args, **kwargs):
 
 @login_required
 def index(request):
-    URL = request.META.get('HTTP_REFERER')
-    print("this is url",URL)
+    current_url = request.session.get('current_url')
+    if current_url:
+        if 'ramadan' in current_url:
+            print('ramadan login')
+            return HttpResponseRedirect(reverse('ramadan:index'))
     if request.user.is_authenticated():
         deptcode= request.session.get('DeptCode')
     if request.session.get('IsManager'):

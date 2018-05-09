@@ -54,7 +54,7 @@ class Conditions(models.Model):
     class Meta:
         managed = True
         db_table = 'RAM_CONDITIONS'
-        
+
 class EmployeeData(models.Model):
     emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID',null=True,blank=True)
     emp_name = models.CharField(db_column='EMP_NAME',blank=True, null=True,max_length=150)
