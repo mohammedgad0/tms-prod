@@ -52,7 +52,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fas fa-address-card"></i></span>
-                                        {{form.emp_id}}
+                                        {{form.emp_id}}{{form.emp_id.errors}}
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        {{form.emp_name}}
+                                        {{form.emp_name}}  {{form.emp_name.errors}}
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                        {{form.emp_dept}}
+                                        {{form.emp_dept}}{{form.emp_dept.errors}}
                                     </div>
                                 </div>
                             </div>
@@ -76,14 +76,14 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-mobile" style="font-size: 26px;"></i></span>
-                                        {{form.emp_mobile}}
+                                        {{form.emp_mobile}}{{form.emp_mobile.errors}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                            {{form.emp_ext}}
+                                            {{form.emp_ext}}  {{form.emp_ext.errors}}
                                         </div>
                                     </div>
                             </div>
@@ -96,18 +96,19 @@
                                         {%else%}
                                         {% render_field form.emp_email%}
                                         {%endif%}
+                                        {{form.emp_email.errors}}
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary">دخول إلى المسابقة <i class="fa fa-play-circle"></i>
-        
+
                                     </span></button>
                                 </div>
                             </div>
                         </fieldset>
-                       
+
                     </form>
                     </div>
                 </div>
