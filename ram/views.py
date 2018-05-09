@@ -8,6 +8,7 @@ from django.http import HttpResponse ,HttpResponseRedirect,Http404 ,HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import Group , User
 from django.contrib.auth.views import *
+from project.forms import BootstrapAuthenticationForm
 # Create your views here.
 
 
@@ -192,6 +193,11 @@ def EmployeeDataView(request):
 
 def myuser(request, *args, **kwargs):
     if request.method == "POST":
+        from django.urls import resolve
+        current_url = resolve(request.path_info).namespaces
+        if current_url:
+            request.session['current_url'] = current_url
+        print ("current url" ,current_url)
         form = BootstrapAuthenticationForm(request, data=request.POST)
         emp = None
         if form.is_valid():
