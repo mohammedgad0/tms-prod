@@ -27,7 +27,7 @@ MESSAGE_TAGS = {
 }
 LOGOUT_REDIRECT_URL = 'login'
 
-LOGIN_REDIRECT_URL = '/project/my_sheet'
+LOGIN_REDIRECT_URL = 'ns-project:index'
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000
 # Quick-start development settings - unsuitable for production
