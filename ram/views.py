@@ -6,7 +6,8 @@ from django.db.models import Q
 from datetime import timedelta
 from django.http import HttpResponse ,HttpResponseRedirect,Http404 ,HttpResponseForbidden
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.models import Group , User
+from django.contrib.auth.views import *
 # Create your views here.
 
 
@@ -189,6 +190,39 @@ def EmployeeDataView(request):
     context = {"form":form}
     return render(request, 'ram/EmployeeData.html', context)
 
+def myuser(request, *args, **kwargs):
+    if request.method == "POST":
+        form = BootstrapAuthenticationForm(request, data=request.POST)
+        emp = None
+        if form.is_valid():
+          auth_login(request, form.get_user())
+            # email = None
+        if request.user.is_authenticated():
+            email = request.user.email
+            emp = Employee.objects.filter(email= email)
+        # Get all data filtered by user email and set in session
+            for data in emp:
+                request.session['EmpID'] = data.empid
+                request.session['EmpName'] = data.empname
+                request.session['DeptName'] = data.deptname
+                request.session['Mobile'] = data.mobile
+                request.session['DeptCode'] = data.deptcode
+                request.session['JobTitle'] = data.jobtitle
+                request.session['IsManager'] = data.ismanager
+            if emp:
+                if data.ismanager == 1:
+                    g = Group.objects.get(name='ismanager')
+                    g.user_set.add(request.user.id)
+                else:
+                    g = Group.objects.get(name='employee')
+                    g.user_set.add(request.user.id)
+            # if not emp:
+            #     g = Group.objects.get(name='employee')
+            #     g.user_set.add(request.user.id)
+
+        else:
+            return login(request, *args, **kwargs)
+    return login(request, *args, **kwargs)
 
 def conditions(request):
     emp = request.session.get('EmpID')
