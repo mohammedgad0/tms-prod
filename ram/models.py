@@ -59,7 +59,7 @@ class EmployeeData(models.Model):
     emp_id = models.CharField(db_column='EMP_ID',max_length=50, null=True,blank=True)
     emp_name = models.CharField(db_column='EMP_NAME',blank=True, null=True,max_length=150)
     emp_dept = models.CharField(db_column='EMP_DEPT',blank=True, null=True,max_length=150)
-    emp_mobile = models.CharField(db_column='EMP_MOBILE',blank=True, null=True,max_length=15)
+    emp_mobile = models.CharField(db_column='EMP_MOBILE',blank=True, null=True,max_length=10)
     emp_email = models.CharField(db_column='EMP_EMAIL',blank=True, null=True,max_length=50)
     emp_ext = models.CharField(db_column='EMP_EXT',blank=True, null=True,max_length=4)
 
