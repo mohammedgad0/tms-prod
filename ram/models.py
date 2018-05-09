@@ -56,7 +56,6 @@ class Conditions(models.Model):
         db_table = 'RAM_CONDITIONS'
 
 class EmployeeData(models.Model):
-    emp_id = models.ForeignKey('project.Employee' , to_field = 'empid' , db_column='EMP_ID',null=True,blank=True)
     emp_name = models.CharField(db_column='EMP_NAME',blank=True, null=True,max_length=150)
     emp_dept = models.CharField(db_column='EMP_DEPT',blank=True, null=True,max_length=150)
     emp_mobile = models.CharField(db_column='EMP_MOBILE',blank=True, null=True,max_length=15)

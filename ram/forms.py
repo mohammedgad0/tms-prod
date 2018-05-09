@@ -57,11 +57,11 @@ class EmpDataForm(ModelForm):
         model = EmployeeData
         fields = '__all__'
         widgets = {
-            'emp_name':TextInput(attrs={'class': 'form-control form-group','placeholder':'الإسم الكامل'}),
-            'emp_dept':TextInput(attrs={'class': "form-control",'placeholder':"الإدارة"}),
-            'emp_mobile':TextInput(attrs={'class': "form-control",'placeholder':"الجوال"}),
-            'emp_ext':TextInput(attrs={'class': "form-control",'placeholder':"هاتف المكتب"}),
-            'emp_email':TextInput(attrs={'class': "form-control",'placeholder':"بريد العمل الإلكتروني"}),
+            'emp_name':TextInput(attrs={'class': 'form-control form-group','placeholder':'الإسم الكامل','required':True}),
+            'emp_dept':TextInput(attrs={'class': "form-control",'placeholder':"الإدارة",'required':True}),
+            'emp_mobile':TextInput(attrs={'class': "form-control",'placeholder':"الجوال",'required':True}),
+            'emp_ext':TextInput(attrs={'class': "form-control",'placeholder':"هاتف المكتب",'required':True}),
+            'emp_email':TextInput(attrs={'class': "form-control",'placeholder':"بريد العمل الإلكتروني",'required':True}),
         }
 
 
