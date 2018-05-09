@@ -76,7 +76,7 @@
    -webkit-background-size: 100%;
    background-size: 100%;
    }
-   
+
 .led-red {
   font-size: 15px;
   font-weight: bold;
@@ -152,7 +152,9 @@
             <div class="panel panel-primary">
                <div class="panel-heading">
                   <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الأولى
+                  {% if not if_p1_submitted and emp_answer_p1 == all_q_p1 %}
                       <div class="led-red pull-left text-center">غير مرسل</div>
+                      {% endif %}
                </div>
                <div class="panel-body text-center" style="background-color: #494693">
                   <div class="ansewrs-num">
@@ -163,7 +165,11 @@
                         </span>
                      </div>
                   </div>
+                  {% if  period > 1 %}
+                  <a href="#" class="btn btn-default btn-block disabled">مرحلة منتهية</a>
+                  {% else %}
                   <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                  {% endif %}
                </div>
             </div>
          </div>
@@ -220,6 +226,9 @@
            <div class="panel panel-primary">
               <div class="panel-heading">
                  <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثانية
+                 {% if not if_p2_submitted and emp_answer_p2 == all_q_p2 %}
+                     <div class="led-red pull-left text-center">غير مرسل</div>
+                     {% endif %}
               </div>
               <div class="panel-body text-center" style="background-color: #494693">
                  <div class="ansewrs-num">
@@ -230,13 +239,17 @@
                        </span>
                     </div>
                  </div>
+                 {% if  period > 2 %}
+                 <a href="#" class="btn btn-default btn-block disabled">مرحلة منتهية</a>
+                 {% else %}
                  <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                 {% endif %}
               </div>
            </div>
         </div>
         {% endif %}
         <!-- not start period -->
-        {% if period != 2%}
+        {% if period != 2 and period < 2 %}
         <div class="col-md-3">
            <div class="panel panel-primary">
               <div class="panel-heading">
@@ -285,6 +298,9 @@
           <div class="panel panel-primary">
              <div class="panel-heading">
                 <i class="fa fa-bar-chart-o fa-fw"></i> المرحلة الثالثة
+                {% if not if_p3_submitted and emp_answer_p3 == all_q_p3 %}
+                    <div class="led-red pull-left text-center">غير مرسل</div>
+                    {% endif %}
              </div>
              <div class="panel-body text-center" style="background-color: #494693">
                 <div class="ansewrs-num">
@@ -295,13 +311,17 @@
                       </span>
                    </div>
                 </div>
+                {% if  period > 3 %}
+                <a href="#" class="btn btn-default btn-block disabled">مرحلة منتهية</a>
+                {% else %}
                 <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
+                {% endif %}
              </div>
           </div>
        </div>
        {% endif %}
        <!-- not start period -->
-       {% if period != 3%}
+       {% if period != 3 and period < 3 %}
        <div class="col-md-3">
           <div class="panel panel-primary">
              <div class="panel-heading">

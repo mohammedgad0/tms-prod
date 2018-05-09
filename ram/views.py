@@ -19,6 +19,7 @@ def get_period(date):
     return period
 
 def index(request):
+    """ Set Question based on Emplyee and period """
     print (request.session.get('EmpID'))
     # employee = Employee.objects.get(empid = request.session.get('empid'))
     employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
@@ -90,12 +91,12 @@ def quiz(request):
                 instances = formset.save(commit=False)
                 for obj in instances:
                     print(obj.emp_answer_number)
-
                     obj.is_submitted = 1
                 for form in formset:
                     instances = form.instance
                     print(instances.emp_answer_number)
-                    instances.is_submitted = 1
+                    if instances.emp_answer_number:
+                        instances.is_submitted = 1
                     instances.save()
         return HttpResponseRedirect(reverse('ramadan:levels'))
     else:
@@ -104,7 +105,26 @@ def quiz(request):
     return render(request, 'ram/quiz.html', context)
 
 def levels(request):
-    #Check For Agreement
+    """ Set Question based on Emplyee and period """
+    print (request.session.get('EmpID'))
+    # employee = Employee.objects.get(empid = request.session.get('empid'))
+    employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
+    question = get_object_or_404(Questions, question_no = 1)
+    all_emp_question_list = set()
+    all_emp_question = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
+    date = datetime.datetime.now()
+    # date = date + timedelta(days=10)
+    period = get_period(date)
+    for item in all_emp_question:
+        all_emp_question_list.add(item.question_no.question_no)
+    questions = Questions.objects.filter(
+    Q(period_no = period)&
+    ~Q(question_no__in= all_emp_question_list))
+    for item in questions:
+        q_no = Questions.objects.get(question_no= item.question_no)
+        EmployeeAnswer.objects.create(emp_id=employee, question_no= q_no)
+
+    # Check For Agreement
     emp = request.session.get('EmpID')
     is_agree = Conditions.objects.filter(emp_id=emp)
     if not is_agree:
