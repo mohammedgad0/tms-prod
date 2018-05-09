@@ -22,6 +22,14 @@ def get_period(date):
 
 def index(request):
     """ Set Question based on Emplyee and period """
+    em_email = request.user.email
+    is_employee = Employee.objects.filter(email=em_email)
+    is_contractor = EmployeeData.objects.filter(emp_email=em_email)
+    if not is_employee or not is_contractor:
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
+    else:
+        return HttpResponseRedirect(reverse('ramadan:conditions'))
+
     print (request.session.get('EmpID'))
     # employee = Employee.objects.get(empid = request.session.get('empid'))
     employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
@@ -109,8 +117,14 @@ def quiz(request):
 def levels(request):
     """ Set Question based on Emplyee and period """
     print (request.session.get('EmpID'))
-    # employee = Employee.objects.get(empid = request.session.get('empid'))
-    employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
+    em_email = request.user.email
+    is_employee = Employee.objects.filter(email=em_email)
+    is_contractor = EmployeeData.objects.filter(emp_email=em_email)
+    if is_employee:
+        employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
+    elif is_contractor:
+        employee =  get_object_or_404(EmployeeData, emp_email = em_email)
+    # employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
     question = get_object_or_404(Questions, question_no = 1)
     all_emp_question_list = set()
     all_emp_question = EmployeeAnswer.objects.filter(emp_id = request.session.get('EmpID'))
@@ -169,23 +183,15 @@ def levels(request):
     return render(request, 'ram/levels.html', context)
 
 def EmployeeDataView(request):
-    emp = request.session.get('EmpID')
     emp_mail = request.user.email
-    is_agree = Conditions.objects.filter(emp_id=emp)
-    if not is_agree:
-        return HttpResponseRedirect(reverse('ramadan:conditions'))
-    if Employee.objects.get(email=emp_mail):
-        return HttpResponseRedirect(reverse('ramadan:levels'))
+
     form = EmpDataForm
 
     if request.method == "POST":
         form = EmpDataForm(request.POST)
         if form.is_valid():
             print("is valid")
-            employee = Employee.objects.get(empid=emp)
-            obj = form.save(commit=False)
-            obj.emp_id = employee
-            obj.save()
+            form.save()
             return HttpResponseRedirect(reverse('ramadan:levels'))
 
     context = {"form":form}

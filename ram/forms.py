@@ -57,6 +57,7 @@ class EmpDataForm(ModelForm):
         model = EmployeeData
         fields = '__all__'
         widgets = {
+            'emp_id':TextInput(attrs={'class': 'form-control form-group','placeholder':'رقم الهوية','required':True}),
             'emp_name':TextInput(attrs={'class': 'form-control form-group','placeholder':'الإسم الكامل','required':True}),
             'emp_dept':TextInput(attrs={'class': "form-control",'placeholder':"الإدارة",'required':True}),
             'emp_mobile':TextInput(attrs={'class': "form-control",'placeholder':"الجوال",'required':True}),
