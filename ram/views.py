@@ -25,7 +25,7 @@ def index(request):
     em_email = request.user.email
     is_employee = Employee.objects.filter(email=em_email)
     is_contractor = EmployeeData.objects.filter(emp_email=em_email)
-    if not is_employee or not is_contractor:
+    if not is_employee and not is_contractor:
         return HttpResponseRedirect(reverse('ramadan:employee-data'))
     else:
         return HttpResponseRedirect(reverse('ramadan:conditions'))
@@ -183,8 +183,11 @@ def levels(request):
     return render(request, 'ram/levels.html', context)
 
 def EmployeeDataView(request):
-    emp_mail = request.user.email
+    em_email = request.user.email
+    is_employee = Employee.objects.filter(email=em_email)
 
+    if is_employee:
+        return HttpResponseRedirect(reverse('ramadan:conditions'))
     form = EmpDataForm
 
     if request.method == "POST":
