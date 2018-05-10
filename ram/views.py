@@ -119,11 +119,11 @@ def levels(request):
     print (request.session.get('EmpID'))
     em_email = request.user.email
     is_employee = Employee.objects.filter(email=em_email)
+    if not is_employee:
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
     is_contractor = EmployeeData.objects.filter(emp_email=em_email)
     if is_employee:
         employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
-    elif is_contractor:
-        employee =  get_object_or_404(EmployeeData, emp_email = em_email)
     # employee =  get_object_or_404(Employee, empid = request.session.get('EmpID'))
     question = get_object_or_404(Questions, question_no = 1)
     all_emp_question_list = set()
