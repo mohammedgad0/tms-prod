@@ -275,6 +275,7 @@ def conditions(request):
     is_employee = Employee.objects.filter(email=em_email)
     if not is_employee:
         return HttpResponseRedirect(reverse('ramadan:employee-data'))
+
     if request.method == "POST":
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
