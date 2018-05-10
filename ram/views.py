@@ -21,7 +21,7 @@ def get_period(date):
     return period
 
 def index(request):
-    
+
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
     """ Set Question based on Emplyee and period """
@@ -81,6 +81,10 @@ def index(request):
 def quiz(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
+    emp = request.session.get('EmpID')
+    is_agree = Conditions.objects.filter(emp_id=emp)
+    if not is_agree:
+        return HttpResponseRedirect(reverse('ramadan:conditions'))
     date = datetime.datetime.now()
     # date = date + timedelta(days=10)
     period = get_period(date)
@@ -197,13 +201,16 @@ def logout_view(request):
 
 
 def EmployeeDataView(request):
+    # check authenticated
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
+
+    # check if has data
     em_email = request.user.email
     is_employee = Employee.objects.filter(email=em_email)
-
     if is_employee:
         return HttpResponseRedirect(reverse('ramadan:conditions'))
+
     form = EmpDataForm
     if request.method == "POST":
         form = EmpDataForm(request.POST)
@@ -257,11 +264,17 @@ def myuser(request, *args, **kwargs):
 def conditions(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
+
     emp = request.session.get('EmpID')
     is_agree = Conditions.objects.filter(emp_id=emp)
     if is_agree:
         return HttpResponseRedirect(reverse('ramadan:levels'))
 
+    # check if has data
+    em_email = request.user.email
+    is_employee = Employee.objects.filter(email=em_email)
+    if not is_employee:
+        return HttpResponseRedirect(reverse('ramadan:employee-data'))
     if request.method == "POST":
         emp_id = request.session.get('EmpID')
         employee = Employee.objects.get(empid=emp_id)
