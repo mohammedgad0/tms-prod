@@ -21,6 +21,9 @@ def get_period(date):
     return period
 
 def index(request):
+    
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('ramadan:login'))
     """ Set Question based on Emplyee and period """
     em_email = request.user.email
     is_employee = Employee.objects.filter(email=em_email)
@@ -76,6 +79,8 @@ def index(request):
 #     return render(request, 'ram/quiz.html', context)
 
 def quiz(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('ramadan:login'))
     date = datetime.datetime.now()
     # date = date + timedelta(days=10)
     period = get_period(date)
@@ -115,6 +120,8 @@ def quiz(request):
     return render(request, 'ram/quiz.html', context)
 
 def levels(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('ramadan:login'))
     """ Set Question based on Emplyee and period """
     print (request.session.get('EmpID'))
     em_email = request.user.email
@@ -190,6 +197,8 @@ def logout_view(request):
 
 
 def EmployeeDataView(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('ramadan:login'))
     em_email = request.user.email
     is_employee = Employee.objects.filter(email=em_email)
 
@@ -246,6 +255,8 @@ def myuser(request, *args, **kwargs):
     return login(request, *args, **kwargs)
 
 def conditions(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('ramadan:login'))
     emp = request.session.get('EmpID')
     is_agree = Conditions.objects.filter(emp_id=emp)
     if is_agree:
