@@ -182,6 +182,13 @@ def levels(request):
     }
     return render(request, 'ram/levels.html', context)
 
+""" Log out view """
+def logout_view(request):
+    from django.contrib.auth import logout
+    logout(request)
+    return HttpResponseRedirect(reverse('ramadan:login'))
+
+
 def EmployeeDataView(request):
     em_email = request.user.email
     is_employee = Employee.objects.filter(email=em_email)
@@ -189,7 +196,6 @@ def EmployeeDataView(request):
     if is_employee:
         return HttpResponseRedirect(reverse('ramadan:conditions'))
     form = EmpDataForm
-
     if request.method == "POST":
         form = EmpDataForm(request.POST)
         if form.is_valid():
