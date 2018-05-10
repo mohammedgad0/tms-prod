@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^quiz/$', views.quiz, name='quiz'),
     url(r'^levels/$', views.levels, name='levels'),
     url(r'^employee-data/$', views.EmployeeDataView, name='employee-data'),
+    url(r'^accounts/logout/$', views.logout, name='logout'),
     url(r'^conditions/$', views.conditions, name='conditions'),
     url(r'^auth/(?P<email>.*)/(?P<signature>.*)/(?P<time>.*)/$', loginfromdrupal, name='loginfromdrupal'),
     url(r'^accounts/login/$',
