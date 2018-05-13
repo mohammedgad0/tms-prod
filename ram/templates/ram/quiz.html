@@ -20,7 +20,7 @@
   transition: all 0.15s ease-out 0s;
   background: #cbd1d8;
   border: none;
-  color: #fff;
+  color: #000;
   cursor: pointer;
   display: inline-block;
   outline: none;
@@ -52,8 +52,8 @@
 }
 
 body label {
-  font-size: 14px;
-  font-weight: normal;
+  font-size: 14px !important;
+  font-weight: normal !important;
 }
 
 .md-radio ul{
@@ -150,8 +150,12 @@ button{
   {{ block.super}}
 
   <script>
+  $(document).ready(function(){
+    $('ul').removeClass('option-input radio ')
+  })
   $('#quiz').submit(function() {
       $('input').removeAttr('disabled');
+
   });
   </script>
 {% endblock javascripts %}

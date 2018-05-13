@@ -26,7 +26,7 @@ class AnswerList(ModelChoiceField):
 
 class QuizForm(ModelForm):
     emp_answer_number = ModelChoiceField(
-        widget=forms.RadioSelect(attrs={'class': 'option-input radio'}),
+        widget=forms.RadioSelect(),
         queryset=None,
         empty_label=None,
         to_field_name='answer_no',
@@ -41,6 +41,7 @@ class QuizForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(QuizForm, self).__init__(*args, **kwargs)
+        self.fields['emp_answer_number'].widget.attrs['class']  = 'option-input radio'
         answers_list = Answers.objects.filter(question_no = self.instance.question_no.question_no)
         self.fields['emp_answer_number'].queryset = answers_list
         date = datetime.datetime.now()
