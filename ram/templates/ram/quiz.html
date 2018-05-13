@@ -149,13 +149,5 @@ ul input[disabled]{
 {% block javascripts %}
   {{ block.super}}
 
-  <script>
-  $(document).ready(function(){
-    $('ul').removeClass('option-input radio ')
-  })
-  $('#quiz').submit(function() {
-      $('input').removeAttr('disabled');
-      $('ul').removeAttr('class');
-  });
-  </script>
+
 {% endblock javascripts %}
