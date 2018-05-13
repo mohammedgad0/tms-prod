@@ -58,11 +58,11 @@ class EmpDataForm(ModelForm):
         fields = '__all__'
         widgets = {
             'emp_id':TextInput(attrs={'type':'number','maxlength':'10','class': 'form-control form-group','placeholder':'رقم الهوية','required':True}),
-            'emp_name':TextInput(attrs={'class': 'form-control form-group','placeholder':'الإسم الكامل','required':True}),
-            'emp_dept':TextInput(attrs={'class': "form-control",'placeholder':"الإدارة",'required':True}),
-            'emp_mobile':TextInput(attrs={'type':'number','class': "form-control",'placeholder':"الجوال",'required':True}),
-            'emp_ext':TextInput(attrs={'type':'number','class': "form-control",'placeholder':"هاتف المكتب",'required':True}),
-            'emp_email':TextInput(attrs={'type':'email','class': "form-control",'placeholder':"بريد العمل الإلكتروني",'required':True}),
+            'emp_name':TextInput(attrs={'class': 'form-control form-group','maxlength':'150','placeholder':'الإسم الكامل','required':True}),
+            'emp_dept':TextInput(attrs={'class': "form-control",'maxlength':'150','placeholder':"الإدارة",'required':True}),
+            'emp_mobile':TextInput(attrs={'type':'number','class': "form-control",'maxlength':'10','placeholder':"الجوال",'required':True}),
+            'emp_ext':TextInput(attrs={'type':'number','class': "form-control",'maxlength':'4','placeholder':"هاتف المكتب",'required':True}),
+            'emp_email':TextInput(attrs={'type':'email','class': "form-control",'maxlength':'50','placeholder':"بريد العمل الإلكتروني",'required':True}),
         }
 
 
