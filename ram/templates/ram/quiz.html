@@ -149,5 +149,9 @@ ul input[disabled]{
 {% block javascripts %}
   {{ block.super}}
 
-
+<script>
+    $('#quiz').submit(function() {
+        $('input').removeAttr('disabled');
+    });
+</script>
 {% endblock javascripts %}
