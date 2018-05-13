@@ -21,7 +21,6 @@ def get_period(date):
     return period
 
 def index(request):
-
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
     """ Set Question based on Emplyee and period """
@@ -223,6 +222,8 @@ def EmployeeDataView(request):
     return render(request, 'ram/EmployeeData.html', context)
 
 def myuser(request, *args, **kwargs):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('ramadan:levels'))
     if request.method == "POST":
         from django.urls import resolve
         current_url = resolve(request.path_info).namespaces
