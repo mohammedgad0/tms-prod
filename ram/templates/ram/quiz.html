@@ -7,7 +7,7 @@
 {% block content %}
 {% load static %}
 <style>
-.option-input {
+ul input{
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -27,14 +27,14 @@
   position: relative;
   z-index: 1000;
 }
-.option-input:hover {
+ul input:hover {
   background: #9faab7;
 }
-.option-input:checked {
+ul input:checked {
   background: #40e0d0 !important;
 }
 
-.option-input:checked::before {
+ul input:checked::before {
   height: 20px;
   width: 20px;
   position: absolute;
@@ -43,11 +43,11 @@
   text-align: center;
 }
 
-.option-input.radio {
+ul input {
   border-radius: 50%;
 }
 
-.option-input.radio::after {
+ul input::after {
   border-radius: 50%;
 }
 
@@ -70,7 +70,7 @@ button{
         margin-bottom: 5px !important;
     }
 
-.option-input[disabled]{
+ul input[disabled]{
       background: #8c8c8c;
     }
     .right_col::before{
@@ -155,7 +155,7 @@ button{
   })
   $('#quiz').submit(function() {
       $('input').removeAttr('disabled');
-
+      $('ul').removeAttr('class');
   });
   </script>
 {% endblock javascripts %}
