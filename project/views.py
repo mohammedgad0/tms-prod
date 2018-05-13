@@ -127,7 +127,7 @@ def loginfromdrupal(request, email,signature,time):
                 return HttpResponseRedirect(reverse('login'))
     else:
         return HttpResponseRedirect(reverse('login'))
-
+ 
     logged = request.COOKIES.get('logged_in_status')
     context = {'logged':logged, "mail":mail,"ip":ip,"time1":time,"URL":referer}
     template = loader.get_template('project/index.html')
