@@ -26,7 +26,7 @@ class AnswerList(ModelChoiceField):
 
 class QuizForm(ModelForm):
     emp_answer_number = ModelChoiceField(
-        widget=forms.RadioSelect(attrs={'class': 'option-input radio'}),
+        widget=forms.RadioSelect(),
         queryset=None,
         empty_label=None,
         to_field_name='answer_no',
