@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from project.models import Employee
-# Create your models here.
+from project.models import Employee ,Department
 
+# Create your models here.
 class Questions(models.Model):
     question_no = models.AutoField(db_column='QUESTION_NO',primary_key=True)
     question_desc = models.CharField(db_column='QUESTION_DESC', max_length=400)
@@ -58,7 +58,7 @@ class Conditions(models.Model):
 class EmployeeData(models.Model):
     emp_id = models.CharField(db_column='EMP_ID',max_length=15, null=True,blank=True)
     emp_name = models.CharField(db_column='EMP_NAME',blank=True, null=True,max_length=150)
-    emp_dept = models.CharField(db_column='EMP_DEPT',blank=True, null=True,max_length=150)
+    emp_dept = models.ForeignKey('project.Department', to_field = 'deptcode',db_column='EMP_DEPT',blank=True, null=True,max_length=150)
     emp_mobile = models.CharField(db_column='EMP_MOBILE',blank=True, null=True,max_length=10)
     emp_email = models.CharField(db_column='EMP_EMAIL',blank=True, null=True,max_length=50)
     emp_ext = models.CharField(db_column='EMP_EXT',blank=True, null=True,max_length=4)

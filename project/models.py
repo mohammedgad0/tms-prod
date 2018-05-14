@@ -88,6 +88,8 @@ class Department(models.Model):
     managerid = models.CharField(db_column='ManagerId', max_length=45, blank=True, null=True)  # Field name made lowercase.
     deptcode = models.IntegerField(db_column='DeptCode',unique=True, blank=True, null=True)  # Field name made lowercase.
     managername = models.CharField(db_column='ManagerName', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    def __str__(self):
+        return self.deptname
     class Meta:
         managed = False
         db_table = 'department'
@@ -145,7 +147,7 @@ class Employee(models.Model):
 		managercode = models.BigIntegerField(db_column='ManagerCode', blank=True, null=True)  # Field name made lowercase.
 		sexcode = models.CharField(db_column='SexCode', max_length=6, blank=True, null=True)  # Field name made lowercase.
 		iscontract = models.IntegerField(db_column='IsContract', blank=True, null=True)  # Field name made lowercase.
-   
+
 		class Meta:
 			managed = False
 			db_table = 'employee'
