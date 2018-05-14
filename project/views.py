@@ -37,6 +37,7 @@ class BaseSheetFormSet(BaseModelFormSet):
 def loginfromdrupal(request, email,signature,time):
     from django.urls import resolve
     current_url = resolve(request.path_info).namespaces
+    request.session['current_url'] = None
     if current_url:
         request.session['current_url'] = current_url
     print ("current url" ,current_url)

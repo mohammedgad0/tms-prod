@@ -80,7 +80,6 @@ MIDDLEWARE_CLASSES = [
 
 ]
 ROOT_URLCONF = 'tms.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -98,10 +97,7 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'tms.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
