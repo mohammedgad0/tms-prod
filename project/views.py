@@ -100,6 +100,8 @@ def loginfromdrupal(request, email,signature,time):
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, user)
             except User.DoesNotExist:
+                if 'ramadan' in current_url:
+                    return HttpResponseRedirect(reverse('ramadan:login'))
                 return HttpResponseRedirect(reverse('login'))
             if request.user.is_authenticated():
                 email = request.user.email
