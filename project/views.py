@@ -40,7 +40,6 @@ def loginfromdrupal(request, email,signature,time):
     if current_url:
         request.session['current_url'] = current_url
     print ("current url" ,current_url)
-
     from django.contrib.auth import login
     import getpass
     import datetime
@@ -126,8 +125,11 @@ def loginfromdrupal(request, email,signature,time):
             else:
                 return HttpResponseRedirect(reverse('login'))
     else:
+        if 'ramadan' in current_url:
+            return HttpResponseRedirect(reverse('ramadan:login'))
+
         return HttpResponseRedirect(reverse('login'))
-  
+
     logged = request.COOKIES.get('logged_in_status')
     context = {'logged':logged, "mail":mail,"ip":ip,"time1":time,"URL":referer}
     template = loader.get_template('project/index.html')

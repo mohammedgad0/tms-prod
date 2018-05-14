@@ -270,11 +270,9 @@ pip-selfcheck.json
 #media-file
 media/
 tms/settings.py
-*.pyc
 tms/__pycache__/wsgi.cpython-36.pyc
 tms/settings.py
 tms/__pycache__/wsgi.cpython-36.pyc
 project/__pycache__/views.cpython-36.pyc
-*.pyc
 project/__pycache__/apps.cpython-36.pyc
 tms/settings.py
