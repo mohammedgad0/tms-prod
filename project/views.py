@@ -170,6 +170,7 @@ def myuser(request, *args, **kwargs):
 @login_required
 def index(request):
     current_url = request.session.get('current_url')
+    print ('session', current_url)
     if current_url:
         if 'ramadan' in current_url:
             print('ramadan login')

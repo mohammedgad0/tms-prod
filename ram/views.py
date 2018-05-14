@@ -199,7 +199,6 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('ramadan:login'))
 
-
 def EmployeeDataView(request):
     # check authenticated
     if not request.user.is_authenticated():
