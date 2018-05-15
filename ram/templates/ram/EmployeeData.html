@@ -1,4 +1,5 @@
 {% extends "ram/base_site.html" %} {% block title %} Dashboard 1 {% endblock title %} {% block stylesheets %} {{ block.super }} {% endblock stylesheets %} {% block content %}{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.css" />
 <style>
     .right_col{
         padding-top: 8% !important;
@@ -36,6 +37,18 @@
     -webkit-background-size: 100%;
     background-size: 100%;
     }
+    .chosen-container{
+        width: 100% !important;
+    }
+    .chosen-container input{
+        height: 30px !important;
+    }
+    .chosen-single{
+        height: 50px !important;
+        border-radius:  4px 0px 0px 4px !important;
+        border-color: #cccccc !important;
+        padding-top: 10px !important;
+}
 </style>
 <div class="bg-img">
         <div class="right_col " role="main">
@@ -108,7 +121,6 @@
                                 </div>
                             </div>
                         </fieldset>
-
                     </form>
                     </div>
                 </div>
@@ -137,4 +149,13 @@
 <script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
 <script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.jquery.js"></script>
+<script>
+    $(document).ready(function(){
+     $("#id_emp_dept").attr("class","chosen");
+     $(".chosen").data("placeholder","اختر الإدارة التابع لها").chosen();
+     $(".chosen").chosen({no_results_text: "Oops, nothing found!"});
+      $('.chosen').chosen({allow_single_deselect: true,no_results_text: "لا يوجد نتائج!"});
+    });
+</script>
 {% endblock javascripts %}

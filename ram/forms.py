@@ -41,6 +41,7 @@ class QuizForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(QuizForm, self).__init__(*args, **kwargs)
+
         answers_list = Answers.objects.filter(question_no = self.instance.question_no.question_no)
         self.fields['emp_answer_number'].queryset = answers_list
         date = datetime.datetime.now()
@@ -64,9 +65,10 @@ class EmpDataForm(ModelForm):
             'emp_ext':TextInput(attrs={'class': "form-control",'maxlength':'4','placeholder':"هاتف المكتب",'required':True}),
             'emp_email':TextInput(attrs={'type':'email','class': "form-control",'maxlength':'50','placeholder':"بريد العمل الإلكتروني",'required':True}),
         }
+    def __init__(self, *args, **kwargs):
+        super(EmpDataForm, self).__init__(*args, **kwargs)
 
-
-
+        self.fields['emp_dept'].empty_label = "اختر الإدارة التابع لها"
 class conditionsForm(ModelForm):
     class Meta:
         model = Conditions
