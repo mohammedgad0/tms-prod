@@ -17,7 +17,6 @@ from django.utils.translation import ugettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -38,7 +37,9 @@ SECRET_KEY = '48739c63-3ef3-46be-a6e6-effc30a8f49c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_COOKIE_AGE = 10 # set just 10 seconds to test
+SESSION_SAVE_EVERY_REQUEST = True
 ALLOWED_HOSTS = ['127.0.0.1','192.168.0.192','localhost']
 # Ldap authentication
 AUTHENTICATION_BACKENDS = [
