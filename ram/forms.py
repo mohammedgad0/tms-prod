@@ -46,7 +46,7 @@ class QuizForm(ModelForm):
         self.fields['emp_answer_number'].queryset = answers_list
         date = datetime.datetime.now()
         period = get_period(date)
-        self.fields['question_no'].queryset =  Questions.objects.filter(period_no = period)
+        # self.fields['question_no'].queryset =  Questions.objects.filter(period_no = period)
         self.fields['emp_answer_number'].choices = [(q.answer_no, q.answer_desc) for q in answers_list]
         # self.fields['question_no']=forms.CharField(max_length=100)
         self.fields['question_no'].widget.attrs['hidden'] = True

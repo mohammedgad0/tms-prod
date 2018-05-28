@@ -14,6 +14,8 @@ urlpatterns = [
     # The home page
     url(r'^$', views.index, name='index'),
     url(r'^quiz/$', views.quiz, name='quiz'),
+    url(r'^quiz/(?P<period>\d+)/$', views.quiz_period, name='quiz-period'),
+    url(r'^resulte/$', views.resulte, name='resulte'),
     url(r'^levels/$', views.levels, name='levels'),
     url(r'^employee-data/$', views.EmployeeDataView, name='employee-data'),
     url(r'^accounts/logout/$', views.logout, name='logout'),
