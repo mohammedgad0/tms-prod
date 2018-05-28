@@ -128,6 +128,17 @@ def quiz(request):
 
 def quiz_period(request, period):
     if period == '1':
+        employee = get_object_or_404(Employee, empid=request.session.get('EmpID'))
+        all_emp_question_list = set()
+        all_emp_question = EmployeeAnswer.objects.filter(emp_id=request.session.get('EmpID'))
+        for item in all_emp_question:
+            all_emp_question_list.add(item.question_no.question_no)
+        questions = Questions.objects.filter(
+            Q(period_no=period) &
+            ~Q(question_no__in=all_emp_question_list))
+        for item in questions:
+            q_no = Questions.objects.get(question_no=item.question_no)
+            EmployeeAnswer.objects.create(emp_id=employee, question_no=q_no)
         if not request.user.is_authenticated():
             return HttpResponseRedirect(reverse('ramadan:login'))
         emp = request.session.get('EmpID')
