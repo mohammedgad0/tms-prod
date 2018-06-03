@@ -241,7 +241,7 @@
                     </div>
                  </div>
                  {% if  period > 2 %}
-                 <a href="#" class="btn btn-default btn-block disabled">مرحلة منتهية</a>
+                   <a href="{% url 'ramadan:quiz-period' 2   %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
                  {% else %}
                  <a href="{% url 'ramadan:quiz' %}" class="btn btn-default btn-block">دخول إلى المرحلة</a>
                  {% endif %}
