@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import Group , User
 from django.contrib.auth.views import *
 from project.forms import BootstrapAuthenticationForm
+from django.db.models.query import QuerySet
 # Create your views here.
 
 
@@ -19,6 +20,7 @@ def get_period(date):
     except:
         period = 5
     return period
+
 
 def index(request):
     if not request.user.is_authenticated():
@@ -77,6 +79,7 @@ def index(request):
 #     context = {'answer':answer,'question':question}
 #     return render(request, 'ram/quiz.html', context)
 
+
 def quiz(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
@@ -121,6 +124,67 @@ def quiz(request):
         formset = formset
     context = {'form':formset}
     return render(request, 'ram/quiz.html', context)
+
+
+def quiz_period(request, period):
+    if period == '1':
+        employee = get_object_or_404(Employee, empid=request.session.get('EmpID'))
+        all_emp_question_list = set()
+        all_emp_question = EmployeeAnswer.objects.filter(emp_id=request.session.get('EmpID'))
+        for item in all_emp_question:
+            all_emp_question_list.add(item.question_no.question_no)
+        questions = Questions.objects.filter(
+            Q(period_no=period) &
+            ~Q(question_no__in=all_emp_question_list))
+        for item in questions:
+            q_no = Questions.objects.get(question_no=item.question_no)
+            EmployeeAnswer.objects.create(emp_id=employee, question_no=q_no)
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('ramadan:login'))
+        emp = request.session.get('EmpID')
+        is_agree = Conditions.objects.filter(emp_id=emp)
+        if not is_agree:
+            return HttpResponseRedirect(reverse('ramadan:conditions'))
+        date = datetime.datetime.now()
+        # date = date + timedelta(days=10)
+        # period = get_period(date)
+        query = EmployeeAnswer.objects.filter(
+        Q(emp_id = request.session.get('EmpID'))&
+        Q(question_no__period_no = period)
+        )
+
+        quiz_emp = modelformset_factory(EmployeeAnswer, form=QuizForm, extra=0)
+        formset = quiz_emp(queryset=query)
+        if request.method == 'POST':
+            print('this is post')
+            formset = quiz_emp(request.POST)
+            if formset.is_valid():
+                print("form valid")
+                if 'save' in request.POST:
+                    instances = formset.save(commit=False)
+                    for obj in instances:
+                        obj.is_save = True
+                        print(obj.emp_answer_number)
+                        obj.save()
+                elif '_submit':
+                    instances = formset.save(commit=False)
+                    for obj in instances:
+                        print(obj.emp_answer_number)
+                        obj.is_submitted = 1
+                    for form in formset:
+                        instances = form.instance
+                        print(instances.emp_answer_number)
+                        if instances.emp_answer_number:
+                            instances.is_submitted = 1
+                        instances.save()
+            return HttpResponseRedirect(reverse('ramadan:levels'))
+        else:
+            formset = formset
+        context = {'form':formset}
+    else:
+        return HttpResponseRedirect(reverse('ramadan:levels'))
+    return render(request, 'ram/quiz_period.html', context)
+
 
 def levels(request):
     if not request.user.is_authenticated():
@@ -192,11 +256,13 @@ def levels(request):
     }
     return render(request, 'ram/levels.html', context)
 
+
 """ Log out view """
 def logout_view(request):
     from django.contrib.auth import logout
     logout(request)
     return HttpResponseRedirect(reverse('ramadan:login'))
+
 
 def EmployeeDataView(request):
     # check authenticated
@@ -219,6 +285,7 @@ def EmployeeDataView(request):
 
     context = {"form":form}
     return render(request, 'ram/EmployeeData.html', context)
+
 
 def myuser(request, *args, **kwargs):
     if request.user.is_authenticated():
@@ -261,6 +328,7 @@ def myuser(request, *args, **kwargs):
             return login(request, *args, **kwargs)
     return login(request, *args, **kwargs)
 
+
 def conditions(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('ramadan:login'))
@@ -283,3 +351,15 @@ def conditions(request):
         return HttpResponseRedirect(reverse('ramadan:levels'))
     context = {}
     return render(request,'ram/conditions.html',context)
+
+
+def resulte(request):
+    from django.db.models import Count, Case, When, IntegerField ,F
+
+    data =EmployeeAnswer.objects.filter(is_submitted = 1).distinct()
+    All_Employee = data.values('emp_id__empname').annotate(total=Count('emp_answer_number'),
+    correct = Count(Case(When(emp_answer_number =F('question_no__correct_answer_no'),then=F("emp_answer_number")),output_field=IntegerField())),
+    per = F('correct') * 100 / 15
+        ).order_by('-correct')
+    context = {'All_Employee': All_Employee}
+    return render(request,'ram/resulte.html',context)
