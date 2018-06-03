@@ -127,7 +127,7 @@ def quiz(request):
 
 
 def quiz_period(request, period):
-    if period == '1':
+    if period == '1' or period == '2':
         employee = get_object_or_404(Employee, empid=request.session.get('EmpID'))
         all_emp_question_list = set()
         all_emp_question = EmployeeAnswer.objects.filter(emp_id=request.session.get('EmpID'))
