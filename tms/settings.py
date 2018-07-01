@@ -36,7 +36,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000
 SECRET_KEY = '48739c63-3ef3-46be-a6e6-effc30a8f49c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # SESSION_COOKIE_AGE = 10 # set just 10 seconds to test
 SESSION_SAVE_EVERY_REQUEST = True
