@@ -1,0 +1,1652 @@
+[
+{
+  "model": "project.department",
+  "pk": 1,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0647 \u0627\u0644\u062a\u0648\u062b\u064a\u0642 \u0648\u0627\u0644\u0645\u0635\u063a\u0631\u0627\u062a \u0627\u0644\u0641\u0644\u0645\u064a\u0647",
+    "managerid": "1040564187",
+    "deptcode": 130,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 2,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0645\u0643\u0629 \u0627\u0644\u0645\u0643\u0631\u0645\u0629",
+    "managerid": "1036802195",
+    "deptcode": 400,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 3,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0627\u0644\u0645\u0646\u0637\u0642\u0647 \u0627\u0644\u0634\u0631\u0642\u064a\u0647",
+    "managerid": "1003972393",
+    "deptcode": 401,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 4,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0647 \u0627\u0644\u0642\u0635\u064a\u0645",
+    "managerid": "1013774557",
+    "deptcode": 402,
+    "managername": "\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0645\u0647\u0646\u0627 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u062a\u0631\u0643\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 5,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639  \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0647 \u0639\u0633\u064a\u0631",
+    "managerid": "1007596800",
+    "deptcode": 403,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 6,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0645\u062f\u064a\u0646\u0629 \u0627\u0644\u0645\u0646\u0648\u0631\u0629",
+    "managerid": "1032680934",
+    "deptcode": 404,
+    "managername": "\u0647\u0627\u0646\u064a \u0628\u0646 \u062d\u0645\u062f\u0627\u0646 \u0628\u0646 \u0645\u062d\u0645\u062f \u0627\u0644\u0645\u0648\u0644\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 7,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u062d\u0627\u0626\u0644",
+    "managerid": "1018689289",
+    "deptcode": 405,
+    "managername": "\u0625\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u062a\u0631\u0643\u064a \u0628\u0646 \u0639\u0644\u064a \u0627\u0644\u062a\u0631\u0643\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 8,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u062c\u0627\u0632\u0627\u0646",
+    "managerid": "1036140927",
+    "deptcode": 406,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0647 \u062f\u063a\u0631\u064a\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 9,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u062a\u0628\u0648\u0643",
+    "managerid": "1000385011",
+    "deptcode": 407,
+    "managername": "\u0639\u0645\u0627\u062f \u0628\u0646 \u0641\u0647\u062f \u0628\u0646 \u062d\u0633\u0646 \u0627\u0644\u0639\u0631\u064a\u0641\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 10,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0646\u062c\u0631\u0627\u0646",
+    "managerid": "1023600347",
+    "deptcode": 408,
+    "managername": "\u062d\u0633\u064a\u0646 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u062d\u0633\u0646 \u0622\u0644 \u062f\u0627\u0634\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 11,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0628\u0627\u062d\u0629",
+    "managerid": "1043221652",
+    "deptcode": 409,
+    "managername": "\u0645\u0646\u0635\u0648\u0631 \u0628\u0646 \u063a\u0631\u0645 \u0627\u0644\u0644\u0647 \u0628\u0646 \u0627\u062d\u0645\u062f \u0627\u0644\u063a\u0627\u0645\u062f\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 12,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u062c\u0648\u0641",
+    "managerid": "1019273976",
+    "deptcode": 410,
+    "managername": "\u0641\u0627\u0644\u062d \u0628\u0646 \u0639\u0627\u064a\u062f \u0628\u0646 \u0637\u0639\u064a\u0633\u0627\u0646 \u0627\u0644\u0639\u0646\u0632\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 13,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u062d\u062f\u0648\u062f \u0627\u0644\u0634\u0645\u0627\u0644\u064a\u0629",
+    "managerid": "1011267752",
+    "deptcode": 411,
+    "managername": "\u062b\u0627\u0645\u0631 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0648\u0636 \u0627\u0644\u0631\u0648\u064a\u0644\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 14,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u062f\u064a\u0646\u0629 \u0645\u0643\u0629 \u0627\u0644\u0645\u0643\u0631\u0645\u0629",
+    "managerid": "1015657149",
+    "deptcode": 450,
+    "managername": "\u0645\u0627\u062c\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0643\u0645\u064a\u062e \u0627\u0644\u0632\u0647\u0631\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 15,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0627\u0644\u0637\u0627\u0626\u0641",
+    "managerid": "1006343873",
+    "deptcode": 451,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 16,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0628\u0645\u062d\u0627\u0641\u0638\u0629 \u0627\u0644\u0625\u062d\u0633\u0627\u0621",
+    "managerid": "1016764795",
+    "deptcode": 452,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 17,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u062f\u064a\u0631 \u0627\u0644\u0639\u0627\u0645",
+    "managerid": "1012732002",
+    "deptcode": 1,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0633\u0644\u064a\u0645\u0627\u0646 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u062a\u062e\u064a\u0641\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 18,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0639\u0644\u0627\u0642\u0627\u062a \u0627\u0644\u0639\u0627\u0645\u0647",
+    "managerid": "1040978502",
+    "deptcode": 10,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0645\u062d\u0645\u062f \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u0647\u0648\u064a\u0645\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 19,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0627\u062f\u0627\u0631\u064a",
+    "managerid": "1017817949",
+    "deptcode": 20,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 20,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0647 \u0627\u0644\u062a\u062d\u0644\u064a\u0644 \u0648 \u0627\u0644\u062a\u0642\u0627\u0631\u064a\u0631",
+    "managerid": "1006813263",
+    "deptcode": 30,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 21,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0647 \u0627\u0644\u0645\u062a\u0627\u0628\u0639\u0647",
+    "managerid": "1000972487",
+    "deptcode": 40,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 22,
+  "fields": {
+    "deptname": "\u0646\u0627\u0626\u0628 \u0627\u0644\u0645\u062f\u064a\u0631 \u0627\u0644\u0639\u0627\u0645 \u0644\u0644\u0634\u0626\u0648\u0646 \u0627\u0644\u0627\u062d\u0635\u0627\u0626\u064a\u0647",
+    "managerid": "1003775804",
+    "deptcode": 100,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u062d\u0645\u062f\u0627\u0646 \u0627\u0644\u0628\u0627\u062a\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 23,
+  "fields": {
+    "deptname": "\u0627\u0644\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0639\u0627\u0645\u0647 \u0644\u0644\u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0627\u0642\u062a\u0635\u0627\u062f\u064a\u0647",
+    "managerid": "1032380766",
+    "deptcode": 110,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 24,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0642\u0637\u0627\u0639\u0627\u062a \u0627\u0644\u0627\u0646\u062a\u0627\u062c\u064a\u0647",
+    "managerid": "1010351458",
+    "deptcode": 111,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u0634\u0639\u0644\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 25,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062f\u062e\u0644 \u0627\u0644\u0642\u0648\u0645\u0649",
+    "managerid": "1025546779",
+    "deptcode": 112,
+    "managername": "\u0641\u0648\u0632\u0627\u0646 \u0628\u0646 \u0639\u062b\u0645\u0627\u0646 \u0628\u0646 \u0645\u0633\u0627\u0639\u062f \u0627\u0644\u0641\u0648\u0632\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 26,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0627\u0633\u0639\u0627\u0631 \u0648 \u0627\u0644\u0627\u0631\u0642\u0627\u0645 \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0647",
+    "managerid": "1041567676",
+    "deptcode": 113,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 27,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062a\u062c\u0627\u0631\u0647 \u0627\u0644\u062e\u0627\u0631\u062c\u064a\u0647",
+    "managerid": "1034910792",
+    "deptcode": 114,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 28,
+  "fields": {
+    "deptname": "\u0627\u0644\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0639\u0627\u0645\u0647 \u0644\u0644\u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0633\u0643\u0627\u0646\u064a\u0647 \u0648\u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0647",
+    "managerid": "1003775804",
+    "deptcode": 120,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u062d\u0645\u062f\u0627\u0646 \u0627\u0644\u0628\u0627\u062a\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 29,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647  \u0627\u0644\u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0633\u0643\u0627\u0646\u064a\u0647 \u0648 \u0627\u0644\u062d\u064a\u0648\u064a\u0647",
+    "managerid": "1034106417",
+    "deptcode": 121,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0641\u0647\u062f \u0627\u0644\u0641\u0647\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 30,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0647",
+    "managerid": "1040564187",
+    "deptcode": 122,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 31,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u062d\u0643\u0648\u0645\u064a\u0647",
+    "managerid": "1018682078",
+    "deptcode": 123,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 32,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0647 \u0627\u0644\u062e\u0631\u0627\u0626\u0637",
+    "managerid": "1006385619",
+    "deptcode": 124,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0627\u0644\u0647\u0645\u0644\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 33,
+  "fields": {
+    "deptname": "\u0627\u0644\u0627\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0634\u0626\u0648\u0646 \u0627\u0644\u0645\u0627\u0644\u064a\u0629 \u0648\u0627\u0644\u0623\u062f\u0627\u0631\u064a\u0629",
+    "managerid": "1018605442",
+    "deptcode": 200,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 34,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0634\u0626\u0648\u0646 \u0627\u0644\u0645\u0648\u0638\u0641\u064a\u0646",
+    "managerid": "1013617616",
+    "deptcode": 211,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 35,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0634\u0626\u0648\u0646 \u0627\u0644\u0645\u0627\u0644\u064a\u0647",
+    "managerid": "1007858887",
+    "deptcode": 212,
+    "managername": "\u0633\u0627\u0645\u064a \u0628\u0646 \u0623\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u0633\u0646\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 36,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0627\u0644\u0627\u062f\u0627\u0631\u064a\u0647",
+    "managerid": "1004530943",
+    "deptcode": 213,
+    "managername": "\u0645\u0637\u0644\u0642 \u0628\u0646 \u0635\u0627\u0644\u062d \u0628\u0646 \u0645\u0637\u0644\u0642 \u0627\u0644\u0645\u0637\u0644\u0642"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 37,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0639\u0627\u0645\u0647",
+    "managerid": "1015461153",
+    "deptcode": 214,
+    "managername": "\u0633\u0639\u062f \u0628\u0646 \u0639\u0644\u0649 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0622\u0644 \u062d\u0628\u064a\u0634"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 38,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0637\u0628\u0627\u0639\u0647 \u0648 \u0627\u0644\u0646\u0634\u0631",
+    "managerid": "1007563339",
+    "deptcode": 215,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 39,
+  "fields": {
+    "deptname": "\u0642\u0633\u0645 \u0627\u0644\u0646\u0633\u062e/ \u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0627\u0644\u0627\u062f\u0627\u0631\u064a\u0647",
+    "managerid": null,
+    "deptcode": 216,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 40,
+  "fields": {
+    "deptname": "\u0646\u0627\u0626\u0628 \u0627\u0644\u0645\u062f\u064a\u0631\u0627\u0644\u0639\u0627\u0645 \u0644\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u0648\u0637\u0646\u0649 \u0644\u0644\u062d\u0627\u0633\u0628 \u0627\u0644\u0627\u0644\u0649",
+    "managerid": "1007384314",
+    "deptcode": 300,
+    "managername": "\u0639\u062b\u064a\u0645 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0639\u062b\u064a\u0645"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 41,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0639\u0645\u0644\u064a\u0627\u062a \u0627\u0644\u062d\u0627\u0633\u0628 \u0627\u0644\u0627\u0644\u0649",
+    "managerid": "1000487403",
+    "deptcode": 311,
+    "managername": "\u064a\u0648\u0633\u0641 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0641\u0636\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 42,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0628\u0631\u0645\u062c\u0647 \u0627\u0644\u0646\u0638\u0645",
+    "managerid": "1013485659",
+    "deptcode": 312,
+    "managername": "\u0645\u0646\u0635\u0648\u0631 \u0628\u0646 \u062e\u0645\u064a\u0633 \u0628\u0646 \u062d\u0633\u0646 \u062f\u0645\u0627\u0633"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 43,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u064a\u0629",
+    "managerid": "1032762302",
+    "deptcode": 313,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0633\u0639\u0648\u062f \u0627\u0644\u062f\u0644\u0642\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 44,
+  "fields": {
+    "deptname": "\u0627\u062f\u0627\u0631\u0647 \u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0645\u0633\u062a\u0641\u064a\u062f\u064a\u0646",
+    "managerid": "1008880211",
+    "deptcode": 314,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 45,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0629 \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629",
+    "managerid": null,
+    "deptcode": 50,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 46,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0629 \u0627\u0644\u0623\u0645\u0646 \u0648\u0627\u0644\u0633\u0644\u0627\u0645\u0629",
+    "managerid": "1023455015",
+    "deptcode": 6000,
+    "managername": "\u062f / \u0631\u0627\u0634\u062f \u0628\u0646 \u0633\u0639\u064a\u062f \u0627\u0644\u0632\u0647\u0631\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 47,
+  "fields": {
+    "deptname": "\u0627\u0644\u0642\u0633\u0645 \u0627\u0644\u0646\u0633\u0648\u064a",
+    "managerid": "1007123365",
+    "deptcode": 60,
+    "managername": "\u0644\u0645\u064a\u0627\u0621 \u0628\u0646\u062a \u0645\u0634\u0639\u0644 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u0631\u0634\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 48,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0648\u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0637\u0628\u064a\u0639\u064a\u0629",
+    "managerid": "1002788618",
+    "deptcode": 4230,
+    "managername": "\u0645\u0639\u064a\u0636 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0634\u0628\u0627\u0628 \u0627\u0644\u0639\u062a\u064a\u0628\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 49,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0629 \u0627\u0644\u0639\u064a\u0646\u0627\u062a",
+    "managerid": "1005264443",
+    "deptcode": 125,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 50,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0645\u0646\u0637\u0642\u0629 \u0645\u0643\u0629 \u0627\u0644\u0645\u0643\u0631\u0645\u0629",
+    "managerid": "1005816861",
+    "deptcode": 4331,
+    "managername": "\u0627\u0633\u0627\u0645\u0647 \u0628\u0646 \u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0645\u062d\u0645\u062f \u0627\u0644\u0635\u0628\u062d\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 51,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0645\u0646\u0637\u0642\u0647 \u0627\u0644\u0634\u0631\u0642\u064a\u0647",
+    "managerid": "1037519988",
+    "deptcode": 4332,
+    "managername": "\u0635\u0644\u0627\u062d \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0645\u062d\u0633\u0646 \u0628\u0646 \u0641\u0647\u062f \u0627\u0644\u0633\u0647\u0648"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 52,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0645\u0646\u0637\u0642\u0647 \u0627\u0644\u0642\u0635\u064a\u0645",
+    "managerid": "1040582015",
+    "deptcode": 4333,
+    "managername": "\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0645\u0647\u0646\u0627 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u062a\u0631\u0643\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 53,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0645\u0646\u0637\u0642\u0647 \u0639\u0633\u064a\u0631",
+    "managerid": "1014579229",
+    "deptcode": 4334,
+    "managername": "\u0645\u062d\u0645\u062f \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0627\u064a\u0636 \u0645\u0635\u0628\u062d"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 54,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0645\u062f\u064a\u0646\u0629 \u0627\u0644\u0645\u0646\u0648\u0631\u0629",
+    "managerid": "1030498834",
+    "deptcode": 4335,
+    "managername": "\u0633\u0627\u0644\u0645 \u0628\u0646 \u062c\u0632\u0627\u0621 \u0633\u0627\u0644\u0645 \u0627\u0644\u062d\u0631\u0628\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 55,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u062d\u0627\u0626\u0644",
+    "managerid": "1008667980",
+    "deptcode": 4336,
+    "managername": "\u0625\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u062d\u0645\u0648\u062f \u0627\u0644\u0634\u0645\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 56,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u062c\u0627\u0632\u0627\u0646",
+    "managerid": "1036140927",
+    "deptcode": 4337,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0647 \u062f\u063a\u0631\u064a\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 57,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u062a\u0628\u0648\u0643",
+    "managerid": "1000385011",
+    "deptcode": 4338,
+    "managername": "\u0639\u0645\u0627\u062f \u0628\u0646 \u0641\u0647\u062f \u0628\u0646 \u062d\u0633\u0646 \u0627\u0644\u0639\u0631\u064a\u0641\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 58,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0646\u062c\u0631\u0627\u0646",
+    "managerid": "1025150382",
+    "deptcode": 4339,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u062d\u062a\u0631\u0634 \u0628\u0646 \u0645\u062d\u0645\u062f \u0622\u0644 \u062d\u0634\u064a\u0634"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 59,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0628\u0627\u062d\u0629",
+    "managerid": "1043221652",
+    "deptcode": 4341,
+    "managername": "\u0645\u0646\u0635\u0648\u0631 \u0628\u0646 \u063a\u0631\u0645 \u0627\u0644\u0644\u0647 \u0628\u0646 \u0627\u062d\u0645\u062f \u0627\u0644\u063a\u0627\u0645\u062f\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 60,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u062c\u0648\u0641",
+    "managerid": "1019273976",
+    "deptcode": 4342,
+    "managername": "\u0641\u0627\u0644\u062d \u0628\u0646 \u0639\u0627\u064a\u062f \u0628\u0646 \u0637\u0639\u064a\u0633\u0627\u0646 \u0627\u0644\u0639\u0646\u0632\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 61,
+  "fields": {
+    "deptname": "\u0641\u0631\u0639 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u062d\u062f\u0648\u062f \u0627\u0644\u0634\u0645\u0627\u0644\u064a\u0629",
+    "managerid": "1000534477",
+    "deptcode": 4343,
+    "managername": "\u0635\u0627\u0644\u062d \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0646\u0630\u064a\u0631"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 62,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u062f\u064a\u0646\u0629 \u0645\u0643\u0629 \u0627\u0644\u0645\u0643\u0631\u0645\u0629",
+    "managerid": "1016776278",
+    "deptcode": 4344,
+    "managername": "\u0627\u0633\u0627\u0645\u0647 \u0628\u0646 \u0633\u0646\u062f \u0628\u0646 \u0633\u0645\u0631\u0627\u0646 \u0627\u0644\u0644\u0647\u064a\u0628\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 63,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0627\u0644\u0637\u0627\u0626\u0641",
+    "managerid": "1015657149",
+    "deptcode": 4345,
+    "managername": "\u0645\u0627\u062c\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0643\u0645\u064a\u062e \u0627\u0644\u0632\u0647\u0631\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 64,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0647\u064a\u0626\u0629 \u0628\u0645\u062d\u0627\u0641\u0638\u0629 \u0627\u0644\u0625\u062d\u0633\u0627\u0621",
+    "managerid": "1069117727",
+    "deptcode": 4346,
+    "managername": "\u0633\u0644\u0637\u0627\u0646 \u0628\u0646 \u062f\u0644\u064a\u0645 \u0628\u0646 \u0633\u0639\u062f \u0627\u0644\u0642\u062d\u0637\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 65,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u0639\u0644\u0627\u0645 \u0648 \u0627\u0644\u0646\u0634\u0631 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a",
+    "managerid": null,
+    "deptcode": 502,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 66,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639",
+    "managerid": "1001195815",
+    "deptcode": 504,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0633\u0639\u064a\u062f \u0622\u0644 \u0633\u0648\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 67,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0629 \u0634\u0624\u0648\u0646 \u0627\u0644\u0648\u062d\u062f\u0627\u062a \u0627\u0644\u0646\u0633\u0627\u0626\u064a\u0629",
+    "managerid": "1087417539",
+    "deptcode": 506,
+    "managername": "\u0645\u0631\u0648\u0647 \u0628\u0646\u062a \u0633\u064a\u0641 \u0627\u0644\u062f\u064a\u0646 \u0635\u0627\u0644\u062d \u0639\u0628\u062f\u0647"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 68,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0648\u062d\u062f\u0629 \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u0627\u062a",
+    "managerid": "1032098335",
+    "deptcode": 508,
+    "managername": "\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u0641\u0631\u062c"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 69,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0648\u062d\u062f\u0629 \u0627\u0644\u062a\u063a\u064a\u064a\u0631 \u0648\u0627\u0644\u062a\u0648\u0627\u0635\u0644",
+    "managerid": "1017165414",
+    "deptcode": 510,
+    "managername": "\u0645\u0647\u0627 \u0628\u0646\u062a \u0645\u062d\u0645\u062f \u0639\u0645\u0631 \u0627\u0644\u062e\u0637\u064a\u0628"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 70,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0648\u062d\u062f\u0629 \u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u0645\u0647\u0627\u0645 \u0627\u0644\u062a\u0646\u0641\u064a\u0630\u064a\u0629",
+    "managerid": null,
+    "deptcode": 514,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 71,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062e\u062f\u0645\u0629 \u0627\u0644\u0639\u0645\u0644\u0627\u0621",
+    "managerid": "1016644062",
+    "deptcode": 518,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0646\u0627\u0635\u0631 \u0628\u0646 \u0639\u0628\u0648\u062f \u0623\u0628\u0648\u062e\u0644\u064a\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 72,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0633\u062a\u0634\u0627\u0631\u064a\u0646",
+    "managerid": "1007123365",
+    "deptcode": 522,
+    "managername": "\u0644\u0645\u064a\u0627\u0621 \u0628\u0646\u062a \u0645\u0634\u0639\u0644 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u0631\u0634\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 73,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0648\u062d\u062f\u0629 \u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0641\u0631\u0639 \u0627\u0644\u0646\u0633\u0648\u064a",
+    "managerid": "1022764458",
+    "deptcode": 540,
+    "managername": "\u0647\u0627\u062c\u0631 \u0628\u0646\u062a \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0633\u062d\u064a\u0628\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 74,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0648\u062d\u062f\u0629 \u0627\u0644\u0634\u0624\u0648\u0646 \u0627\u0644\u0627\u062d\u0635\u0627\u0626\u064a\u0629 \u0627\u0644\u0641\u0631\u0639 \u0627\u0644\u0646\u0633\u0648\u064a",
+    "managerid": "1027754108",
+    "deptcode": 550,
+    "managername": "\u0628\u062f\u0631\u064a\u0647 \u0628\u0646\u062a \u0641\u0647\u062f \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u062d\u0633\u064a\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 75,
+  "fields": {
+    "deptname": "\u0648\u062d\u062f\u0629 \u0642\u0648\u0627\u0639\u062f \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a",
+    "managerid": "1060620505",
+    "deptcode": 532,
+    "managername": "\u0633\u0644\u0645\u0627\u0646 \u0628\u0646 \u062e\u0644\u0641 \u0628\u0646 \u0641\u0627\u0644\u062d \u0627\u0644\u0645\u0627\u0644\u0643\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 76,
+  "fields": {
+    "deptname": "\u0627\u0644\u0637\u0628\u0627\u0639\u0629 \u0627\u0644\u0631\u0642\u0645\u064a\u0629",
+    "managerid": "1009715135",
+    "deptcode": 2294,
+    "managername": "\u0634\u0644\u064a\u0648\u064a\u062d \u0628\u0646 \u0639\u0648\u064a\u062a\u0642 \u0628\u0646 \u0645\u0637\u0644\u0642 \u0627\u0644\u0633\u0644\u0645\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 77,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u062f\u0639\u0645 \u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a",
+    "managerid": "1032762302",
+    "deptcode": 530,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0633\u0639\u0648\u062f \u0627\u0644\u062f\u0644\u0642\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 78,
+  "fields": {
+    "deptname": "\u0631\u0626\u064a\u0633 \u0627\u0644\u0647\u064a\u0626\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0625\u062d\u0635\u0627\u0621",
+    "managerid": "1012732002",
+    "deptcode": 1000,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0633\u0644\u064a\u0645\u0627\u0646 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u062a\u062e\u064a\u0641\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 79,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0631\u0626\u064a\u0633",
+    "managerid": "1003670427",
+    "deptcode": 1110,
+    "managername": "\u0633\u0627\u0645\u064a \u0628\u0646 \u0641\u0647\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u0645\u0633\u064a\u0646\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 80,
+  "fields": {
+    "deptname": "\u0627\u0644\u0645\u0643\u062a\u0628 \u0634\u0624\u0648\u0646 \u0627\u0644\u0631\u0626\u064a\u0633 ",
+    "managerid": "1032098335",
+    "deptcode": 1111,
+    "managername": "\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u0641\u0631\u062c"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 81,
+  "fields": {
+    "deptname": "\u0627\u0644\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u0633\u062a\u0634\u0627\u0631\u064a  ",
+    "managerid": "1020882815",
+    "deptcode": 1112,
+    "managername": "\u0641\u0648\u0627\u0632 \u0628\u0646 \u0641\u0647\u062f \u0628\u0646 \u062d\u0645\u062f \u0627\u0644\u062c\u0627\u0633\u0631"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 82,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0625\u0639\u0644\u0627\u0645 \u0648\u0627\u0644\u0648\u0639\u064a \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a ",
+    "managerid": "1005584576",
+    "deptcode": 1120,
+    "managername": "\u062a\u064a\u0633\u064a\u0631 \u0628\u0646 \u0645\u062d\u0645\u062f \u0627\u0644\u0645\u0641\u0631\u062c"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 83,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u0639\u0644\u0627\u0645 \u0627\u0644\u062c\u062f\u064a\u062f ",
+    "managerid": "1003465273",
+    "deptcode": 1121,
+    "managername": "\u0645\u0634\u0639\u0644 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u062d\u0645\u064a\u062f\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 84,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0648\u0639\u064a\u0629 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629 ",
+    "managerid": null,
+    "deptcode": 1122,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 85,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0627\u0644\u0625\u0639\u0644\u0627\u0645\u064a",
+    "managerid": "1016909077",
+    "deptcode": 1123,
+    "managername": "\u0625\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u062c\u0647\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 86,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0648\u0627\u0635\u0644 \u0627\u0644\u062f\u0627\u062e\u0644\u064a",
+    "managerid": null,
+    "deptcode": 1124,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 87,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u0646\u062a\u0627\u062c",
+    "managerid": "1081317420",
+    "deptcode": 1125,
+    "managername": "\u0633\u0644\u0637\u0627\u0646 \u0628\u0646 \u0633\u0644\u064a\u0645\u0627\u0646 \u0627\u0644\u062c\u0631\u0628\u0648\u0639"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 88,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0645\u0634\u0627\u0631\u064a\u0639 \u0648\u0627\u0644\u062a\u062e\u0637\u064a\u0637 \u0627\u0644\u0625\u0633\u062a\u0631\u0627\u062a\u064a\u062c\u064a ",
+    "managerid": "1001195815",
+    "deptcode": 1130,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0633\u0639\u064a\u062f \u0622\u0644 \u0633\u0648\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 89,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639 ",
+    "managerid": null,
+    "deptcode": 1131,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 90,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062a\u062d\u0648\u0644 \u0648\u0627\u0644\u0623\u062f\u0627\u0621 \u0627\u0644\u0645\u0624\u0633\u0633\u064a  ",
+    "managerid": "1004556799",
+    "deptcode": 1132,
+    "managername": "\u0633\u0644\u0637\u0627\u0646 \u0627\u0644\u0633\u0644\u0637\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 91,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u062e\u0637\u064a\u0637 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062a\u064a\u062c\u064a ",
+    "managerid": null,
+    "deptcode": 1133,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 92,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u063a\u064a\u064a\u0631",
+    "managerid": null,
+    "deptcode": 1134,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 93,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0634\u0631\u0627\u0643\u0627\u062a \u0627\u0644\u0625\u0633\u062a\u0631\u0627\u062a\u064a\u062c\u064a\u0629 ",
+    "managerid": null,
+    "deptcode": 1135,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 94,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u062f\u0639\u0645 \u0648\u0627\u0644\u062a\u0645\u064a\u0632 \u0627\u0644\u0645\u0624\u0633\u0633\u064a",
+    "managerid": "1087940464",
+    "deptcode": 1140,
+    "managername": "\u0647\u064a\u062b\u0645 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u062a\u0648\u064a\u062c\u0631\u064a "
+  }
+},
+{
+  "model": "project.department",
+  "pk": 95,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0645\u064a\u064a\u0632 \u0627\u0644\u0645\u0624\u0633\u0633\u064a",
+    "managerid": "1082530906",
+    "deptcode": 1141,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u062e\u0644\u064a\u0644 \u0627\u0644\u062b\u0627\u0628\u062a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 96,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062c\u0648\u062f\u0629 \u0627\u0644\u0634\u0627\u0645\u0644\u0629",
+    "managerid": null,
+    "deptcode": 1142,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 97,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0639\u0631\u0641\u0629",
+    "managerid": null,
+    "deptcode": 1143,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 98,
+  "fields": {
+    "deptname": "\u0627\u0644\u0623\u0645\u0627\u0646\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0645\u062c\u0644\u0633 \u0627\u0644\u0625\u062f\u0627\u0631\u0629",
+    "managerid": "1032215467",
+    "deptcode": 1150,
+    "managername": "\u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644 \u0634\u064a\u062e"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 99,
+  "fields": {
+    "deptname": "\u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629",
+    "managerid": "1027123858",
+    "deptcode": 1160,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u0646\u0627\u0635\u0631 \u0628\u0646 \u0645\u062d\u0645\u062f \u0627\u0644\u062e\u0645\u064a\u0633"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 100,
+  "fields": {
+    "deptname": " \u0646\u0627\u0626\u0628 \u0627\u0644\u0631\u0626\u064a\u0633 \u0644\u062a\u0642\u0646\u064a\u0629  \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0648\u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0645\u0633\u0627\u0646\u062f\u0629 ",
+    "managerid": "1023455015",
+    "deptcode": 2000,
+    "managername": "\u062f / \u0631\u0627\u0634\u062f \u0628\u0646 \u0633\u0639\u064a\u062f \u0627\u0644\u0632\u0647\u0631\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 101,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0646\u0627\u0626\u0628 \u0627\u0644\u0631\u0626\u064a\u0633 \u0644\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0648\u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0645\u0633\u0627\u0646\u062f\u0629 ",
+    "managerid": null,
+    "deptcode": 2111,
+    "managername": null
+  }
+},
+{
+  "model": "project.department",
+  "pk": 102,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629",
+    "managerid": "1061071294",
+    "deptcode": 2112,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0645\u062c\u064a\u062f \u0628\u0646 \u064a\u062d\u064a\u0649 \u0627\u0644\u0645\u0648\u0633\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 103,
+  "fields": {
+    "deptname": "\u0648\u0643\u064a\u0644 \u0627\u0644\u0634\u0624\u0648\u0646 \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629 \u0648\u0627\u0644\u0645\u0627\u0644\u064a\u0629 ",
+    "managerid": "1007858887",
+    "deptcode": 2200,
+    "managername": "\u0633\u0627\u0645\u064a \u0628\u0646 \u0623\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u0633\u0646\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 104,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629  \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0634\u0624\u0648\u0646 \u0627\u0644\u0645\u0627\u0644\u064a\u0629",
+    "managerid": "1006359424",
+    "deptcode": 2210,
+    "managername": "\u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0644\u064a \u0628\u0646 \u0623\u062d\u0645\u062f \u0627\u0644\u0646\u0639\u0645\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 105,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u064a\u0632\u0627\u0646\u064a\u0629 \u0648\u0627\u0644\u0645\u062d\u0627\u0633\u0628\u0629",
+    "managerid": "1002396867",
+    "deptcode": 2211,
+    "managername": "\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u062d\u0645\u062f \u0628\u0646 \u0646\u0641\u064a\u0633\u0647"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 106,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0634\u062a\u0631\u064a\u0627\u062a  ",
+    "managerid": "1000393809",
+    "deptcode": 2212,
+    "managername": "\u062d\u0633\u0646 \u0628\u0646 \u0645\u0628\u0627\u0631\u0643 \u0628\u0646 \u0633\u0639\u064a\u062f \u0627\u0644\u0628\u0627\u062f\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 107,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0631\u0627\u0641\u0642 \u0648\u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629",
+    "managerid": "1015461153",
+    "deptcode": 2291,
+    "managername": "\u0633\u0639\u062f \u0628\u0646 \u0639\u0644\u0649 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0622\u0644 \u062d\u0628\u064a\u0634"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 108,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0648\u062b\u064a\u0642 \u0648\u0627\u0644\u0623\u0631\u0634\u0641\u0629 ",
+    "managerid": "1028412862",
+    "deptcode": 2292,
+    "managername": "\u0639\u0627\u0628\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0627\u0628\u062f \u0627\u0644\u0631\u0648\u064a\u0644\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 109,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629 ",
+    "managerid": "1004530943",
+    "deptcode": 2293,
+    "managername": "\u0645\u0637\u0644\u0642 \u0628\u0646 \u0635\u0627\u0644\u062d \u0628\u0646 \u0645\u0637\u0644\u0642 \u0627\u0644\u0645\u0637\u0644\u0642"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 110,
+  "fields": {
+    "deptname": "\u0648\u0643\u064a\u0644 \u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a ",
+    "managerid": "1032762302",
+    "deptcode": 2300,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0633\u0639\u0648\u062f \u0627\u0644\u062f\u0644\u0642\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 111,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629  \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0628\u0646\u064a\u0629 \u0627\u0644\u062a\u062d\u062a\u064a\u0629 \u0644\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a ",
+    "managerid": "1013485659",
+    "deptcode": 2310,
+    "managername": "\u0645\u0646\u0635\u0648\u0631 \u0628\u0646 \u062e\u0645\u064a\u0633 \u0628\u0646 \u062d\u0633\u0646 \u062f\u0645\u0627\u0633"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 112,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0634\u0628\u0643\u0627\u062a \u0648\u0627\u0644\u0625\u062a\u0635\u0627\u0644\u0627\u062a   ",
+    "managerid": "1017606391",
+    "deptcode": 2311,
+    "managername": "\u064a\u0627\u0633\u0631 \u0628\u0646 \u0623\u062d\u0645\u062f \u0645\u0635\u0637\u0641\u0649 \u0627\u0644\u0628\u062f\u064a\u0648\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 113,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062f\u0639\u0645 \u0642\u0648\u0627\u0639\u062f \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a ",
+    "managerid": "1060620505",
+    "deptcode": 2312,
+    "managername": "\u0633\u0644\u0645\u0627\u0646 \u0628\u0646 \u062e\u0644\u0641 \u0628\u0646 \u0641\u0627\u0644\u062d \u0627\u0644\u0645\u0627\u0644\u0643\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 114,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0646\u0638\u0645 \u0648\u0627\u0644\u0639\u0645\u0644\u064a\u0627\u062a ",
+    "managerid": "1011287669",
+    "deptcode": 2313,
+    "managername": "\u0627\u062d\u0645\u062f \u0628\u0646 \u0635\u0627\u0644\u062d \u0628\u0646 \u0639\u062b\u0645\u0627\u0646 \u0627\u0644\u0633\u0644\u064a\u0645"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 115,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0623\u0645\u0646 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a",
+    "managerid": "1009985498",
+    "deptcode": 2314,
+    "managername": "\u0645\u062d\u0645\u062f \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u062d\u0628\u064a\u0628"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 116,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u062a\u0637\u0648\u064a\u0631 \u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0648\u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0627\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629",
+    "managerid": "1036230553",
+    "deptcode": 2320,
+    "managername": "\u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u0645\u0627\u0646\u0639"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 117,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a ",
+    "managerid": "1024617324",
+    "deptcode": 2321,
+    "managername": "\u0627\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0633\u0639\u062f \u0627\u0644\u0633\u0644\u0628\u0648\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 118,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0627\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629 \u0648\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a",
+    "managerid": "1035072956",
+    "deptcode": 2322,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0641\u0647\u062f \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u0641\u0631\u064a\u062c\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 119,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062f\u0639\u0645 \u0627\u0644\u0641\u0646\u064a ",
+    "managerid": "1000487403",
+    "deptcode": 2391,
+    "managername": "\u064a\u0648\u0633\u0641 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0641\u0636\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 120,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0636\u0645\u0627\u0646 \u0627\u0644\u062c\u0648\u062f\u0629 ",
+    "managerid": "1032067637",
+    "deptcode": 2392,
+    "managername": "\u0647\u0646\u0627\u0621 \u0628\u0646\u062a \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0634\u0631\u064a\u0645"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 121,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0630\u0643\u0627\u0621 \u0627\u0644\u0623\u0639\u0645\u0627\u0644 ",
+    "managerid": "1022764458",
+    "deptcode": 2393,
+    "managername": "\u0647\u0627\u062c\u0631 \u0628\u0646\u062a \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0633\u062d\u064a\u0628\u0627\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 122,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0628\u0634\u0631\u064a\u0629",
+    "managerid": "1032987149",
+    "deptcode": 2400,
+    "managername": "\u0623\u062d\u0645\u062f \u0628\u0646 \u062e\u0627\u0644\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u062f\u0639\u064a\u062c"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 123,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u0633\u062a\u0631\u0627\u062a\u064a\u062c\u064a\u0629 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0628\u0634\u0631\u064a\u0629 ",
+    "managerid": "1011380209",
+    "deptcode": 2411,
+    "managername": "\u0628\u0646\u062f\u0631 \u0628\u0646 \u0634\u0644\u0647\u0648\u0628 \u0628\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u0634\u0644\u0647\u0648\u0628"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 124,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0639\u0645\u0644\u064a\u0627\u062a \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0628\u0634\u0631\u064a\u0629",
+    "managerid": "1021147176",
+    "deptcode": 2412,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0633\u0639\u0648\u062f \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0633\u0644\u064a\u0651\u0645"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 125,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0628\u0634\u0631\u064a\u0629",
+    "managerid": "1003241096",
+    "deptcode": 2413,
+    "managername": "\u0648\u0644\u064a\u062f \u0628\u0646 \u0633\u0644\u064a\u0645\u0627\u0646 \u0628\u0646 \u0632\u064a\u062f \u0627\u0644\u0632\u0646\u064a\u062f\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 126,
+  "fields": {
+    "deptname": " \u0646\u0627\u0626\u0628 \u0627\u0644\u0631\u0626\u064a\u0633 \u0644\u062e\u062f\u0645\u0629 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0648\u0627\u0644\u0625\u0628\u062a\u0643\u0627\u0631 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a ",
+    "managerid": "1023375304",
+    "deptcode": 3000,
+    "managername": "\u062f / \u0645\u062d\u0645\u062f \u0627\u0644\u0623\u062d\u0645\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 127,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0646\u0627\u0626\u0628 \u0627\u0644\u0631\u0626\u064a\u0633 \u062e\u062f\u0645\u0629 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0648\u0627\u0644\u0627\u0628\u062a\u0643\u0627\u0631 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a",
+    "managerid": "1036654232",
+    "deptcode": 3111,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u0639\u0645\u0631 \u0628\u0646 \u0641\u0647\u062f \u0627\u0644\u062d\u0633\u064a\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 128,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629  \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0639\u0644\u0627\u0642\u0627\u062a \u0648\u062f\u0639\u0645 \u0627\u0644\u0639\u0645\u0644\u0627\u0621 ",
+    "managerid": "1005584576",
+    "deptcode": 3210,
+    "managername": "\u062a\u064a\u0633\u064a\u0631 \u0628\u0646 \u0645\u062d\u0645\u062f \u0627\u0644\u0645\u0641\u0631\u062c"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 129,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a ",
+    "managerid": "1042232445",
+    "deptcode": 3310,
+    "managername": "\u062f/ \u0627\u0631\u0648\u0649 \u0627\u0644\u0634\u0646\u0642\u064a\u0637\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 130,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u062a\u0642\u0627\u0631\u064a\u0631 \u0627\u0644\u0639\u0627\u0645\u0629 ",
+    "managerid": "1019672524",
+    "deptcode": 3410,
+    "managername": "\u0633\u0639\u062f \u0628\u0646 \u0633\u0639\u064a\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u0623\u0633\u0645\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 131,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0625\u0628\u062a\u0643\u0627\u0631 \u0648\u0627\u0644\u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a ",
+    "managerid": "1004577936",
+    "deptcode": 3510,
+    "managername": "\u062f / \u0623\u0633\u064a\u0644 \u0627\u0644\u0645\u0646\u0635\u0648\u0631 "
+  }
+},
+{
+  "model": "project.department",
+  "pk": 132,
+  "fields": {
+    "deptname": "\u0627\u0644\u062a\u0639\u0627\u0648\u0646 \u0627\u0644\u062f\u0648\u0644\u064a",
+    "managerid": "1001511771",
+    "deptcode": 3610,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0625\u0628\u0631\u0627\u0647\u064a\u0645 \u0627\u0644\u0639\u062a\u064a\u0642"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 133,
+  "fields": {
+    "deptname": "\u0623\u0643\u0627\u062f\u064a\u0645\u064a\u0629 \u0627\u0644\u0625\u062d\u0635\u0627\u0621",
+    "managerid": "1034524585",
+    "deptcode": 3710,
+    "managername": "\u0645\u0646\u0630\u0631 \u0628\u0646 \u0645\u062d\u0645\u062f \u0623\u0648\u0644\u0649 \u0627\u0644\u0645\u0646\u0630\u0631 \u0627\u0644\u0627\u0646\u0635\u0627\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 134,
+  "fields": {
+    "deptname": "\u0646\u0627\u0626\u0628 \u0627\u0644\u0631\u0626\u064a\u0633  \u0644\u0644\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629 ",
+    "managerid": "1003775804",
+    "deptcode": 4000,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u062d\u0645\u062f\u0627\u0646 \u0627\u0644\u0628\u0627\u062a\u0644"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 135,
+  "fields": {
+    "deptname": "\u0645\u0643\u062a\u0628 \u0646\u0627\u0626\u0628 \u0627\u0644\u0631\u0626\u064a\u0633 \u0644\u0644\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629",
+    "managerid": "1042251783",
+    "deptcode": 4111,
+    "managername": "\u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0645\u062d\u0645\u062f \u0627\u0644\u062d\u0633\u064a\u0646\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 136,
+  "fields": {
+    "deptname": "\u0648\u0643\u064a\u0644 \u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629 ",
+    "managerid": "1025546779",
+    "deptcode": 4200,
+    "managername": "\u0641\u0648\u0632\u0627\u0646 \u0628\u0646 \u0639\u062b\u0645\u0627\u0646 \u0628\u0646 \u0645\u0633\u0627\u0639\u062f \u0627\u0644\u0641\u0648\u0632\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 137,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0627\u0642\u062a\u0635\u0627\u062f\u064a\u0629 ",
+    "managerid": "1002930756",
+    "deptcode": 4210,
+    "managername": "\u0645\u062d\u0645\u062f \u0628\u0646 \u0633\u0644\u064a\u0645\u0627\u0646 \u0628\u0646 \u0645\u0648\u0633\u0649 \u0627\u0644\u0641\u0631\u0627\u062c"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 138,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062d\u0633\u0627\u0628\u0627\u062a \u0627\u0644\u0642\u0648\u0645\u064a\u0629   ",
+    "managerid": "1037964812",
+    "deptcode": 4211,
+    "managername": "\u062d\u0645\u0648\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u0633\u0631\u064a\u0639"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 139,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062a\u062c\u0627\u0631\u0629 \u0627\u0644\u062e\u0627\u0631\u062c\u064a\u0629 ",
+    "managerid": "1022565343",
+    "deptcode": 4212,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0627\u0644\u0634\u0631\u0647\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 140,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0635\u0646\u0627\u0639\u0629 \u0648\u0627\u0644\u0623\u0639\u0645\u0627\u0644",
+    "managerid": "1010351458",
+    "deptcode": 4213,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0631\u062d\u0645\u0646 \u0627\u0644\u0634\u0639\u0644\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 141,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0623\u0633\u0639\u0627\u0631 ",
+    "managerid": "1028397006",
+    "deptcode": 4214,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0627\u062d\u0645\u062f \u0628\u0646 \u0645\u0646\u0635\u0648\u0631 \u0627\u0644\u0639\u0645\u0631\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 142,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0625\u062c\u062a\u0645\u0627\u0639\u064a\u0629",
+    "managerid": "1032577403",
+    "deptcode": 4220,
+    "managername": "\u0646\u0627\u0635\u0631 \u0628\u0646 \u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u062d\u0645\u062f \u0627\u0644\u062c\u0631\u0628\u0627\u0621"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 143,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062a\u0639\u0644\u064a\u0645 \u0648\u0627\u0644\u0635\u062d\u0629 ",
+    "managerid": "1002046140",
+    "deptcode": 4221,
+    "managername": "\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u062d\u0645\u064a\u062f\u0627\u0646 \u0628\u0646 \u062a\u0631\u0643\u064a \u0627\u0644\u062a\u0631\u0643\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 144,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0633\u0643\u0627\u0646\u064a\u0629 \u0648\u0627\u0644\u062d\u064a\u0648\u064a\u0629",
+    "managerid": "1045243258",
+    "deptcode": 4222,
+    "managername": "\u0647\u0632\u0627\u0639 \u0628\u0646 \u0631\u062d\u064a\u0645 \u0628\u0646 \u0645\u062e\u0644\u0641 \u0627\u0644\u0645\u0637\u064a\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 145,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u062d\u0643\u0648\u0645\u064a\u0629 \u0648 \u0627\u0644\u062c\u063a\u0631\u0627\u0641\u064a\u0629",
+    "managerid": "1006385619",
+    "deptcode": 4223,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0627\u0644\u0647\u0645\u0644\u0627\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 146,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0642\u0648\u0649 \u0627\u0644\u0639\u0627\u0645\u0644\u0629 \u0648\u0627\u0644\u0623\u062d\u0648\u0627\u0644 \u0627\u0644\u0625\u062c\u062a\u0645\u0627\u0639\u064a\u0629  ",
+    "managerid": "1038370605",
+    "deptcode": 4224,
+    "managername": "\u0627\u0644\u062d\u0633\u064a\u0646 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0635\u0627\u0644\u062d \u0627\u0644\u062d\u0631\u0628\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 147,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0637\u0627\u0642\u0629",
+    "managerid": "1027214244",
+    "deptcode": 4231,
+    "managername": "\u0639\u0644\u064a \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u064a\u062d\u064a \u062d\u0645\u062f\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 148,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0632\u0631\u0627\u0639\u0629 ",
+    "managerid": "1001762127",
+    "deptcode": 4232,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0643\u0631\u064a\u0645 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0643\u0631\u064a\u0645 \u0627\u0644\u062f\u0631\u064a\u0628\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 149,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0628\u064a\u0626\u0629 ",
+    "managerid": "1007192022",
+    "deptcode": 4233,
+    "managername": "\u062d\u0633\u0646 \u0628\u0646 \u0633\u0627\u0644\u0645 \u0628\u0646 \u062d\u0633\u0646 \u0627\u0644\u0641\u064a\u0641\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 150,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0645\u0639\u0631\u0641\u0629",
+    "managerid": "1026975456",
+    "deptcode": 4234,
+    "managername": "\u062d\u0633\u0646 \u0628\u0646 \u0633\u0627\u0644\u0645 \u0628\u0646 \u062d\u0633\u0646 \u0627\u0644\u0641\u064a\u0641\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 151,
+  "fields": {
+    "deptname": "\u0648\u0643\u064a\u0644 \u0627\u0644\u0639\u0645\u0644\u064a\u0627\u062a \u0648\u0627\u0644\u0645\u0646\u0647\u062c\u064a\u0627\u062a ",
+    "managerid": "1034106417",
+    "deptcode": 4300,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0641\u0647\u062f \u0627\u0644\u0641\u0647\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 152,
+  "fields": {
+    "deptname": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0639\u0645\u0644\u064a\u0627\u062a  ",
+    "managerid": "1037533575",
+    "deptcode": 4310,
+    "managername": "\u062a\u0631\u0643\u0649 \u0628\u0646 \u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u0642\u0631\u064a\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 153,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062a\u0646\u0633\u064a\u0642 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0645\u064a\u062f\u0627\u0646\u064a ",
+    "managerid": "1018541357",
+    "deptcode": 4311,
+    "managername": "\u0627\u062d\u0645\u062f \u0628\u0646 \u0633\u0627\u0644\u0645  \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0627\u0646\u0627\u0639\u0645\u0647"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 154,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062f\u0639\u0645 \u0627\u0644\u0639\u0645\u0644\u064a\u0627\u062a ",
+    "managerid": "1031782228",
+    "deptcode": 4312,
+    "managername": "\u0633\u0639\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0628\u0646 \u0646\u0627\u0635\u0631 \u0627\u0644\u062f\u0627\u0648\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 155,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0639\u062f\u0627\u062f ",
+    "managerid": "1034570505",
+    "deptcode": 4313,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0641\u0647\u062f \u0627\u0644\u0645\u0642\u0631\u0646"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 156,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0645\u0646\u0647\u062c\u064a\u0627\u062a \u0648\u0627\u0644\u062a\u0646\u0633\u064a\u0642 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a  ",
+    "managerid": "1032127910",
+    "deptcode": 4320,
+    "managername": "\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0627\u0644\u062d\u0645\u064a\u0632\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 157,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u064a\u0646\u0627\u062a ",
+    "managerid": "1035940590",
+    "deptcode": 4321,
+    "managername": "\u0645\u0627\u062c\u062f \u0628\u0646 \u0645\u0634\u0627\u0631\u064a \u0628\u0646 \u0641\u0647\u064a\u062f \u0627\u0644\u0641\u0647\u064a\u062f"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 158,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u062f\u0639\u0645 \u0627\u0644\u0645\u0646\u0647\u062c\u064a\u0627\u062a \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629 ",
+    "managerid": "1060500160",
+    "deptcode": 4322,
+    "managername": "\u062e\u0627\u0644\u062f \u0628\u0646 \u0645\u0648\u0633\u0649 \u0628\u0646 \u062d\u0633\u0646 \u0641\u0642\u064a\u0647\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 159,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0646\u0633\u064a\u0642 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a ",
+    "managerid": "1001811304",
+    "deptcode": 4323,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0639\u064a\u0636\u0647 \u0628\u0646 \u0633\u0639\u064a\u062f \u0627\u0644\u062d\u0627\u0631\u062b\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 160,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0635\u0646\u064a\u0641\u0627\u062a \u0648\u0627\u0644\u0645\u0639\u0627\u064a\u064a\u0631 \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629 ",
+    "managerid": "1057363309",
+    "deptcode": 4324,
+    "managername": "\u0639\u0627\u0626\u0636 \u0628\u0646 \u0632\u0627\u064a\u062f \u0628\u0646 \u0633\u0627\u0644\u0645 \u0627\u0644\u0639\u0645\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 161,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0641\u0631\u0648\u0639 ",
+    "managerid": "1007724352",
+    "deptcode": 4330,
+    "managername": "\u0633\u0639\u0648\u062f \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u062d\u0645\u062f \u0627\u0644\u062e\u0631\u064a\u0641"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 162,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0633\u064a\u0627\u062d\u0629",
+    "managerid": "1046967566",
+    "deptcode": 4241,
+    "managername": "\u0641\u0647\u062f \u0628\u0646 \u0645\u0635\u0644\u062d \u0628\u0646 \u0639\u0627\u0644\u064a \u0627\u0644\u0645\u0637\u064a\u0631\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 163,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0645\u0627\u0644 \u0648 \u0627\u0644\u0627\u0633\u062a\u062b\u0645\u0627\u0631",
+    "managerid": "1054298763",
+    "deptcode": 4242,
+    "managername": "\u0635\u0627\u0644\u062d \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0646\u0627\u0635\u0631 \u0627\u0644\u062e\u0644\u064a\u0648\u0649"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 164,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062c\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0635\u0646\u0627\u0639\u0629",
+    "managerid": "1005578057",
+    "deptcode": 4243,
+    "managername": "\u0639\u0644\u064a \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0645\u0641\u0631\u062d \u0627\u0644\u0642\u0631\u0646\u064a"
+  }
+},
+{
+  "model": "project.department",
+  "pk": 165,
+  "fields": {
+    "deptname": "\u0625\u062f\u0627\u0631\u0629 \u0625\u062d\u0635\u0627\u0621\u0627\u062a \u0627\u0644\u0623\u0639\u0645\u0627\u0644",
+    "managerid": "1028795548",
+    "deptcode": 4244,
+    "managername": "\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0644\u0634\u0645\u0631\u0627\u0646\u064a"
+  }
+}
+]
