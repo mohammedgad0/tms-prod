@@ -1,8 +1,12 @@
 from django.conf.urls import url ,include
 from project import views
+from rest_framework import routers
+
 # from project.views import ProjectMembersListView
 #application namespace
 app_name = 'ns-project'
+
+
 
 urlpatterns = [
     # Matches any html file - to be used for gentella
@@ -11,8 +15,13 @@ urlpatterns = [
 
     # The home page
     url(r'^$', views.index, name='index'),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^add-sheet/$', views.AddSheet, name='add-sheet'),
+    # test rest api
+    url(r'^rest-api/$', views.RestApi, name='rest-api'),
+    url(r'^api-sheets/(?P<status>.+)/(?P<empid>.+)/$', views.SheetsStatusViewSet.as_view(), name='user'),
+    ###
     url(r'^sheet/(?P<pk>\d+)/edit/$', views.EditSheet, name='edit-sheet'),
     url(r'^sheet/(?P<pk>\d+)/submit/$', views.SubmitSheet, name='submit-sheet'),
     url(r'^sheet/(?P<pk>\d+)/change/$', views.ChangeStatus, name='change-status'),

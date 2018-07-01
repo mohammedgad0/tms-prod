@@ -1,0 +1,74 @@
+{% extends "ram/base_site.html" %}
+{% block title %} Dashboard 1 {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+{% block content %}
+{% load static %}
+<style>
+
+</style>
+  <div class="right_col" role="main">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+          <div class="row x_title">
+            <div class="col-md-6">
+              <h3>نتائج المسابقة الرمضانية   <small>1439 - 2018</small></h3>
+            </div>
+       <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>الأسم</th>
+                    <th>إجمالي عدد الاجابات</th>
+                    <th>الإجابات الصحيحة </th>
+                   <th>النسبة المئوية</th>
+                  </tr>
+                </thead>
+                <tbody>
+{% for data in All_Employee %}
+                  <tr>
+                    <td>{{data.emp_id__empname}}</td>
+                    <td>{{data.total}}</td>
+                    <td>{{data.correct}}</td>
+                      <td class="project_progress">
+                      <div class="progress progress_sm">
+                      <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="{{data.per}}"></div>
+                      </div>
+                      <small>{{data.per}}%</small>
+                    </td>
+                  </tr>
+                        {% endfor %}
+                </tbody>
+              </table>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <br />
+
+    <div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+
+  </div>
+    </div>
+
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super}}
+
+<script>
+    $('#quiz').submit(function() {
+        $('input').removeAttr('disabled');
+    });
+</script>
+{% endblock javascripts %}

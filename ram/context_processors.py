@@ -14,6 +14,7 @@ import datetime
 def period(request):
     date = datetime.datetime.now()
     # date = date + timedelta(days=10)
-    period = get_period(date)
+    # period = get_period(date)
+    period = 3
     period_obj = PeriodQuestion.objects.get(period_no = period)
     return {'period_obj' : period_obj}

@@ -21,6 +21,62 @@ from django.http import JsonResponse
 from django.views.generic.list import ListView
 from django.core.urlresolvers import resolve
 from django.core.cache import cache
+from rest_framework import viewsets , generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.contrib.sites import requests
+
+from .serializers import UserSerializer, GroupSerializer
+
+
+
+class SheetsStatusViewSet(APIView):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    def get(self, request, status,empid):
+        """
+        Get current week range start week is sunday end day is saturday
+        """
+        date = datetime.now()
+        year, week, dow = date.isocalendar()
+        if dow == 7:
+            start_date = date
+        else:
+            start_date = date - timedelta(dow)
+        end_date = start_date + timedelta(6)
+        """ End current week """
+        sheet = Sheet.objects.filter(empid=empid)
+        if status == 'inprogress':
+            sheet = sheet.filter(Q(status=1))
+        elif status == 'notfinish':
+            sheet = sheet.filter(Q(status=3))
+        queryset = sheet.filter(
+            Q(taskdate__gte=end_date, createddate__lte=start_date) |
+            Q(taskdate__lte=end_date, taskdate__gte=start_date) |
+            Q(createddate__lte=end_date, createddate__gte=start_date)
+        )
+
+        serializer_class = UserSerializer(queryset,many=True)
+        return Response(serializer_class.data)
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+
+def RestApi(request):
+    import urllib.request, json
+    empid = '1028645107'
+    with urllib.request.urlopen("http://127.0.0.1:8000/project/api-sheets/inprogress/" + empid + '/') as url:
+        data = json.loads(url.read())
+    context = {'user':data}
+    return render(request, 'project/rest-api.html', context)
+
 
 class BaseSheetFormSet(BaseModelFormSet):
     def clean(self):
